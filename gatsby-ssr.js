@@ -10,3 +10,10 @@
 exports.onRenderBody = ({ setHtmlAttributes }) => {
   setHtmlAttributes({ lang: `en` })
 }
+
+const React = require("react")
+const { ThemeProvider } = require("./src/context/theme-context")
+
+exports.wrapRootElement = ({ element }) => (
+  React.createElement(ThemeProvider, null, element)
+)

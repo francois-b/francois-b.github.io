@@ -9,6 +9,7 @@ import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
+import ThemeToggle from "./ThemeToggle"
 import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -24,6 +25,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <ThemeToggle />
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div
         style={{

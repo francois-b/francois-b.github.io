@@ -1,14 +1,27 @@
 import * as React from "react"
+import { graphql, Link } from "gatsby"
+import type { PageProps } from "gatsby"
+import ThemeToggle from "../components/ThemeToggle"
 import "../styles/cv.css"
 
-const CVPage = () => {
-  const [theme, setTheme] = React.useState<'sun' | 'rain' | 'night'>('sun')
+type BlogPostsQuery = {
+  allMarkdownRemark: {
+    nodes: Array<{
+      id: string
+      frontmatter: {
+        title: string
+        date: string
+        slug: string
+      }
+      excerpt: string
+    }>
+  }
+}
+
+const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
   const [selectedJob, setSelectedJob] = React.useState<number>(0)
   const [selectedSkill, setSelectedSkill] = React.useState<number>(0)
-
-  React.useEffect(() => {
-    document.body.className = `theme-${theme}`
-  }, [theme])
+  const posts = data.allMarkdownRemark.nodes
 
   const handlePrint = () => {
     window.print()
@@ -89,53 +102,7 @@ const CVPage = () => {
         </svg>
       </button>
 
-      {/* Theme Toggle Buttons */}
-      <div className="theme-toggle-group">
-        <button
-          className={`theme-button ${theme === 'sun' ? 'active' : ''}`}
-          onClick={() => setTheme('sun')}
-          aria-label="Sun theme"
-          title="Sun theme"
-        >
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="6" fill="currentColor" />
-            <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <line x1="16" y1="26" x2="16" y2="30" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <line x1="2" y1="16" x2="6" y2="16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <line x1="26" y1="16" x2="30" y2="16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <line x1="6.34" y1="6.34" x2="9.17" y2="9.17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <line x1="22.83" y1="22.83" x2="25.66" y2="25.66" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <line x1="6.34" y1="25.66" x2="9.17" y2="22.83" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <line x1="22.83" y1="9.17" x2="25.66" y2="6.34" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-        </button>
-
-        <button
-          className={`theme-button ${theme === 'rain' ? 'active' : ''}`}
-          onClick={() => setTheme('rain')}
-          aria-label="Rain theme"
-          title="Rain theme"
-        >
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-            <path d="M 8 14 Q 8 10 12 10 Q 12 6 16 6 Q 20 6 20 10 Q 24 10 24 14 Q 24 18 20 18 L 12 18 Q 8 18 8 14" fill="currentColor" />
-            <line x1="12" y1="22" x2="11" y2="26" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <line x1="16" y1="20" x2="15" y2="24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <line x1="20" y1="22" x2="19" y2="26" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-        </button>
-
-        <button
-          className={`theme-button ${theme === 'night' ? 'active' : ''}`}
-          onClick={() => setTheme('night')}
-          aria-label="Night theme"
-          title="Night theme"
-        >
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="9" fill="currentColor" />
-            <circle cx="19" cy="16" r="7" fill="var(--color-bg)" />
-          </svg>
-        </button>
-      </div>
+      <ThemeToggle />
 
 
       {/* Main Content */}
@@ -301,6 +268,37 @@ const CVPage = () => {
             </div>
           </div>
         </section>
+
+        <section className="cv-section blog-section">
+          <h2>
+            <svg className="section-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M4 5H20V19H4V5Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M8 9H16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M8 13H16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            Latest Blog Posts
+          </h2>
+          {posts.length === 0 ? (
+            <p className="summary-text">New articles are on the way. Please check back soon.</p>
+          ) : (
+            <div className="blog-list">
+              {posts.map(post => (
+                <article key={post.id} className="blog-card">
+                  <header>
+                    <p className="blog-card-date">{post.frontmatter.date}</p>
+                    <h3>
+                      <Link to={`/blog/${post.frontmatter.slug}`}>{post.frontmatter.title}</Link>
+                    </h3>
+                  </header>
+                  <p>{post.excerpt}</p>
+                  <Link className="blog-card-link" to={`/blog/${post.frontmatter.slug}`}>
+                    Read more →
+                  </Link>
+                </article>
+              ))}
+            </div>
+          )}
+        </section>
       </main>
 
       <footer className="cv-footer">
@@ -316,5 +314,24 @@ export const Head = () => (
     <meta name="description" content="Professional CV of Your Name - Full Stack Developer & Creative Technologist" />
   </>
 )
+
+export const query = graphql`
+  query CVPageBlogPosts {
+    allMarkdownRemark(
+      sort: { frontmatter: { date: DESC } }
+      filter: { fileAbsolutePath: { regex: "/blog/" } }
+    ) {
+      nodes {
+        id
+        frontmatter {
+          title
+          date(formatString: "MMMM D, YYYY")
+          slug
+        }
+        excerpt(pruneLength: 140)
+      }
+    }
+  }
+`
 
 export default CVPage
