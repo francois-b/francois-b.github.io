@@ -2,11 +2,12 @@
    CSS Variables & Base Styles
    =================================== */
 
-/* Import Serif Font */
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap');
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Noto+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-  --font-serif: 'Merriweather', 'Georgia', 'Times New Roman', serif;
+  --font-serif: 'Noto Serif', 'Merriweather', 'Georgia', 'Times New Roman', serif;
+  --font-header: 'Noto Sans', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -98,14 +99,20 @@ body {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-header);
+}
+
 /* ===================================
    Print Button
    =================================== */
 
 .print-button {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -138,9 +145,6 @@ body {
    =================================== */
 
 .theme-toggle-group {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
   display: flex;
   gap: 0.35rem;
   z-index: 1000;
@@ -222,9 +226,42 @@ body {
   z-index: 1;
 }
 
+.identity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  background: var(--color-bg);
+  flex-shrink: 0;
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.identity-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: left;
+}
+
 /* Name Styling - Compressed */
 .name {
-  font-family: var(--font-serif);
+  font-family: var(--font-header);
   font-size: 2.5rem;
   font-weight: 900;
   color: var(--color-text);
@@ -326,28 +363,17 @@ body {
 }
 
 /* Section Headers - Classic Style */
+
 .cv-section h2 {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-family: var(--font-header);
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-text);
   letter-spacing: 0.02em;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--color-text);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
   text-transform: uppercase;
-  font-size: 1.1rem;
-}
-
-/* Section Icon Styling */
-.section-icon {
-  width: 22px;
-  height: 22px;
-  color: var(--color-primary);
-  flex-shrink: 0;
 }
 
 /* ===================================
@@ -358,55 +384,24 @@ body {
   position: relative;
 }
 
-.summary-card {
-  position: relative;
+.summary-text {
+  display: block;
   max-width: 620px;
-  margin: 0 auto;
+  margin: 0.75rem auto 0;
   padding: 1.5rem 1.75rem;
   background: var(--color-bg-subtle);
   border: 1px solid var(--color-border);
   border-left: 4px solid var(--color-primary);
   border-radius: 6px;
-  box-shadow: var(--shadow-lg);
-  transform: rotate(-1.5deg);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.summary-card::before {
-  content: '';
-  position: absolute;
-  top: -0.85rem;
-  left: 50%;
-  width: 1.25rem;
-  height: 1.25rem;
-  background: var(--color-secondary);
-  border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-  transform: translateX(-50%);
-}
-
-.summary-card::after {
-  content: '';
-  position: absolute;
-  top: -0.55rem;
-  left: 50%;
-  width: 0.25rem;
-  height: 1.4rem;
-  background: var(--color-text);
-  border-radius: 0.25rem;
-  transform: translateX(-50%);
-  opacity: 0.25;
-}
-
-.summary-card:hover {
-  transform: rotate(-0.5deg);
-  box-shadow: var(--shadow-lg), 0 6px 18px rgba(0, 0, 0, 0.12);
-}
-
-.summary-text {
+  box-shadow: var(--shadow-md);
+  transition: box-shadow 0.3s ease;
   font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text-light);
+}
+
+.summary-text:hover {
+  box-shadow: var(--shadow-lg);
 }
 
 /* ===================================
@@ -451,7 +446,7 @@ body {
 }
 
 .job-title h3 {
-  font-family: var(--font-serif);
+  font-family: var(--font-header);
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-text);
@@ -557,7 +552,7 @@ body {
 }
 
 .skill-card h3 {
-  font-family: var(--font-serif);
+  font-family: var(--font-header);
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-text);
@@ -627,7 +622,7 @@ body {
 }
 
 .education-item h3 {
-  font-family: var(--font-serif);
+  font-family: var(--font-header);
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-text);
@@ -691,7 +686,7 @@ body {
 }
 
 .blog-card h3 {
-  font-family: var(--font-serif);
+  font-family: var(--font-header);
   font-size: 1.1rem;
   font-weight: 700;
   margin: 0;
@@ -742,12 +737,15 @@ body {
 
 .project-item {
   background: var(--color-bg);
-  padding: 1rem;
-  border-radius: 0;
   border: 1px solid var(--color-border);
   border-left: 3px solid var(--color-primary);
+  border-radius: 0;
   transition: all 0.3s ease;
+  display: grid;
+  grid-template-columns: minmax(180px, 240px) 1fr;
+  align-items: stretch;
   position: relative;
+  min-height: 200px;
 }
 
 .project-item:hover {
@@ -755,19 +753,40 @@ body {
   background: var(--color-bg-subtle);
 }
 
+.project-visual {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.project-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-content {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
 .project-item h3 {
-  font-family: var(--font-serif);
+  font-family: var(--font-header);
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-text);
-  margin-bottom: 0.35rem;
+  margin: 0;
 }
 
 .project-item p {
   color: var(--color-text-light);
   line-height: 1.5;
-  margin-bottom: 0.5rem;
   font-size: 0.95rem;
+  margin: 0;
 }
 
 .project-tech {
@@ -836,21 +855,8 @@ body {
     height: 20px;
   }
 
-  .summary-card {
-    transform: none;
+  .summary-text {
     padding: 1.3rem 1.25rem;
-  }
-
-  .summary-card:hover {
-    transform: none;
-  }
-
-  .summary-card::before {
-    top: -0.65rem;
-  }
-
-  .summary-card::after {
-    top: -0.45rem;
   }
 
   .name {
@@ -868,6 +874,21 @@ body {
 
   .separator {
     display: none;
+  }
+
+  .identity {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .identity-text {
+    text-align: center;
+  }
+
+  .profile-photo {
+    width: 110px;
+    height: 110px;
+    box-shadow: var(--shadow-sm);
   }
 
   .cv-section h2 {
@@ -894,6 +915,19 @@ body {
 
   .blog-list {
     grid-template-columns: 1fr;
+  }
+
+  .project-item {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .project-visual {
+    height: 200px;
+  }
+
+  .project-content {
+    padding: 1rem 1.25rem 1.5rem;
   }
 }
 
@@ -924,18 +958,6 @@ body {
     max-width: 100%;
     padding: 0;
     margin: 0;
-  }
-
-  .summary-card {
-    transform: none !important;
-    box-shadow: none;
-    border-left: 2px solid #000;
-    padding: 0.9rem 1.1rem;
-  }
-
-  .summary-card::before,
-  .summary-card::after {
-    display: none !important;
   }
 
   /* Hide decorative elements for print */
@@ -1001,6 +1023,22 @@ body {
     page-break-after: avoid;
   }
 
+  .identity {
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .profile-photo {
+    width: 70px;
+    height: 70px;
+    border: 1px solid #999;
+    box-shadow: none;
+  }
+
+  .identity-text {
+    text-align: left;
+  }
+
   .name {
     font-size: 20pt;
     margin: 0.25rem 0;
@@ -1061,6 +1099,11 @@ body {
     font-size: 9pt;
     line-height: 1.4;
     color: #333;
+    border: 1px solid #ccc;
+    border-left: 2px solid #000;
+    padding: 0.9rem 1.1rem;
+    background: white;
+    box-shadow: none;
   }
 
   /* Timeline adjustments */
@@ -1234,8 +1277,8 @@ body {
     color: #000;
   }
 
-  .blog-card h3 a {
-    color: inherit;
+  .blog-card h3 {
+    font-family: var(--font-header);
     text-decoration: none;
   }
 
@@ -1264,6 +1307,10 @@ body {
   }
 
   .project-item::before {
+    display: none;
+  }
+
+  .project-visual {
     display: none;
   }
 
