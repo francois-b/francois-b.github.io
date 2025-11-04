@@ -2,13 +2,13 @@
    CSS Variables & Base Styles
    =================================== */
 
+/* Import Serif Font */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap');
+
 :root {
   --font-serif: 'Merriweather', 'Georgia', 'Times New Roman', serif;
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
-
-/* Import Serif Font */
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap');
 
 /* ===================================
    Theme Variables
@@ -252,15 +252,13 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.75rem;
-  align-items: center;
-  animation: fadeIn 0.8s ease-out 0.3s backwards;
+  gap: 0.6rem;
 }
 
 .contact-info a {
   color: var(--color-primary);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
   position: relative;
 }
 
@@ -355,6 +353,55 @@ body {
 /* ===================================
    Summary Section - Compressed
    =================================== */
+
+.summary-section {
+  position: relative;
+}
+
+.summary-card {
+  position: relative;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 1.5rem 1.75rem;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 6px;
+  box-shadow: var(--shadow-lg);
+  transform: rotate(-1.5deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.summary-card::before {
+  content: '';
+  position: absolute;
+  top: -0.85rem;
+  left: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: var(--color-secondary);
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  transform: translateX(-50%);
+}
+
+.summary-card::after {
+  content: '';
+  position: absolute;
+  top: -0.55rem;
+  left: 50%;
+  width: 0.25rem;
+  height: 1.4rem;
+  background: var(--color-text);
+  border-radius: 0.25rem;
+  transform: translateX(-50%);
+  opacity: 0.25;
+}
+
+.summary-card:hover {
+  transform: rotate(-0.5deg);
+  box-shadow: var(--shadow-lg), 0 6px 18px rgba(0, 0, 0, 0.12);
+}
 
 .summary-text {
   font-size: 1rem;
@@ -789,6 +836,23 @@ body {
     height: 20px;
   }
 
+  .summary-card {
+    transform: none;
+    padding: 1.3rem 1.25rem;
+  }
+
+  .summary-card:hover {
+    transform: none;
+  }
+
+  .summary-card::before {
+    top: -0.65rem;
+  }
+
+  .summary-card::after {
+    top: -0.45rem;
+  }
+
   .name {
     font-size: 2rem;
   }
@@ -860,6 +924,18 @@ body {
     max-width: 100%;
     padding: 0;
     margin: 0;
+  }
+
+  .summary-card {
+    transform: none !important;
+    box-shadow: none;
+    border-left: 2px solid #000;
+    padding: 0.9rem 1.1rem;
+  }
+
+  .summary-card::before,
+  .summary-card::after {
+    display: none !important;
   }
 
   /* Hide decorative elements for print */
