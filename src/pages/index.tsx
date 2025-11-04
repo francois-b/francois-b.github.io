@@ -5,7 +5,7 @@ import ThemeToggle from "../components/ThemeToggle"
 import projectAnalyticsImg from "../images/project-analytics.svg"
 import projectDesignSystemImg from "../images/project-design-system.svg"
 import projectStoreImg from "../images/project-store.svg"
-import profileAvatar from "../images/1690328982193.jpeg"
+import profileAvatar from "../images/yellow_profile.png"
 import "../styles/cv.css"
 
 type BlogPostsQuery = {
@@ -61,6 +61,36 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
         "Wrote unit and integration tests achieving 85% code coverage",
       ],
     },
+    {
+      title: "Frontend Developer",
+      company: "Creative Studio",
+      period: "2017 - 2019",
+      achievements: [
+        "Delivered accessible component libraries adopted across three product teams",
+        "Collaborated with designers to prototype and ship interactive marketing experiences",
+        "Optimized bundle size by 35% through code splitting and asset audits",
+      ],
+    },
+    {
+      title: "Web Developer",
+      company: "Freelance",
+      period: "2015 - 2017",
+      achievements: [
+        "Implemented custom CMS features for small business clients using Gatsby and Netlify",
+        "Automated deployment pipelines to improve release cadence by 50%",
+        "Provided long-term maintenance and analytics reporting for recurring customers",
+      ],
+    },
+    {
+      title: "Support Engineer",
+      company: "Tech Support Co.",
+      period: "2013 - 2015",
+      achievements: [
+        "Resolved complex customer issues, maintaining a 4.8/5 satisfaction score",
+        "Documented troubleshooting playbooks adopted by the wider support organization",
+        "Built internal dashboards to track response times and ticket volumes",
+      ],
+    },
   ]
 
   const skills = [
@@ -96,14 +126,14 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
   return (
     <div className="cv-container">
       {/* Print Button */}
-      <div style={{ display: "flex", justifyContent: "space-between" , alignItems: "center", padding: "1rem"}}>
+      <div className="floating-controls">
         <button
           className="print-button"
           onClick={handlePrint}
           aria-label="Print CV"
           title="Print CV"
         >
-          <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" style={{height: "20px"}}>
             <rect
               x="8"
               y="4"
@@ -157,24 +187,64 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
         </button>
 
         <ThemeToggle />
+
+        <div className="floating-contact-links">
+          <a
+            className="floating-icon"
+            href="mailto:your.email@example.com"
+            aria-label="Email"
+            title="Email"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <rect x="3" y="5" width="18" height="14" rx="2" ry="2" />
+              <polyline points="3 7 12 13 21 7" />
+            </svg>
+          </a>
+          <a
+            className="floating-icon"
+            href="https://linkedin.com/in/yourprofile"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            title="LinkedIn"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm.02 6H3v11h2V9.5Zm4 0H7v11h2v-6.1c0-1.63.7-2.4 2.06-2.4 1.26 0 1.94.86 1.94 2.4V20.5h2v-6.6c0-2.86-1.5-4.4-3.77-4.4-1.73 0-2.23.95-2.73 1.6V9.5Z" />
+            </svg>
+          </a>
+        </div>
       </div>
 
       {/* Main Content */}
       <header className="cv-header">
         <div className="header-content">
           <div className="identity">
+            <div className="identity-text">
+              <h1 className="name">François Bouet</h1>
+              <p className="title">
+                Full Stack Developer & Creative Technologist
+              </p>
+            </div>
             <div className="profile-photo">
               <img
                 src={profileAvatar}
                 alt="Portrait of Your Name"
                 loading="lazy"
               />
-            </div>
-            <div className="identity-text">
-              <h1 className="name">Your Name</h1>
-              <p className="title">
-                Full Stack Developer & Creative Technologist
-              </p>
             </div>
           </div>
 
@@ -205,8 +275,7 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
       <main className="cv-main">
         {/* Summary Section */}
         <section className="cv-section summary-section">
-          <h2>Summary</h2>
-          <p className="summary-text">
+          <p className="">
             Passionate developer with 5+ years of experience building scalable
             web applications and crafting delightful user experiences.
             Specializing in modern JavaScript frameworks, cloud architecture,
@@ -396,7 +465,7 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
       </main>
 
       <footer className="cv-footer">
-        <p>References available upon request</p>
+
       </footer>
     </div>
   )
