@@ -456,26 +456,26 @@ h6 {
 
 .summary-section {
   --section-bg: var(--color-bg-subtle);
-  --section-bg: color-mix(in srgb, var(--color-bg) 94%, var(--color-primary) 6%);
+  --section-bg: color-mix(in srgb, var(--color-bg) 98%, var(--color-primary) 2%);
   padding-top: 1.25rem;
   padding-bottom: 1.85rem;
 }
 
 .blog-section {
   --section-bg: var(--color-bg-subtle);
-  --section-bg: color-mix(in srgb, var(--color-bg-subtle) 88%, var(--color-primary) 12%);
+  --section-bg: color-mix(in srgb, var(--color-bg-subtle) 96%, var(--color-primary) 4%);
   padding-top: 1.25rem;
 }
 
 .experience-section {
   --section-bg: var(--color-bg-subtle);
-  --section-bg: color-mix(in srgb, var(--color-bg) 90%, var(--color-secondary) 10%);
+  --section-bg: color-mix(in srgb, var(--color-bg) 97%, var(--color-secondary) 3%);
   padding-top: 1.25rem;
 }
 
 .skills-section {
   --section-bg: var(--color-bg-subtle);
-  --section-bg: color-mix(in srgb, var(--color-bg-subtle) 85%, var(--color-secondary) 15%);
+  --section-bg: color-mix(in srgb, var(--color-bg-subtle) 97%, var(--color-secondary) 3%);
   padding-top: 1.25rem;
 }
 
