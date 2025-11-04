@@ -412,7 +412,7 @@ h6 {
   margin-bottom: 1.5rem;
   background: var(--section-bg, transparent);
   border-radius: 16px;
-  padding: 1.75rem 2rem;
+  padding: 1.5rem 2rem 2rem;
   position: relative;
   overflow: hidden;
   margin-left: 0.75rem;
@@ -445,6 +445,9 @@ h6 {
 
 .cv-section h2 {
   margin-left: 0.5rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
 }
 
 .summary-text:hover {
@@ -454,23 +457,26 @@ h6 {
 .summary-section {
   --section-bg: var(--color-bg-subtle);
   --section-bg: color-mix(in srgb, var(--color-bg) 94%, var(--color-primary) 6%);
-  padding-top: 1.5rem;
+  padding-top: 1.25rem;
   padding-bottom: 1.85rem;
 }
 
 .blog-section {
   --section-bg: var(--color-bg-subtle);
   --section-bg: color-mix(in srgb, var(--color-bg-subtle) 88%, var(--color-primary) 12%);
+  padding-top: 1.25rem;
 }
 
 .experience-section {
   --section-bg: var(--color-bg-subtle);
   --section-bg: color-mix(in srgb, var(--color-bg) 90%, var(--color-secondary) 10%);
+  padding-top: 1.25rem;
 }
 
 .skills-section {
   --section-bg: var(--color-bg-subtle);
   --section-bg: color-mix(in srgb, var(--color-bg-subtle) 85%, var(--color-secondary) 15%);
+  padding-top: 1.25rem;
 }
 
 /* ===================================
@@ -935,7 +941,7 @@ h6 {
 
   .cv-section {
     margin-left: 0;
-    padding: 1.5rem 1.5rem;
+    padding: 1.4rem 1.5rem 1.75rem;
   }
 
   .floating-controls {
