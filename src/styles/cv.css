@@ -1,3 +1,30 @@
+.cv-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--section-bg, transparent);
+  opacity: 0.95;
+  z-index: -2;
+}
+
+.cv-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.05));
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.cv-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cv-section h2 {
+  margin-left: 0.35rem;
+}
 /* ===================================
    CSS Variables & Base Styles
    =================================== */
@@ -9,6 +36,7 @@
   --font-serif: 'Noto Serif', 'Merriweather', 'Georgia', 'Times New Roman', serif;
   --font-header: 'Noto Sans', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --texture-noise: url('../images/noise.png');
 }
 
 /* ===================================
@@ -94,6 +122,10 @@ body {
   line-height: 1.5;
   color: var(--color-text);
   background-color: var(--color-bg);
+  background-image: var(--texture-noise);
+  background-repeat: repeat;
+  background-size: 800px 800px;
+  background-blend-mode: darken;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.5s ease, color 0.5s ease;
@@ -318,7 +350,6 @@ h6 {
   margin: 0 0 0.5rem 0;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  animation: fadeIn 0.8s ease-out;
 }
 
 /* Title & Contact Info - Compressed */
@@ -329,7 +360,6 @@ h6 {
   font-weight: 400;
   margin-bottom: 0.75rem;
   font-style: italic;
-  animation: fadeIn 0.8s ease-out 0.2s backwards;
 }
 
 .contact-info {
@@ -369,17 +399,6 @@ h6 {
   user-select: none;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* ===================================
    Main Content Sections - Compressed
    =================================== */
@@ -391,67 +410,67 @@ h6 {
 
 .cv-section {
   margin-bottom: 1.5rem;
-  animation: fadeInUp 0.6s ease-out;
-  animation-fill-mode: both;
+  background: var(--section-bg, transparent);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  position: relative;
+  overflow: hidden;
+  margin-left: 0.75rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
-.cv-section:nth-child(1) { animation-delay: 0.1s; }
-.cv-section:nth-child(2) { animation-delay: 0.15s; }
-.cv-section:nth-child(3) { animation-delay: 0.2s; }
-.cv-section:nth-child(4) { animation-delay: 0.25s; }
-.cv-section:nth-child(5) { animation-delay: 0.3s; }
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.cv-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--section-bg, transparent);
+  opacity: 0.95;
+  z-index: -2;
 }
 
-/* Section Headers - Classic Style */
+.cv-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.06));
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.cv-section > * {
+  position: relative;
+  z-index: 1;
+}
 
 .cv-section h2 {
-  font-family: var(--font-header);
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--color-text);
-  letter-spacing: 0.02em;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--color-text);
-  text-transform: uppercase;
-}
-
-/* ===================================
-   Summary Section - Compressed
-   =================================== */
-
-.summary-section {
-  position: relative;
-}
-
-.summary-text {
-  display: block;
-  max-width: 620px;
-  margin: 0.75rem auto 0;
-  padding: 1.5rem 1.75rem;
-  background: var(--color-bg-subtle);
-  border: 1px solid var(--color-border);
-  border-left: 4px solid var(--color-primary);
-  border-radius: 6px;
-  box-shadow: var(--shadow-md);
-  transition: box-shadow 0.3s ease;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--color-text-light);
+  margin-left: 0.5rem;
 }
 
 .summary-text:hover {
   box-shadow: var(--shadow-lg);
+}
+
+.summary-section {
+  --section-bg: var(--color-bg-subtle);
+  --section-bg: color-mix(in srgb, var(--color-bg) 94%, var(--color-primary) 6%);
+  padding-top: 1.5rem;
+  padding-bottom: 1.85rem;
+}
+
+.blog-section {
+  --section-bg: var(--color-bg-subtle);
+  --section-bg: color-mix(in srgb, var(--color-bg-subtle) 88%, var(--color-primary) 12%);
+}
+
+.experience-section {
+  --section-bg: var(--color-bg-subtle);
+  --section-bg: color-mix(in srgb, var(--color-bg) 90%, var(--color-secondary) 10%);
+}
+
+.skills-section {
+  --section-bg: var(--color-bg-subtle);
+  --section-bg: color-mix(in srgb, var(--color-bg-subtle) 85%, var(--color-secondary) 15%);
 }
 
 /* ===================================
@@ -765,16 +784,17 @@ h6 {
 
 .blog-card-date {
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.7rem !important;
   color: var(--color-text-lighter);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  margin-bottom: 0.35rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0;
 }
 
 .blog-card h3 {
   font-family: var(--font-header);
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-weight: 700;
   margin: 0;
 }
@@ -913,6 +933,11 @@ h6 {
     padding: 1.5rem 1rem;
   }
 
+  .cv-section {
+    margin-left: 0;
+    padding: 1.5rem 1.5rem;
+  }
+
   .floating-controls {
     top: 0.75rem;
     left: 0.75rem;
@@ -1048,6 +1073,8 @@ h6 {
     line-height: 1.4;
     color: #000;
     background: white;
+    background-image: none !important;
+    background-blend-mode: normal;
   }
 
   .cv-container {
@@ -1120,11 +1147,14 @@ h6 {
     margin-bottom: 1rem;
     padding: 0;
     page-break-after: avoid;
+    text-align: left;
   }
 
   .identity {
     gap: 0.6rem;
     margin-bottom: 0.5rem;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
   .profile-photo {
@@ -1136,6 +1166,12 @@ h6 {
 
   .identity-text {
     text-align: left;
+  }
+
+  .header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .name {
@@ -1155,6 +1191,8 @@ h6 {
     color: #333;
     gap: 0.25rem 0.75rem;
     margin-bottom: 0.75rem;
+    justify-content: flex-start;
+    text-align: left;
   }
 
   .contact-info a {
@@ -1175,6 +1213,15 @@ h6 {
   .cv-section {
     margin-bottom: 1rem;
     page-break-inside: avoid;
+    margin-left: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .cv-section::before,
+  .cv-section::after {
+    display: none;
   }
 
   .cv-section h2 {
@@ -1186,6 +1233,7 @@ h6 {
     margin-bottom: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    margin-left: 0;
   }
 
   /* Hide section icons in print */
@@ -1203,6 +1251,15 @@ h6 {
     padding: 0.9rem 1.1rem;
     background: white;
     box-shadow: none;
+  }
+
+  .summary-section {
+    page-break-after: avoid;
+  }
+
+  .experience-section {
+    page-break-before: avoid;
+    break-before: avoid;
   }
 
   /* Timeline adjustments */
@@ -1367,12 +1424,13 @@ h6 {
   .blog-card-date {
     font-size: 7pt;
     color: #555;
-    margin-bottom: 0.2rem;
+    margin-top: 0.15rem;
+    margin-bottom: 0;
   }
 
   .blog-card h3 {
-    font-size: 10pt;
-    margin-bottom: 0.2rem;
+    font-size: 11pt;
+    margin-bottom: 0.1rem;
     color: #000;
   }
 

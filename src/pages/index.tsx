@@ -16,6 +16,7 @@ type BlogPostsQuery = {
         title: string
         date: string
         slug: string
+        tags?: string[] | null
       }
       excerpt: string
     }>
@@ -26,6 +27,13 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
   const [selectedJob, setSelectedJob] = React.useState<number>(0)
   const [selectedSkill, setSelectedSkill] = React.useState<number>(0)
   const posts = data.allMarkdownRemark.nodes
+  const featuredPosts = React.useMemo(
+    () =>
+      posts
+        .filter(post => post.frontmatter.tags?.includes("featured"))
+        .slice(0, 3),
+    [posts]
+  )
 
   const handlePrint = () => {
     window.print()
@@ -133,7 +141,13 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
           aria-label="Print CV"
           title="Print CV"
         >
-          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" style={{height: "20px"}}>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 32 32"
+            fill="none"
+            style={{ height: "20px" }}
+          >
             <rect
               x="8"
               y="4"
@@ -217,12 +231,7 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
             aria-label="LinkedIn"
             title="LinkedIn"
           >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm.02 6H3v11h2V9.5Zm4 0H7v11h2v-6.1c0-1.63.7-2.4 2.06-2.4 1.26 0 1.94.86 1.94 2.4V20.5h2v-6.6c0-2.86-1.5-4.4-3.77-4.4-1.73 0-2.23.95-2.73 1.6V9.5Z" />
             </svg>
           </a>
@@ -275,12 +284,43 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
       <main className="cv-main">
         {/* Summary Section */}
         <section className="cv-section summary-section">
-          <p className="">
+          <p style={{ fontSize: "medium" }}>
             Passionate developer with 5+ years of experience building scalable
             web applications and crafting delightful user experiences.
             Specializing in modern JavaScript frameworks, cloud architecture,
             and design systems.
           </p>
+        </section>
+
+        <section className="cv-section blog-section">
+          <h2>Featured articles</h2>
+          {featuredPosts.length === 0 ? (
+            <p className="summary-text">
+              New articles are on the way. Please check back soon.
+            </p>
+          ) : (
+            <div className="blog-list">
+              {featuredPosts.map(post => (
+                <article key={post.id} className="blog-card">
+                  <header>
+                    <h3>
+                      <Link to={`/blog/${post.frontmatter.slug}`}>
+                        {post.frontmatter.title}
+                      </Link>
+                    </h3>
+                    <p className="blog-card-date">{post.frontmatter.date}</p>
+                  </header>
+                  <p>{post.excerpt}</p>
+                  <Link
+                    className="blog-card-link"
+                    to={`/blog/${post.frontmatter.slug}`}
+                  >
+                    Read more →
+                  </Link>
+                </article>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* Experience Section */}
@@ -357,17 +397,6 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
           </div>
         </section>
 
-        {/* Education Section */}
-        <section className="cv-section education-section">
-          <h2>Education</h2>
-          <div className="education-item">
-            <h3>B.S. Computer Science</h3>
-            <p className="institution">University Name</p>
-            <p className="period">2015 - 2019</p>
-            <p className="details">Honors • GPA: 3.8/4.0</p>
-          </div>
-        </section>
-
         {/* Projects Section */}
         <section className="cv-section projects-section">
           <h2>Notable Projects</h2>
@@ -432,41 +461,9 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
           </div>
         </section>
 
-        <section className="cv-section blog-section">
-          <h2>Latest Blog Posts</h2>
-          {posts.length === 0 ? (
-            <p className="summary-text">
-              New articles are on the way. Please check back soon.
-            </p>
-          ) : (
-            <div className="blog-list">
-              {posts.map(post => (
-                <article key={post.id} className="blog-card">
-                  <header>
-                    <p className="blog-card-date">{post.frontmatter.date}</p>
-                    <h3>
-                      <Link to={`/blog/${post.frontmatter.slug}`}>
-                        {post.frontmatter.title}
-                      </Link>
-                    </h3>
-                  </header>
-                  <p>{post.excerpt}</p>
-                  <Link
-                    className="blog-card-link"
-                    to={`/blog/${post.frontmatter.slug}`}
-                  >
-                    Read more →
-                  </Link>
-                </article>
-              ))}
-            </div>
-          )}
-        </section>
       </main>
 
-      <footer className="cv-footer">
-
-      </footer>
+      <footer className="cv-footer"></footer>
     </div>
   )
 }
@@ -503,6 +500,7 @@ export const query = graphql`
           title
           date(formatString: "MMMM D, YYYY")
           slug
+          tags
         }
         excerpt(pruneLength: 140)
       }

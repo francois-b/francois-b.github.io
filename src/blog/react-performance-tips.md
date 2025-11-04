@@ -2,7 +2,7 @@
 title: "React Performance Optimization Tips"
 date: "2024-03-10"
 slug: "react-performance-tips"
-tags: ["react", "performance", "optimization"]
+tags: ["react", "performance", "optimization", "featured"]
 ---
 
 # React Performance Optimization Tips

@@ -8,8 +8,8 @@ const BlogPostTemplate = ({ data }) => {
 
   return (
     <Layout>
-      <article style={{ maxWidth: "800px", margin: "0 auto" }}>
-        <header style={{ marginBottom: "2rem" }}>
+      <article className="blog-post-article">
+        <header className="blog-post-header">
           <h1 style={{ marginBottom: "0.5rem" }}>{post.frontmatter.title}</h1>
           <p style={{ color: "#666", fontSize: "0.9rem" }}>
             {post.frontmatter.date} · {post.timeToRead} min read
@@ -35,6 +35,7 @@ const BlogPostTemplate = ({ data }) => {
           )}
         </header>
         <div
+          className="blog-post-content"
           dangerouslySetInnerHTML={{ __html: post.html }}
           style={{
             lineHeight: "1.7",

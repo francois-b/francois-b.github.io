@@ -2,7 +2,7 @@
 title: "Getting Started with Gatsby"
 date: "2024-01-15"
 slug: "getting-started-with-gatsby"
-tags: ["gatsby", "react", "web development"]
+tags: ["gatsby", "react", "web development", "featured"]
 ---
 
 # Getting Started with Gatsby
