@@ -1,11 +1,14 @@
 import * as React from "react"
 import { graphql, Link } from "gatsby"
 import type { PageProps } from "gatsby"
+import ReactPlayer from "react-player"
 import ThemeToggle from "../components/ThemeToggle"
 import projectAnalyticsImg from "../images/project-analytics.svg"
 import projectDesignSystemImg from "../images/project-design-system.svg"
 import projectStoreImg from "../images/project-store.svg"
 import profileAvatar from "../images/yellow_profile.png"
+import summaryBackgroundImg from "../images/transparent_screen.png"
+import timelineVideo from "../images/Timeline2.mp4"
 import "../styles/cv.css"
 
 type BlogPostsQuery = {
@@ -22,6 +25,203 @@ type BlogPostsQuery = {
     }>
   }
 }
+
+const PapersAndBooksGraphic: React.FC = () => (
+  <svg
+    viewBox="0 0 320 220"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <rect
+      x="32"
+      y="52"
+      width="156"
+      height="132"
+      rx="16"
+      fill="currentColor"
+      opacity="0.07"
+    />
+    <g opacity="0.85">
+      <rect
+        x="100"
+        y="34"
+        width="132"
+        height="150"
+        rx="12"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="6"
+        transform="rotate(-6 166 109)"
+      />
+      <rect
+        x="108"
+        y="54"
+        width="120"
+        height="120"
+        rx="10"
+        fill="currentColor"
+        opacity="0.2"
+        transform="rotate(-6 168 114)"
+      />
+    </g>
+    <g opacity="0.7">
+      <rect
+        x="70"
+        y="38"
+        width="132"
+        height="150"
+        rx="12"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="6"
+        transform="rotate(8 136 113)"
+      />
+      <rect
+        x="84"
+        y="66"
+        width="110"
+        height="120"
+        rx="10"
+        fill="currentColor"
+        opacity="0.18"
+        transform="rotate(8 139 126)"
+      />
+    </g>
+    <rect
+      x="58"
+      y="110"
+      width="140"
+      height="24"
+      rx="6"
+      fill="currentColor"
+      opacity="0.35"
+    />
+    <path
+      d="M72 122h108"
+      stroke="currentColor"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeDasharray="12 10"
+      opacity="0.6"
+    />
+    <rect
+      x="210"
+      y="70"
+      width="52"
+      height="140"
+      rx="10"
+      stroke="currentColor"
+      strokeWidth="6"
+    />
+    <rect
+      x="222"
+      y="86"
+      width="28"
+      height="112"
+      rx="6"
+      fill="currentColor"
+      opacity="0.3"
+    />
+    <path
+      d="M216 96h40"
+      stroke="currentColor"
+      strokeWidth="4"
+      strokeLinecap="round"
+      opacity="0.7"
+    />
+    <path
+      d="M216 112h40"
+      stroke="currentColor"
+      strokeWidth="4"
+      strokeLinecap="round"
+      opacity="0.7"
+    />
+  </svg>
+)
+
+const DiyToolsGraphic: React.FC = () => (
+  <svg
+    viewBox="0 0 320 220"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <rect
+      x="28"
+      y="34"
+      width="264"
+      height="168"
+      rx="28"
+      fill="currentColor"
+      opacity="0.06"
+    />
+    <path
+      d="M82 58l72 72"
+      stroke="currentColor"
+      strokeWidth="12"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      opacity="0.85"
+    />
+    <circle
+      cx="82"
+      cy="58"
+      r="18"
+      stroke="currentColor"
+      strokeWidth="6"
+      fill="none"
+      opacity="0.7"
+    />
+    <circle cx="154" cy="130" r="14" fill="currentColor" opacity="0.3" />
+    <rect
+      x="162"
+      y="92"
+      width="24"
+      height="72"
+      rx="12"
+      fill="currentColor"
+      opacity="0.35"
+    />
+    <path d="M174 60l16 28h-32z" fill="currentColor" opacity="0.28" />
+    <path
+      d="M174 60v34"
+      stroke="currentColor"
+      strokeWidth="6"
+      strokeLinecap="round"
+    />
+    <circle
+      cx="232"
+      cy="122"
+      r="28"
+      stroke="currentColor"
+      strokeWidth="6"
+      opacity="0.8"
+    />
+    <circle cx="232" cy="122" r="14" fill="currentColor" opacity="0.32" />
+    <line
+      x1="206"
+      y1="150"
+      x2="258"
+      y2="150"
+      stroke="currentColor"
+      strokeWidth="6"
+      strokeLinecap="round"
+      opacity="0.6"
+    />
+    <path
+      d="M122 170l-22 22"
+      stroke="currentColor"
+      strokeWidth="8"
+      strokeLinecap="round"
+      opacity="0.5"
+    />
+  </svg>
+)
 
 const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
   const [selectedJob, setSelectedJob] = React.useState<number>(0)
@@ -130,6 +330,8 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
       ],
     },
   ]
+
+  const [isVideoPlaying, setIsVideoPlaying] = React.useState(false)
 
   return (
     <div className="cv-container">
@@ -248,13 +450,13 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
                 Full Stack Developer & Creative Technologist
               </p>
             </div>
-            <div className="profile-photo">
+            {/* <div className="profile-photo">
               <img
                 src={profileAvatar}
                 alt="Portrait of Your Name"
                 loading="lazy"
               />
-            </div>
+            </div> */}
           </div>
 
           <div className="contact-info">
@@ -282,46 +484,146 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
       </header>
 
       <main className="cv-main">
-        {/* Summary Section */}
-        <section className="cv-section summary-section">
-          <p style={{ fontSize: "medium" }}>
-            Passionate developer with 5+ years of experience building scalable
-            web applications and crafting delightful user experiences.
-            Specializing in modern JavaScript frameworks, cloud architecture,
-            and design systems.
-          </p>
-        </section>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            flexGrow: 1,
+            marginBottom: "40px",
+          }}
+        >
+          <div
+            className="timeline-player"
+            aria-label="Project timeline preview video"
+            style={{
+              width: "652px",
+              height: "367px",
+              position: "relative",
+              overflow: "hidden",
+              borderRadius: "16px",
+            }}
+          >
+            <button
+              type="button"
+              className={`timeline-player__toggle ${
+                isVideoPlaying ? "timeline-player__toggle--active" : ""
+              }`}
+              onClick={() => setIsVideoPlaying(prev => !prev)}
+              aria-label={
+                isVideoPlaying
+                  ? "Pause timeline video"
+                  : "Play timeline video"
+              }
+              aria-pressed={isVideoPlaying}
+            >
+              {isVideoPlaying ? (
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <rect x="6" y="5" width="4" height="14" rx="1.5" fill="currentColor" />
+                  <rect x="14" y="5" width="4" height="14" rx="1.5" fill="currentColor" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <path
+                    d="M8 5.5v13l10-6.5-10-6.5Z"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              )}
+            </button>
+            <ReactPlayer
+              src={timelineVideo}
+              controls={false}
+              playing={isVideoPlaying}
+              width="100%"
+              height="100%"
+              preload
+              className="timeline-player__embed"
+              playsinline
+              onPlay={() => setIsVideoPlaying(true)}
+              onPause={() => setIsVideoPlaying(false)}
+              onEnded={() => setIsVideoPlaying(false)}
+              fallback={<div className="timeline-player__fallback">Video not supported</div>}
+            />
+          </div>
+          <div
+            style={{
+              width: "200px",
+              flex: "0 0 200px",
+              alignContent: "center",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              marginLeft: "20px",
+              msFlexDirection: "column",
+              justifyItems: "center",
+            }}
+          >
+            <div style={{ marginBottom: "30px" }}>Intro</div>
+            <div style={{ marginBottom: "30px" }}>What matters</div>
+            <div>AI literacy</div>
+          </div>
+        </div>
 
-        <section className="cv-section blog-section">
-          <h2>Featured articles</h2>
-          {featuredPosts.length === 0 ? (
-            <p className="summary-text">
-              New articles are on the way. Please check back soon.
+        {/* Summary Section */}
+        <div className="section-shell">
+          <div
+            className="section-parallax section-parallax--summary"
+            aria-hidden="true"
+          >
+            <img src={summaryBackgroundImg} alt="" loading="lazy" />
+          </div>
+
+          <section className="cv-section summary-section">
+            <p style={{ fontSize: "medium" }}>
+              Passionate developer with 5+ years of experience building scalable
+              web applications and crafting delightful user experiences.
+              Specializing in modern JavaScript frameworks, cloud architecture,
+              and design systems.
             </p>
-          ) : (
-            <div className="blog-list">
-              {featuredPosts.map(post => (
-                <article key={post.id} className="blog-card">
-                  <header>
-                    <h3>
-                      <Link to={`/blog/${post.frontmatter.slug}`}>
-                        {post.frontmatter.title}
-                      </Link>
-                    </h3>
-                    <p className="blog-card-date">{post.frontmatter.date}</p>
-                  </header>
-                  <p>{post.excerpt}</p>
-                  <Link
-                    className="blog-card-link"
-                    to={`/blog/${post.frontmatter.slug}`}
-                  >
-                    Read more →
-                  </Link>
-                </article>
-              ))}
-            </div>
-          )}
-        </section>
+          </section>
+        </div>
+
+        <div className="section-shell">
+          <div
+            className="section-parallax section-parallax--blog"
+            aria-hidden="true"
+          >
+            <PapersAndBooksGraphic />
+          </div>
+          <section className="cv-section blog-section">
+            <h2>Featured articles</h2>
+            {featuredPosts.length === 0 ? (
+              <p className="summary-text">
+                New articles are on the way. Please check back soon.
+              </p>
+            ) : (
+              <div className="blog-list">
+                {featuredPosts.map(post => (
+                  <article key={post.id} className="blog-card">
+                    <header>
+                      <h3>
+                        <Link to={`/blog/${post.frontmatter.slug}`}>
+                          {post.frontmatter.title}
+                        </Link>
+                      </h3>
+                      <p className="blog-card-date">{post.frontmatter.date}</p>
+                    </header>
+                    <p>{post.excerpt}</p>
+                    <Link
+                      className="blog-card-link"
+                      to={`/blog/${post.frontmatter.slug}`}
+                    >
+                      Read more →
+                    </Link>
+                  </article>
+                ))}
+              </div>
+            )}
+          </section>
+        </div>
 
         {/* Experience Section */}
         <section className="cv-section experience-section">
@@ -362,40 +664,46 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
         </section>
 
         {/* Skills Section */}
-        <section className="cv-section skills-section">
-          <h2>Skills</h2>
+        <div className="section-shell">
+          <div
+            className="section-parallax section-parallax--skills"
+            aria-hidden="true"
+          >
+            <DiyToolsGraphic />
+          </div>
+          <section className="cv-section skills-section">
+            <h2>Skills</h2>
 
-          <div className="skills-horizontal">
-            {skills.map((skill, index) => (
-              <div
-                key={index}
-                className={`skill-card ${
-                  selectedSkill === index ? "active" : ""
-                }`}
-                onMouseEnter={() => setSelectedSkill(index)}
-              >
-                <h3>{skill.category}</h3>
-                {/* Details hidden on screen, shown in print */}
-                <div className="skill-card-print-details">
-                  <ul className="skill-list">
-                    {skill.technologies.map((tech, idx) => (
-                      <li key={idx}>{tech}</li>
-                    ))}
-                  </ul>
+            <div className="skills-horizontal">
+              {skills.map((skill, index) => (
+                <div
+                  key={index}
+                  className={`skill-card ${
+                    selectedSkill === index ? "active" : ""
+                  }`}
+                  onMouseEnter={() => setSelectedSkill(index)}
+                >
+                  <h3>{skill.category}</h3>
+                  <div className="skill-card-print-details">
+                    <ul className="skill-list">
+                      {skill.technologies.map((tech, idx) => (
+                        <li key={idx}>{tech}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Common details box below - only for screen */}
-          <div className="skill-details-box screen-only">
-            <ul className="skill-list">
-              {skills[selectedSkill].technologies.map((tech, index) => (
-                <li key={index}>{tech}</li>
               ))}
-            </ul>
-          </div>
-        </section>
+            </div>
+
+            <div className="skill-details-box screen-only">
+              <ul className="skill-list">
+                {skills[selectedSkill].technologies.map((tech, index) => (
+                  <li key={index}>{tech}</li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        </div>
 
         {/* Projects Section */}
         <section className="cv-section projects-section">
@@ -460,7 +768,6 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
             </article>
           </div>
         </section>
-
       </main>
 
       <footer className="cv-footer"></footer>
