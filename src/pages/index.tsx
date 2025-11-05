@@ -1,7 +1,6 @@
 import * as React from "react"
 import { graphql, Link } from "gatsby"
 import type { PageProps } from "gatsby"
-import ReactPlayer from "react-player"
 import FloatingControls from "../components/FloatingControls"
 import DiyToolsGraphic from "../components/DiyToolsGraphic"
 import PapersAndBooksGraphic from "../components/PapersAndBooksGraphic"
@@ -48,6 +47,58 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
   }
 
   const [isVideoPlaying, setIsVideoPlaying] = React.useState(false)
+  const [playbackProgress, setPlaybackProgress] = React.useState(0)
+  const [bufferProgress, setBufferProgress] = React.useState(0)
+  const videoRef = React.useRef<HTMLVideoElement | null>(null)
+
+  const updatePlaybackProgress = () => {
+    const video = videoRef.current
+    if (!video || !video.duration || Number.isNaN(video.duration)) {
+      setPlaybackProgress(0)
+      return
+    }
+
+    const nextProgress = (video.currentTime / video.duration) * 100
+    setPlaybackProgress(Math.min(Math.max(nextProgress, 0), 100))
+  }
+
+  const updateBufferProgress = () => {
+    const video = videoRef.current
+    if (!video || !video.duration || Number.isNaN(video.duration)) {
+      setBufferProgress(0)
+      return
+    }
+
+    const { buffered, duration } = video
+    if (buffered.length === 0) {
+      setBufferProgress(0)
+      return
+    }
+
+    const bufferedEnd = buffered.end(buffered.length - 1)
+    const nextProgress = (bufferedEnd / duration) * 100
+    setBufferProgress(Math.min(Math.max(nextProgress, 0), 100))
+  }
+
+  const handleVideoToggle = () => {
+    const video = videoRef.current
+    if (!video) {
+      return
+    }
+
+    updateBufferProgress()
+
+    if (video.paused || video.ended) {
+      const playPromise = video.play()
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          setIsVideoPlaying(false)
+        })
+      }
+    } else {
+      video.pause()
+    }
+  }
 
   return (
     <div className="cv-container">
@@ -126,7 +177,7 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
               className={`timeline-player__toggle ${
                 isVideoPlaying ? "timeline-player__toggle--active" : ""
               }`}
-              onClick={() => setIsVideoPlaying(prev => !prev)}
+              onClick={handleVideoToggle}
               aria-label={
                 isVideoPlaying
                   ? "Pause timeline video"
@@ -151,20 +202,46 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
                 </svg>
               )}
             </button>
-            <ReactPlayer
-              src={timelineVideo}
-              controls={false}
-              playing={isVideoPlaying}
-              width="100%"
-              height="100%"
-              preload
+            <video
+              ref={videoRef}
               className="timeline-player__embed"
-              playsinline
-              onPlay={() => setIsVideoPlaying(true)}
-              onPause={() => setIsVideoPlaying(false)}
-              onEnded={() => setIsVideoPlaying(false)}
-              fallback={<div className="timeline-player__fallback">Video not supported</div>}
-            />
+              src={timelineVideo}
+              preload="metadata"
+              playsInline
+              onLoadedMetadata={() => {
+                updatePlaybackProgress()
+                updateBufferProgress()
+              }}
+              onLoadedData={updateBufferProgress}
+              onPlay={() => {
+                setIsVideoPlaying(true)
+                updatePlaybackProgress()
+              }}
+              onPause={() => {
+                setIsVideoPlaying(false)
+                updatePlaybackProgress()
+              }}
+              onEnded={() => {
+                setIsVideoPlaying(false)
+                setPlaybackProgress(100)
+                updateBufferProgress()
+              }}
+              onTimeUpdate={updatePlaybackProgress}
+              onProgress={updateBufferProgress}
+              onSeeked={updatePlaybackProgress}
+            >
+              Your browser does not support the video tag.
+            </video>
+            <div className="timeline-player__progress" aria-hidden="true">
+              <div
+                className="timeline-player__progress-buffer"
+                style={{ width: `${bufferProgress}%` }}
+              />
+              <div
+                className="timeline-player__progress-played"
+                style={{ width: `${playbackProgress}%` }}
+              />
+            </div>
           </div>
           <div
             style={{

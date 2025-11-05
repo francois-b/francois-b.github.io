@@ -582,6 +582,39 @@ h6 {
   border: none;
 }
 
+.timeline-player__progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.timeline-player__progress-buffer,
+.timeline-player__progress-played {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transition: width 0.18s ease;
+}
+
+.timeline-player__progress-buffer {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.timeline-player__progress-played {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    color-mix(in srgb, var(--color-secondary) 80%, var(--color-primary) 20%)
+  );
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+}
+
 .cv-main {
   position: relative;
   z-index: 1;

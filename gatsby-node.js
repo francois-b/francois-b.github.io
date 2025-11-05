@@ -5,28 +5,28 @@
  */
 
 /* eslint-disable @typescript-eslint/no-var-requires */
-const path = require('path')
-const fs = require('fs')
+const path = require("path")
+const fs = require("fs")
 
 exports.onPreBootstrap = () => {
   try {
-    require.resolve('html-entities/lib/index.js')
+    require.resolve("html-entities")
   } catch (error) {
-    const distEntry = require.resolve('html-entities/dist/commonjs/index.js')
-    const libDir = path.join(__dirname, 'node_modules', 'html-entities', 'lib')
-    const libEntry = path.join(libDir, 'index.js')
-    const libTypes = path.join(libDir, 'index.d.ts')
+    const distEntry = require.resolve("html-entities")
+    const libDir = path.join(__dirname, "node_modules", "html-entities", "lib")
+    const libEntry = path.join(libDir, "index.js")
+    const libTypes = path.join(libDir, "index.d.ts")
 
     fs.mkdirSync(libDir, { recursive: true })
     fs.writeFileSync(
       libEntry,
       `module.exports = require(${JSON.stringify(distEntry)});\n`,
-      'utf8'
+      "utf8"
     )
     fs.writeFileSync(
       libTypes,
-      `export * from ${JSON.stringify(distEntry.replace(/\.js$/, '.d.ts'))};\n`,
-      'utf8'
+      `export * from ${JSON.stringify(distEntry.replace(/\.js$/, ".d.ts"))};\n`,
+      "utf8"
     )
   }
 }
@@ -34,11 +34,7 @@ exports.onPreBootstrap = () => {
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      alias: {
-        'html-entities/lib/index.js': require.resolve('html-entities/dist/commonjs/index.js'),
-        'html-entities/lib/index': require.resolve('html-entities/dist/commonjs/index.js'),
-        'html-entities/lib': require.resolve('html-entities/dist/commonjs/index.js'),
-      },
+      alias: {},
     },
   })
 }
@@ -81,7 +77,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   // Create blog post pages
   const posts = result.data.allMarkdownRemark.edges
-  const blogPostTemplate = path.resolve('./src/templates/blog-post.js')
+  const blogPostTemplate = path.resolve("./src/templates/blog-post.js")
 
   posts.forEach(({ node }) => {
     createPage({
