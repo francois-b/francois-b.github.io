@@ -370,43 +370,58 @@ h6 {
 
 .contact-info {
   font-family: var(--font-sans);
-  font-size: 0.9rem;
-  color: var(--color-text-lighter);
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.6rem;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  align-self: flex-start;
 }
 
-.contact-info a {
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border-radius: 999px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
   color: var(--color-primary);
   text-decoration: none;
-  transition: color 0.3s ease;
-  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.contact-info a::after {
-  content: "";
+.contact-icon:hover,
+.contact-icon:focus {
+  transform: translateY(-2px);
+  color: var(--color-secondary);
+  outline: none;
+}
+
+.contact-icon:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 999px;
+}
+
+.contact-icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.sr-only {
   position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    var(--color-primary),
-    var(--color-secondary)
-  );
-  transition: width 0.3s ease;
-}
-
-.contact-info a:hover::after {
-  width: 100%;
-}
-
-.separator {
-  color: var(--color-border);
-  user-select: none;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ===================================
@@ -1168,12 +1183,16 @@ h6 {
   }
 
   .contact-info {
-    flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.6rem;
   }
 
-  .separator {
-    display: none;
+  .contact-icon {
+    padding: 0.2rem;
+  }
+
+  .contact-icon svg {
+    width: 18px;
+    height: 18px;
   }
 
   .identity {
@@ -1368,26 +1387,19 @@ h6 {
   }
 
   .contact-info {
-    font-size: 9pt;
-    color: #333;
-    gap: 0.25rem 0.75rem;
-    margin-bottom: 0.75rem;
     justify-content: flex-start;
-    text-align: left;
+    gap: 0.35rem;
+    margin-bottom: 0.75rem;
   }
 
-  .contact-info a {
+  .contact-icon {
+    padding: 0;
     color: #000;
-    text-decoration: none;
   }
 
-  .contact-info a::after {
-    display: none;
-  }
-
-  .separator {
-    display: inline;
-    color: #999;
+  .contact-icon svg {
+    width: 16px;
+    height: 16px;
   }
 
   /* Section styling */

@@ -1,6 +1,6 @@
 import * as React from "react"
 
-export type ThemeName = "sun" | "rain" | "night"
+type ThemeName = "sun" | "rain" | "night"
 
 type ThemeContextValue = {
   theme: ThemeName
