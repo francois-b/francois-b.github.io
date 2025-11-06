@@ -1,82 +1,55 @@
-import * as React from "react"
+import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import "../styles/blog.css"
 
 const BlogPage = ({ data }) => {
-  const posts = data.allMarkdownRemark.edges
+  const posts = React.useMemo(
+    () => data.allMarkdownRemark.edges,
+    [data.allMarkdownRemark.edges]
+  )
 
   return (
     <Layout>
-      <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-        <h1 style={{ marginBottom: "2rem" }}>Blog</h1>
+      <div className="blog-page">
+        <h1 className="blog-page__title">Blog</h1>
 
         {posts.length === 0 ? (
-          <p>No blog posts found.</p>
+          <p className="blog-page__empty">No blog posts found.</p>
         ) : (
-          <div>
+          <div className="blog-post-list">
             {posts.map(({ node }) => (
-              <article
-                key={node.id}
-                style={{
-                  marginBottom: "3rem",
-                  padding: "1.5rem",
-                  backgroundColor: "#f9f9f9",
-                  borderRadius: "8px",
-                  border: "1px solid #e0e0e0",
-                }}
-              >
+              <article key={node.id} className="blog-post-card">
                 <header>
-                  <h2 style={{ marginBottom: "0.5rem" }}>
-                    <Link
-                      to={`/blog/${node.frontmatter.slug}`}
-                      style={{
-                        textDecoration: "none",
-                        color: "#333",
-                      }}
-                    >
+                  <h2 className="blog-post-card__title">
+                    <Link to={`/blog/${node.frontmatter.slug}`}>
                       {node.frontmatter.title}
                     </Link>
                   </h2>
-                  <p style={{ color: "#666", fontSize: "0.9rem", marginBottom: "1rem" }}>
-                    {node.frontmatter.date} · {node.timeToRead} min read
+                  <p className="blog-post-card__meta">
+                    {node.frontmatter.date}
+                    {node.timeToRead ? ` · ${node.timeToRead} min read` : ""}
                   </p>
                 </header>
 
-                <p style={{ marginBottom: "1rem", lineHeight: "1.6" }}>
-                  {node.excerpt}
-                </p>
+                <p className="blog-post-card__excerpt">{node.excerpt}</p>
 
-                {node.frontmatter.tags && (
-                  <div style={{ marginBottom: "1rem" }}>
+                {node.frontmatter.tags?.length ? (
+                  <ul className="blog-post-card__tags">
                     {node.frontmatter.tags.map(tag => (
-                      <span
-                        key={tag}
-                        style={{
-                          display: "inline-block",
-                          padding: "0.25rem 0.75rem",
-                          marginRight: "0.5rem",
-                          backgroundColor: "#fff",
-                          border: "1px solid #ddd",
-                          borderRadius: "4px",
-                          fontSize: "0.85rem",
-                        }}
-                      >
+                      <li key={tag} className="blog-post-card__tag">
                         {tag}
-                      </span>
+                      </li>
                     ))}
-                  </div>
-                )}
+                  </ul>
+                ) : null}
 
                 <Link
+                  className="blog-post-card__read-more"
                   to={`/blog/${node.frontmatter.slug}`}
-                  style={{
-                    color: "#667eea",
-                    textDecoration: "none",
-                    fontWeight: "500",
-                  }}
                 >
-                  Read more →
+                  Read more
                 </Link>
               </article>
             ))}

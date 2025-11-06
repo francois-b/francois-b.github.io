@@ -7,12 +7,16 @@ import PapersAndBooksGraphic from "../components/PapersAndBooksGraphic"
 import EmailIcon from "../components/icons/EmailIcon"
 import GitHubIcon from "../components/icons/GitHubIcon"
 import LinkedInIcon from "../components/icons/LinkedInIcon"
+import TimelineVideoPlayer from "../components/TimelineVideoPlayer"
 import { jobs, skills } from "../data/cvContent"
 import projectAnalyticsImg from "../images/project-analytics.svg"
 import projectDesignSystemImg from "../images/project-design-system.svg"
 import projectStoreImg from "../images/project-store.svg"
 import summaryBackgroundImg from "../images/transparent_screen.png"
 import timelineVideo from "../images/Timeline2.mp4"
+import sideIntroImg from "../images/side_intro.svg"
+import sideMattersImg from "../images/side_matters.svg"
+import sideAiImg from "../images/side_ai.svg"
 import "../styles/cv.css"
 
 type BlogPostsQuery = {
@@ -42,67 +46,9 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
     [posts]
   )
 
-  const handlePrint = () => {
-    window.print()
-  }
-
-  const [isVideoPlaying, setIsVideoPlaying] = React.useState(false)
-  const [playbackProgress, setPlaybackProgress] = React.useState(0)
-  const [bufferProgress, setBufferProgress] = React.useState(0)
-  const videoRef = React.useRef<HTMLVideoElement | null>(null)
-
-  const updatePlaybackProgress = () => {
-    const video = videoRef.current
-    if (!video || !video.duration || Number.isNaN(video.duration)) {
-      setPlaybackProgress(0)
-      return
-    }
-
-    const nextProgress = (video.currentTime / video.duration) * 100
-    setPlaybackProgress(Math.min(Math.max(nextProgress, 0), 100))
-  }
-
-  const updateBufferProgress = () => {
-    const video = videoRef.current
-    if (!video || !video.duration || Number.isNaN(video.duration)) {
-      setBufferProgress(0)
-      return
-    }
-
-    const { buffered, duration } = video
-    if (buffered.length === 0) {
-      setBufferProgress(0)
-      return
-    }
-
-    const bufferedEnd = buffered.end(buffered.length - 1)
-    const nextProgress = (bufferedEnd / duration) * 100
-    setBufferProgress(Math.min(Math.max(nextProgress, 0), 100))
-  }
-
-  const handleVideoToggle = () => {
-    const video = videoRef.current
-    if (!video) {
-      return
-    }
-
-    updateBufferProgress()
-
-    if (video.paused || video.ended) {
-      const playPromise = video.play()
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          setIsVideoPlaying(false)
-        })
-      }
-    } else {
-      video.pause()
-    }
-  }
-
   return (
     <div className="cv-container">
-      <FloatingControls onPrintClick={handlePrint} />
+      <FloatingControls />
 
       {/* Main Content */}
       <header className="cv-header">
@@ -110,184 +56,55 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
           <div className="identity">
             <div className="identity-text">
               <h1 className="name">François Bouet</h1>
-              <p className="title">
-                Full Stack Developer & Creative Technologist
-              </p>
+              <p className="title">Web & AI engineering since 2010</p>
             </div>
-          </div>
-
-          <div className="contact-info">
-            <a
-              className="contact-icon"
-              href="mailto:your.email@example.com"
-              aria-label="Email"
-              title="Email"
-            >
-              <span className="sr-only">Email</span>
-              <EmailIcon width={22} height={22} />
-            </a>
-            <a
-              className="contact-icon"
-              href="https://linkedin.com/in/yourprofile"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              title="LinkedIn"
-            >
-              <span className="sr-only">LinkedIn</span>
-              <LinkedInIcon width={22} height={22} />
-            </a>
-            <a
-              className="contact-icon"
-              href="https://github.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              title="GitHub"
-            >
-              <span className="sr-only">GitHub</span>
-              <GitHubIcon width={22} height={22} />
-            </a>
           </div>
         </div>
       </header>
 
       <main className="cv-main">
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            flexGrow: 1,
-            marginBottom: "40px",
-          }}
-        >
-          <div
-            className="timeline-player"
-            aria-label="Project timeline preview video"
-            style={{
-              width: "652px",
-              height: "367px",
-              position: "relative",
-              overflow: "hidden",
-              borderRadius: "16px",
-            }}
-          >
-            <button
-              type="button"
-              className={`timeline-player__toggle ${
-                isVideoPlaying ? "timeline-player__toggle--active" : ""
-              }`}
-              onClick={handleVideoToggle}
-              aria-label={
-                isVideoPlaying
-                  ? "Pause timeline video"
-                  : "Play timeline video"
-              }
-              aria-pressed={isVideoPlaying}
-            >
-              {isVideoPlaying ? (
-                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-                  <rect x="6" y="5" width="4" height="14" rx="1.5" fill="currentColor" />
-                  <rect x="14" y="5" width="4" height="14" rx="1.5" fill="currentColor" />
-                </svg>
-              ) : (
-                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-                  <path
-                    d="M8 5.5v13l10-6.5-10-6.5Z"
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeWidth="1"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              )}
-            </button>
-            <video
-              ref={videoRef}
-              className="timeline-player__embed"
-              src={timelineVideo}
-              preload="metadata"
-              playsInline
-              onLoadedMetadata={() => {
-                updatePlaybackProgress()
-                updateBufferProgress()
-              }}
-              onLoadedData={updateBufferProgress}
-              onPlay={() => {
-                setIsVideoPlaying(true)
-                updatePlaybackProgress()
-              }}
-              onPause={() => {
-                setIsVideoPlaying(false)
-                updatePlaybackProgress()
-              }}
-              onEnded={() => {
-                setIsVideoPlaying(false)
-                setPlaybackProgress(100)
-                updateBufferProgress()
-              }}
-              onTimeUpdate={updatePlaybackProgress}
-              onProgress={updateBufferProgress}
-              onSeeked={updatePlaybackProgress}
-            >
-              Your browser does not support the video tag.
-            </video>
-            <div className="timeline-player__progress" aria-hidden="true">
-              <div
-                className="timeline-player__progress-buffer"
-                style={{ width: `${bufferProgress}%` }}
-              />
-              <div
-                className="timeline-player__progress-played"
-                style={{ width: `${playbackProgress}%` }}
-              />
-            </div>
+        <div id="video-and-pitch" className="video-and-pitch">
+          <div className="video-and-pitch__video">
+            <TimelineVideoPlayer src={timelineVideo} />
           </div>
-          <div
-            style={{
-              width: "200px",
-              flex: "0 0 200px",
-              alignContent: "center",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              marginLeft: "20px",
-              msFlexDirection: "column",
-              justifyItems: "center",
-            }}
-          >
-            <div style={{ marginBottom: "30px" }}>Intro</div>
-            <div style={{ marginBottom: "30px" }}>What matters</div>
-            <div>AI literacy</div>
+          <div id="helping" className="video-and-pitch__text">
+            <div>
+              Helping align business and engineering, so everbody can work
+              better together.
+            </div>
+            <div id="bringing" className="video-and-pitch__text-secondary">
+              Combining
+              <br />
+              <span className="highlight highlight--engineering">
+                engineering expertise
+              </span>
+              ,
+              <br />
+              <span className="highlight highlight--ai">AI literacy</span>,
+              <br />
+              and{" "}
+              <span className="highlight highlight--domain">
+                domain-driven design
+              </span>
+              .
+            </div>
           </div>
         </div>
 
         {/* Summary Section */}
         <div className="section-shell">
-          <div
-            className="section-parallax section-parallax--summary"
-            aria-hidden="true"
-          >
-            <img src={summaryBackgroundImg} alt="" loading="lazy" />
-          </div>
-
-          <section className="cv-section summary-section">
-            <p style={{ fontSize: "medium" }}>
-              Passionate developer with 5+ years of experience building scalable
-              web applications and crafting delightful user experiences.
-              Specializing in modern JavaScript frameworks, cloud architecture,
-              and design systems.
+          <section className="summary-section">
+            <p style={{ fontSize: "medium", textAlign: "justify" }}>
+              Hi there! Thanks for stopping by. On this page, you'll find more
+              about myself, what I'm working on, and past projects. I am
+              passonate about knowledge management, technical communication, and
+              product design. I have been working in tech since 2010 in Paris,
+              London, Boston, and Chicago.
             </p>
           </section>
         </div>
 
         <div className="section-shell">
-          <div
-            className="section-parallax section-parallax--blog"
-            aria-hidden="true"
-          >
-            <PapersAndBooksGraphic />
-          </div>
           <section className="cv-section blog-section">
             <h2>Featured articles</h2>
             {featuredPosts.length === 0 ? (
@@ -360,12 +177,6 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
 
         {/* Skills Section */}
         <div className="section-shell">
-          <div
-            className="section-parallax section-parallax--skills"
-            aria-hidden="true"
-          >
-            <DiyToolsGraphic />
-          </div>
           <section className="cv-section skills-section">
             <h2>Skills</h2>
 
@@ -472,10 +283,10 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
 
 export const Head = () => (
   <>
-    <title>Your Name - Full Stack Developer</title>
+    <title>Francois Bouet</title>
     <meta
       name="description"
-      content="Professional CV of Your Name - Full Stack Developer & Creative Technologist"
+      content="Professional CV of Francois Bouet - Software engineer"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link

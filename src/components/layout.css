@@ -313,11 +313,15 @@ pre tt:after {
   transform: scale(1.05);
 }
 
-.floating-controls .theme-button svg {
+.floating-controls .theme-button svg,
+.floating-controls .theme-button img {
   transition: transform 0.3s ease;
+  display: block;
+  margin: 0;
 }
 
-.floating-controls .theme-button:active svg {
+.floating-controls .theme-button:active svg,
+.floating-controls .theme-button:active img {
   transform: scale(0.9);
 }
 
@@ -353,6 +357,17 @@ pre tt:after {
   display: block;
 }
 
+body.theme-night .floating-icon {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+body.theme-night .floating-icon:hover,
+body.theme-night .floating-icon:focus {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
 @media (max-width: 768px) {
   .floating-controls {
     top: 0.75rem;
@@ -370,7 +385,8 @@ pre tt:after {
     height: 32px;
   }
 
-  .floating-controls .theme-button svg {
+  .floating-controls .theme-button svg,
+  .floating-controls .theme-button img {
     width: 20px;
     height: 20px;
   }

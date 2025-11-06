@@ -5,8 +5,6 @@ slug: "react-performance-tips"
 tags: ["react", "performance", "optimization", "featured"]
 ---
 
-# React Performance Optimization Tips
-
 Performance is crucial for providing a great user experience. Here are some proven techniques to optimize your React applications.
 
 ## 1. Use React.memo for Pure Components

@@ -12,7 +12,7 @@ const BlogPostTemplate = ({ data }) => {
         <header className="blog-post-header">
           <h1 style={{ marginBottom: "0.5rem" }}>{post.frontmatter.title}</h1>
           <p style={{ color: "#666", fontSize: "0.9rem" }}>
-            {post.frontmatter.date} · {post.timeToRead} min read
+            {post.frontmatter.date}
           </p>
           {post.frontmatter.tags && (
             <div style={{ marginTop: "1rem" }}>

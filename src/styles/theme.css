@@ -98,6 +98,10 @@ body.theme-night {
   transition: all 0.3s ease;
 }
 
+body.theme-sun .theme-toggle-group {
+  border-color: #111827;
+}
+
 .theme-button {
   width: 36px;
   height: 36px;
@@ -120,22 +124,21 @@ body.theme-night {
   border-color: var(--color-border);
 }
 
-.theme-button.active {
-  background: var(--color-primary);
-  color: var(--color-bg);
-  border-color: var(--color-primary);
-  box-shadow: var(--shadow-md);
-}
-
-.theme-button.active:hover {
-  transform: scale(1.05);
-}
-
-.theme-button svg {
+.theme-button svg,
+.theme-button img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
   transition: transform 0.3s ease;
 }
 
-.theme-button:active svg {
+.theme-button img {
+  display: block;
+  margin: 0;
+}
+
+.theme-button:active svg,
+.theme-button:active img {
   transform: scale(0.9);
 }
 
@@ -145,6 +148,14 @@ body.theme-night {
     right: 0.75rem;
     padding: 0.3rem;
     gap: 0.3rem;
+
+body.theme-night .theme-button {
+  color: #ffffff;
+}
+
+body.theme-night .theme-button img {
+  filter: brightness(0) invert(1);
+}
   }
 
   .theme-button {
@@ -152,12 +163,12 @@ body.theme-night {
     height: 32px;
   }
 
-  .theme-button svg {
-    width: 20px;
-    height: 20px;
+  .theme-button svg,
+  .theme-button img {
+    width: 18px;
+    height: 18px;
   }
 }
-
 @media print {
   .theme-toggle-group {
     display: none !important;

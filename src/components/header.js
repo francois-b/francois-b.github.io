@@ -18,7 +18,7 @@ const Header = ({ siteTitle }) => (
         textDecoration: `none`,
       }}
     >
-      {siteTitle}
+      ← Back to the homepage
     </Link>
   </header>
 )

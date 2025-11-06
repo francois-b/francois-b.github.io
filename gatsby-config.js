@@ -9,7 +9,7 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Professional CV - Your Name`,
+    title: `Francois Bouet - Homepage`,
     description: `Professional CV website showcasing experience, skills, and projects of a Full Stack Developer & Creative Technologist.`,
     author: `Your Name`,
     siteUrl: `https://yourwebsite.com`,
