@@ -56,7 +56,7 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
           <div className="identity">
             <div className="identity-text">
               <h1 className="name">François Bouet</h1>
-              <p className="title">Web & AI engineering since 2010</p>
+              <p className="title">Web & AI engineering</p>
             </div>
           </div>
         </div>
@@ -94,7 +94,7 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
         {/* Summary Section */}
         <div className="section-shell">
           <section className="summary-section">
-            <p style={{ fontSize: "medium", textAlign: "justify" }}>
+            <p style={{ fontSize: "medium" }}>
               Hi there! Thanks for stopping by. On this page, you'll find more
               about myself, what I'm working on, and past projects. I am
               passonate about knowledge management, technical communication, and
@@ -295,7 +295,7 @@ export const Head = () => (
       crossOrigin="anonymous"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap"
       rel="stylesheet"
     />
   </>

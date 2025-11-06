@@ -1,4 +1,5 @@
 import * as React from "react"
+import PlayIcon from "./icons/PlayIcon"
 
 export type TimelineVideoPlayerProps = {
   src: string
@@ -144,15 +145,7 @@ const TimelineVideoPlayer: React.FC<TimelineVideoPlayerProps> = ({
             <rect x="14" y="5" width="4" height="14" rx="1.5" fill="currentColor" />
           </svg>
         ) : (
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-            <path
-              d="M8 5.5v13l10-6.5-10-6.5Z"
-              fill="currentColor"
-              stroke="currentColor"
-              strokeWidth="1"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <PlayIcon width={20} height={20} />
         )}
       </button>
       <video

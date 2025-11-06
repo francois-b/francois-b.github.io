@@ -1,8 +1,8 @@
 import * as React from "react"
 import { useTheme } from "../context/theme-context"
-import sunIcon from "../images/sun.svg"
-import umbrellaIcon from "../images/umbrella.svg"
-import moonIcon from "../images/moon.svg"
+import sunIcon from "../images/newicons/sun.svg"
+import umbrellaIcon from "../images/newicons/umbrella.svg"
+import moonIcon from "../images/newicons/moon.svg"
 import "../styles/theme.css"
 
 const ThemeToggle: React.FC = () => {

@@ -281,8 +281,8 @@ pre tt:after {
 }
 
 .floating-controls .theme-button {
-  width: 20px;
-  height: 20px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: transparent;
   border: 1.5px solid transparent;
@@ -370,9 +370,34 @@ body.theme-night .floating-icon:focus {
 
 @media (max-width: 768px) {
   .floating-controls {
-    top: 0.75rem;
-    left: 0.75rem;
+    position: static;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    margin: 0 auto 1.25rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .floating-controls .theme-toggle-group {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     gap: 0.5rem;
+    width: auto;
+    /* flex: 1 1 100%; */
+    display: flex;
+  }
+
+  .floating-contact-links {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.65rem;
   }
 
   .floating-icon {
@@ -381,8 +406,9 @@ body.theme-night .floating-icon:focus {
   }
 
   .floating-controls .theme-button {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
   }
 
   .floating-controls .theme-button svg,
