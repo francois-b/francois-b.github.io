@@ -676,20 +676,10 @@ body.theme-sun .contact-icon {
     grid-template-columns: 1fr;
   }
 
-  .video-and-pitch__text {
-    padding-left: 0;
-    margin-top: 1.25rem;
-    font-size: clamp(1.4rem, 4.5vw, 1.8rem);
-    align-items: center;
-    text-align: center;
-    gap: 1.35rem;
-  }
-
   .video-and-pitch__text-secondary {
     font-size: clamp(1.05rem, 3.4vw, 1.3rem);
   }
 }
-
 @media print {
   .section-parallax {
     display: none !important;
@@ -717,11 +707,11 @@ body.theme-sun .contact-icon {
   border-radius: 50%;
   border: none;
   background: rgba(255, 255, 255, 0.94);
-  color: var(--color-text);
+  color: #111827;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-md, 0 10px 25px rgba(0, 0, 0, 0.18));
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease,
     background 0.2s ease;
@@ -729,7 +719,8 @@ body.theme-sun .contact-icon {
 }
 
 .timeline-player__toggle:hover {
-  box-shadow: var(--shadow-lg, 0 16px 35px rgba(0, 0, 0, 0.25));
+  transform: scale(1.05);
+  box-shadow: 0 16px 35px rgba(15, 23, 42, 0.24);
 }
 
 .timeline-player__toggle:active {
@@ -743,6 +734,7 @@ body.theme-sun .contact-icon {
 
 .timeline-player__toggle--active {
   background: rgba(255, 255, 255, 0.85);
+  color: #111827;
 }
 
 .timeline-player__toggle svg {
