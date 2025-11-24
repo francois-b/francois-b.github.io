@@ -23,15 +23,9 @@ const Layout = ({ children }) => {
     }
   `)
 
-  const handlePrint = () => {
-    if (typeof window !== "undefined") {
-      window.print()
-    }
-  }
-
   return (
     <>
-      <FloatingControls onPrintClick={handlePrint} />
+      <FloatingControls />
       <div
         style={{
           margin: `0 auto`,

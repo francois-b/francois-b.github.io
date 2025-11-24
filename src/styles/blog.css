@@ -95,7 +95,7 @@
 
 .blog-post-card__title {
   font-family: var(--font-header);
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   font-weight: 700;
   margin: 0 0 0.35rem;
   color: var(--color-text);

@@ -13,37 +13,41 @@ const TimelineVideoPlayer: React.FC<TimelineVideoPlayerProps> = ({
   ariaLabel = "Project timeline preview video",
 }) => {
   const [isVideoPlaying, setIsVideoPlaying] = React.useState(false)
-  const [playbackProgress, setPlaybackProgress] = React.useState(0)
-  const [bufferProgress, setBufferProgress] = React.useState(0)
+  const [progress, setProgress] = React.useState({ playback: 0, buffer: 0 })
   const videoRef = React.useRef<HTMLVideoElement | null>(null)
+
+  const clampProgress = (value: number) => Math.min(Math.max(value, 0), 100)
+
+  const isVideoReady = (video: HTMLVideoElement | null) =>
+    video && video.duration && !Number.isNaN(video.duration)
 
   const updatePlaybackProgress = React.useCallback(() => {
     const video = videoRef.current
-    if (!video || !video.duration || Number.isNaN(video.duration)) {
-      setPlaybackProgress(0)
+    if (!isVideoReady(video)) {
+      setProgress(prev => ({ ...prev, playback: 0 }))
       return
     }
 
     const nextProgress = (video.currentTime / video.duration) * 100
-    setPlaybackProgress(Math.min(Math.max(nextProgress, 0), 100))
+    setProgress(prev => ({ ...prev, playback: clampProgress(nextProgress) }))
   }, [])
 
   const updateBufferProgress = React.useCallback(() => {
     const video = videoRef.current
-    if (!video || !video.duration || Number.isNaN(video.duration)) {
-      setBufferProgress(0)
+    if (!isVideoReady(video)) {
+      setProgress(prev => ({ ...prev, buffer: 0 }))
       return
     }
 
     const { buffered, duration } = video
     if (buffered.length === 0) {
-      setBufferProgress(0)
+      setProgress(prev => ({ ...prev, buffer: 0 }))
       return
     }
 
     const bufferedEnd = buffered.end(buffered.length - 1)
     const nextProgress = (bufferedEnd / duration) * 100
-    setBufferProgress(Math.min(Math.max(nextProgress, 0), 100))
+    setProgress(prev => ({ ...prev, buffer: clampProgress(nextProgress) }))
   }, [])
 
   const handleVideoToggle = React.useCallback(() => {
@@ -66,61 +70,47 @@ const TimelineVideoPlayer: React.FC<TimelineVideoPlayerProps> = ({
     }
   }, [updateBufferProgress])
 
+  const updateProgress = React.useCallback(() => {
+    updatePlaybackProgress()
+    updateBufferProgress()
+  }, [updatePlaybackProgress, updateBufferProgress])
+
   const handleProgressSeek = React.useCallback(
     (event: React.MouseEvent<HTMLDivElement>) => {
       const video = videoRef.current
-      if (!video || !video.duration || Number.isNaN(video.duration)) {
-        return
-      }
+      if (!isVideoReady(video)) return
 
       const rect = event.currentTarget.getBoundingClientRect()
-      const clickPosition = event.clientX - rect.left
-      const ratio = clickPosition / rect.width
-      video.currentTime = Math.max(
-        Math.min(video.duration * ratio, video.duration),
-        0
-      )
-      updatePlaybackProgress()
-      updateBufferProgress()
+      const ratio = (event.clientX - rect.left) / rect.width
+      video.currentTime = Math.max(Math.min(video.duration * ratio, video.duration), 0)
+      updateProgress()
     },
-    [updateBufferProgress, updatePlaybackProgress]
+    [updateProgress]
   )
 
   const handleProgressKeyDown = React.useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
       const video = videoRef.current
-      if (!video || !video.duration || Number.isNaN(video.duration)) {
-        return
-      }
+      if (!isVideoReady(video)) return
 
-      let target = video.currentTime
       const seekStep = Math.max(video.duration * 0.05, 5)
-
-      switch (event.key) {
-        case "ArrowLeft":
-        case "Left":
-          target = Math.max(video.currentTime - seekStep, 0)
-          break
-        case "ArrowRight":
-        case "Right":
-          target = Math.min(video.currentTime + seekStep, video.duration)
-          break
-        case "Home":
-          target = 0
-          break
-        case "End":
-          target = video.duration
-          break
-        default:
-          return
+      const seekActions: Record<string, number> = {
+        ArrowLeft: Math.max(video.currentTime - seekStep, 0),
+        Left: Math.max(video.currentTime - seekStep, 0),
+        ArrowRight: Math.min(video.currentTime + seekStep, video.duration),
+        Right: Math.min(video.currentTime + seekStep, video.duration),
+        Home: 0,
+        End: video.duration,
       }
+
+      const target = seekActions[event.key]
+      if (target === undefined) return
 
       event.preventDefault()
       video.currentTime = target
-      updatePlaybackProgress()
-      updateBufferProgress()
+      updateProgress()
     },
-    [updateBufferProgress, updatePlaybackProgress]
+    [updateProgress]
   )
 
   return (
@@ -154,10 +144,7 @@ const TimelineVideoPlayer: React.FC<TimelineVideoPlayerProps> = ({
         src={src}
         preload="metadata"
         playsInline
-        onLoadedMetadata={() => {
-          updatePlaybackProgress()
-          updateBufferProgress()
-        }}
+        onLoadedMetadata={updateProgress}
         onLoadedData={updateBufferProgress}
         onPlay={() => {
           setIsVideoPlaying(true)
@@ -169,7 +156,7 @@ const TimelineVideoPlayer: React.FC<TimelineVideoPlayerProps> = ({
         }}
         onEnded={() => {
           setIsVideoPlaying(false)
-          setPlaybackProgress(100)
+          setProgress(prev => ({ ...prev, playback: 100 }))
           updateBufferProgress()
         }}
         onTimeUpdate={updatePlaybackProgress}
@@ -185,17 +172,17 @@ const TimelineVideoPlayer: React.FC<TimelineVideoPlayerProps> = ({
         aria-label="Video progress"
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-valuenow={Math.round(playbackProgress)}
+        aria-valuenow={Math.round(progress.playback)}
         onClick={handleProgressSeek}
         onKeyDown={handleProgressKeyDown}
       >
         <div
           className="timeline-player__progress-buffer"
-          style={{ width: `${bufferProgress}%` }}
+          style={{ width: `${progress.buffer}%` }}
         />
         <div
           className="timeline-player__progress-played"
-          style={{ width: `${playbackProgress}%` }}
+          style={{ width: `${progress.playback}%` }}
         />
       </div>
     </div>

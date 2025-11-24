@@ -2,22 +2,26 @@ import * as React from "react"
 import { graphql, Link } from "gatsby"
 import type { PageProps } from "gatsby"
 import FloatingControls from "../components/FloatingControls"
-import DiyToolsGraphic from "../components/DiyToolsGraphic"
-import PapersAndBooksGraphic from "../components/PapersAndBooksGraphic"
-import EmailIcon from "../components/icons/EmailIcon"
-import GitHubIcon from "../components/icons/GitHubIcon"
-import LinkedInIcon from "../components/icons/LinkedInIcon"
-import TimelineVideoPlayer from "../components/TimelineVideoPlayer"
+// import TimelineVideoPlayer from "../components/TimelineVideoPlayer"
 import { jobs, skills } from "../data/cvContent"
-import projectAnalyticsImg from "../images/project-analytics.svg"
-import projectDesignSystemImg from "../images/project-design-system.svg"
-import projectStoreImg from "../images/project-store.svg"
-import summaryBackgroundImg from "../images/transparent_screen.png"
-import timelineVideo from "../images/Timeline2.mp4"
-import sideIntroImg from "../images/side_intro.svg"
-import sideMattersImg from "../images/side_matters.svg"
-import sideAiImg from "../images/side_ai.svg"
+// import timelineVideo from "../images/Timeline2.mp4"
 import "../styles/cv.css"
+
+const AchievementList: React.FC<{ items: string[] }> = ({ items }) => (
+  <ul className="achievements">
+    {items.map((item, index) => (
+      <li key={index}>{item}</li>
+    ))}
+  </ul>
+)
+
+const SkillList: React.FC<{ items: string[] }> = ({ items }) => (
+  <ul className="skill-list">
+    {items.map((item, index) => (
+      <li key={index}>{item}</li>
+    ))}
+  </ul>
+)
 
 type BlogPostsQuery = {
   allMarkdownRemark: {
@@ -35,8 +39,7 @@ type BlogPostsQuery = {
 }
 
 const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
-  const [selectedJob, setSelectedJob] = React.useState<number>(0)
-  const [selectedSkill, setSelectedSkill] = React.useState<number>(0)
+  const [selected, setSelected] = React.useState({ job: 0, skill: 0 })
   const posts = data.allMarkdownRemark.nodes
   const featuredPosts = React.useMemo(
     () =>
@@ -68,7 +71,10 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
         <main className="cv-main">
           <div id="video-and-pitch" className="video-and-pitch">
             <div className="video-and-pitch__video">
-              <TimelineVideoPlayer src={timelineVideo} />
+              {/* <TimelineVideoPlayer src={timelineVideo} /> */}
+              <div style={{ background: 'var(--color-bg-subtle)', minHeight: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '8px' }}>
+                <p style={{ color: 'var(--color-text-lighter)' }}>Video placeholder</p>
+              </div>
             </div>
             <div id="helping" className="video-and-pitch__text">
               <div>
@@ -117,7 +123,7 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
               ) : (
                 <div className="blog-list">
                   {featuredPosts.map(post => (
-                    <article key={post.id} className="blog-card">
+                    <article key={post.id} className="card-base blog-card">
                       <header>
                         <h3>
                           <Link to={`/blog/${post.frontmatter.slug}`}>
@@ -142,6 +148,45 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
             </section>
           </div>
 
+          {/* Projects Section */}
+          <div className="section-shell">
+            <section className="cv-section projects-section">
+              <h2>Notable Projects</h2>
+              <div className="projects-compact">
+                <article className="card-base project-item">
+                  <h3>E-Commerce Platform</h3>
+                  <p>
+                    Full-featured online store with payment integration and
+                    admin dashboard
+                  </p>
+                  <span className="project-tech">
+                    React • Node.js • Stripe • AWS
+                  </span>
+                </article>
+                <article className="card-base project-item">
+                  <h3>Analytics Dashboard</h3>
+                  <p>
+                    Real-time data visualization dashboard processing millions
+                    of events
+                  </p>
+                  <span className="project-tech">
+                    Next.js • GraphQL • D3.js • PostgreSQL
+                  </span>
+                </article>
+                <article className="card-base project-item">
+                  <h3>Design System</h3>
+                  <p>
+                    Component library and documentation site used across product
+                    teams
+                  </p>
+                  <span className="project-tech">
+                    React • Storybook • TypeScript
+                  </span>
+                </article>
+              </div>
+            </section>
+          </div>
+
           {/* Experience Section */}
           <section className="cv-section experience-section">
             <h2>Experience</h2>
@@ -150,10 +195,10 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
               {jobs.map((job, index) => (
                 <div
                   key={index}
-                  className={`job-card ${
-                    selectedJob === index ? "active" : ""
+                  className={`card-base job-card ${
+                    selected.job === index ? "active" : ""
                   }`}
-                  onMouseEnter={() => setSelectedJob(index)}
+                  onMouseEnter={() => setSelected(prev => ({ ...prev, job: index }))}
                 >
                   <div className="job-title">
                     <h3>{job.title}</h3>
@@ -162,11 +207,7 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
                   </div>
                   {/* Details hidden on screen, shown in print */}
                   <div className="job-card-print-details">
-                    <ul className="achievements">
-                      {job.achievements.map((achievement, idx) => (
-                        <li key={idx}>{achievement}</li>
-                      ))}
-                    </ul>
+                    <AchievementList items={job.achievements} />
                   </div>
                 </div>
               ))}
@@ -174,11 +215,7 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
 
             {/* Common details box below - only for screen */}
             <div className="job-details-box screen-only">
-              <ul className="achievements">
-                {jobs[selectedJob].achievements.map((achievement, index) => (
-                  <li key={index}>{achievement}</li>
-                ))}
-              </ul>
+              <AchievementList items={jobs[selected.job].achievements} />
             </div>
           </section>
 
@@ -191,96 +228,25 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
                 {skills.map((skill, index) => (
                   <div
                     key={index}
-                    className={`skill-card ${
-                      selectedSkill === index ? "active" : ""
+                    className={`card-base skill-card ${
+                      selected.skill === index ? "active" : ""
                     }`}
-                    onMouseEnter={() => setSelectedSkill(index)}
+                    onMouseEnter={() => setSelected(prev => ({ ...prev, skill: index }))}
                   >
                     <h3>{skill.category}</h3>
                     <div className="skill-card-print-details">
-                      <ul className="skill-list">
-                        {skill.technologies.map((tech, idx) => (
-                          <li key={idx}>{tech}</li>
-                        ))}
-                      </ul>
+                      <SkillList items={skill.technologies} />
                     </div>
                   </div>
                 ))}
               </div>
 
               <div className="skill-details-box screen-only">
-                <ul className="skill-list">
-                  {skills[selectedSkill].technologies.map((tech, index) => (
-                    <li key={index}>{tech}</li>
-                  ))}
-                </ul>
+                <SkillList items={skills[selected.skill].technologies} />
               </div>
             </section>
           </div>
 
-          {/* Projects Section */}
-          <section className="cv-section projects-section">
-            <h2>Notable Projects</h2>
-            <div className="projects-compact">
-              <article className="project-item">
-                <div className="project-visual">
-                  <img
-                    src={projectStoreImg}
-                    alt="Preview of the e-commerce platform"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="project-content">
-                  <h3>E-Commerce Platform</h3>
-                  <p>
-                    Full-featured online store with payment integration and
-                    admin dashboard
-                  </p>
-                  <span className="project-tech">
-                    React • Node.js • Stripe • AWS
-                  </span>
-                </div>
-              </article>
-              <article className="project-item">
-                <div className="project-visual">
-                  <img
-                    src={projectAnalyticsImg}
-                    alt="Analytics dashboard visual"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="project-content">
-                  <h3>Analytics Dashboard</h3>
-                  <p>
-                    Real-time data visualization dashboard processing millions
-                    of events
-                  </p>
-                  <span className="project-tech">
-                    Next.js • GraphQL • D3.js • PostgreSQL
-                  </span>
-                </div>
-              </article>
-              <article className="project-item">
-                <div className="project-visual">
-                  <img
-                    src={projectDesignSystemImg}
-                    alt="Design system components"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="project-content">
-                  <h3>Design System</h3>
-                  <p>
-                    Component library and documentation site used across product
-                    teams
-                  </p>
-                  <span className="project-tech">
-                    React • Storybook • TypeScript
-                  </span>
-                </div>
-              </article>
-            </div>
-          </section>
         </main>
 
         <footer className="cv-footer"></footer>

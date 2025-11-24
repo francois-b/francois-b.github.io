@@ -1,34 +1,3 @@
-.cv-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--section-bg, transparent);
-  opacity: 0.95;
-  z-index: -2;
-}
-
-.cv-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0.04),
-    rgba(0, 0, 0, 0.05)
-  );
-  mix-blend-mode: soft-light;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.cv-section > * {
-  position: relative;
-  z-index: 1;
-}
-
-.cv-section h2 {
-  margin-left: 0.35rem;
-}
 /* ===================================
    CSS Variables & Base Styles
    =================================== */
@@ -237,38 +206,6 @@ h6 {
 }
 
 /* ===================================
-   Print Button
-   =================================== */
-
-.print-button {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--color-bg-subtle);
-  border: 1.5px solid var(--color-border);
-  color: var(--color-primary);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  transition: all 0.3s ease;
-  box-shadow: var(--shadow-sm);
-  padding: 0;
-}
-
-.print-button:hover {
-  transform: scale(1.1);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--color-primary);
-  background: var(--color-bg);
-}
-
-.print-button:active {
-  transform: scale(0.95);
-}
-
-/* ===================================
    Floating Controls
    =================================== */
 
@@ -331,50 +268,6 @@ body.theme-night .floating-link.active {
 
 body.theme-night .floating-link:hover {
   color: #ffffff;
-}
-
-.floating-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  background: var(--color-bg-subtle);
-  border: 1.5px solid var(--color-border);
-  color: var(--color-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  box-shadow: var(--shadow-sm);
-}
-
-body.theme-sun .floating-icon {
-  color: #111827;
-}
-
-.floating-icon:hover,
-.floating-icon:focus {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--color-primary);
-}
-
-.floating-icon svg,
-.floating-icon img {
-  display: block;
-  transition: transform 0.3s ease;
-  width: 22px;
-  height: 22px;
-}
-
-body.theme-night .floating-icon {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.35);
-}
-
-body.theme-night .floating-icon:hover,
-body.theme-night .floating-icon:focus {
-  border-color: rgba(255, 255, 255, 0.6);
 }
 
 /* ===================================
@@ -460,24 +353,6 @@ body.theme-night .floating-icon:focus {
   width: 100%;
 }
 
-.profile-photo {
-  width: 120px;
-  height: 120px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: none;
-  box-shadow: var(--shadow-sm);
-  background: transparent;
-  flex-shrink: 0;
-}
-
-.profile-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
 .identity-text {
   display: flex;
   flex-direction: column;
@@ -507,147 +382,15 @@ body.theme-night .floating-icon:focus {
   font-style: italic;
 }
 
-.contact-info {
-  font-family: var(--font-sans);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
-  align-self: flex-start;
-}
-
-.contact-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.25rem;
-  border-radius: 999px;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  color: var(--color-primary);
-  text-decoration: none;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-body.theme-sun .contact-icon {
-  color: #111827;
-}
-
-.contact-icon:hover,
-.contact-icon:focus {
-  transform: translateY(-2px);
-  color: var(--color-secondary);
-  outline: none;
-}
-
-.contact-icon:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 3px;
-  border-radius: 999px;
-}
-
-.contact-icon svg {
-  width: 20px;
-  height: 20px;
-  display: block;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
 /* ===================================
    Main Content Sections - Compressed
    =================================== */
 
 .section-shell {
-  position: relative;
   margin-bottom: 2rem;
-  overflow: visible;
-}
-
-.section-shell .cv-section {
-  margin-bottom: 0;
-}
-
-.section-parallax {
-  position: absolute;
-  top: -4rem;
-  right: -8%;
-  width: clamp(220px, 38vw, 360px);
-  pointer-events: none;
-  display: flex;
-  justify-content: flex-end;
-  z-index: -3;
-  will-change: transform;
-}
-
-.section-parallax svg {
-  width: 100%;
-  height: auto;
-  opacity: 0.5;
-  filter: drop-shadow(0 40px 60px rgba(0, 0, 0, 0.08));
-}
-
-.section-parallax img {
-  width: 100%;
-  height: auto;
-  opacity: 0.45;
-  mix-blend-mode: soft-light;
-  filter: saturate(0.65) contrast(0.92) brightness(1.05);
-  border-radius: 18px;
-}
-
-.section-parallax--summary {
-  color: color-mix(
-    in srgb,
-    var(--color-primary) 55%,
-    var(--color-text-light) 45%
-  );
-  left: -8%;
-  right: auto;
-  justify-content: flex-start;
-  width: clamp(150px, 26vw, 250px);
-}
-
-.section-parallax--blog {
-  right: -8%;
-  left: auto;
-  justify-content: flex-end;
-  color: color-mix(
-    in srgb,
-    var(--color-primary) 50%,
-    var(--color-text-lighter) 50%
-  );
-  top: -3.5rem;
-}
-
-.section-parallax--skills {
-  color: color-mix(
-    in srgb,
-    var(--color-secondary) 58%,
-    var(--color-text-light) 42%
-  );
-  top: -3rem;
-  right: -6%;
 }
 
 @media (max-width: 1000px) {
-  .section-parallax {
-    display: none;
-  }
-
   .timeline-player {
     margin-left: 0;
     border-radius: 16px;
@@ -671,15 +414,7 @@ body.theme-sun .contact-icon {
   }
 }
 
-@media print {
-  .section-parallax {
-    display: none !important;
-  }
-
-  .timeline-player {
-    display: none;
-  }
-}
+/* Print styles consolidated below at line 1466 */
 
 .timeline-player {
   position: relative;
@@ -790,87 +525,18 @@ body.theme-sun .contact-icon {
 }
 
 .cv-section {
-  margin-bottom: 1.5rem;
-  --section-bg-soft: color-mix(
-    in srgb,
-    var(--section-bg, transparent) 68%,
-    transparent 32%
-  );
-  background: var(--section-bg-soft);
-  border-radius: 8px;
-  padding: 1.5rem 2rem 2rem;
+  margin-bottom: 2.5rem;
   position: relative;
-  overflow: hidden;
-  /* margin-left: 0.75rem; */
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-}
-
-.cv-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: color-mix(
-    in srgb,
-    var(--section-bg, transparent) 60%,
-    transparent 40%
-  );
-  opacity: 0.82;
-  z-index: -2;
-}
-
-.cv-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0.04),
-    rgba(0, 0, 0, 0.06)
-  );
-  mix-blend-mode: soft-light;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.cv-section > * {
-  position: relative;
-  z-index: 1;
 }
 
 .cv-section h2 {
-  margin-left: 0.5rem;
+  margin-left: 0;
   margin-bottom: 1.2rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 0;
 }
 
 .summary-text:hover {
   box-shadow: var(--shadow-lg);
-}
-
-.summary-section {
-  --section-bg: var(--color-bg-subtle);
-  --section-bg: color-mix(in srgb, var(--color-bg) 94%, #f2e7d5 6%);
-  padding-top: 1.25rem;
-  padding-bottom: 1.85rem;
-}
-
-.blog-section {
-  --section-bg: var(--color-bg-subtle);
-  --section-bg: color-mix(in srgb, var(--color-bg-subtle) 93%, #e2e4e9 7%);
-  padding-top: 1.25rem;
-}
-
-.experience-section {
-  --section-bg: var(--color-bg-subtle);
-  --section-bg: color-mix(in srgb, var(--color-bg) 92%, #e6e1d7 8%);
-  padding-top: 1.25rem;
-}
-
-.skills-section {
-  --section-bg: var(--color-bg-subtle);
-  --section-bg: color-mix(in srgb, var(--color-bg-subtle) 92%, #f0eadc 8%);
-  padding-top: 1.25rem;
 }
 
 /* ===================================
@@ -885,31 +551,36 @@ body.theme-sun .contact-icon {
   justify-items: stretch;
 }
 
+/* ===================================
+   Base Card Styles - Unified
+   =================================== */
+
+.card-base {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-base.active {
+  background: var(--color-bg-subtle);
+  box-shadow: none;
+}
+
 .job-card {
   min-width: 0;
   width: 100%;
   height: 100%;
   max-height: 100px;
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 0;
-  padding: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
   border-left: 3px solid var(--color-border);
 }
 
 .job-card.active {
   border-left-color: var(--color-primary);
-  background: var(--color-bg-subtle);
-  box-shadow: none;
-}
-
-.job-card:hover {
-  border-left-color: var(--color-primary);
-  background: var(--color-bg-subtle);
 }
 
 .job-title {
@@ -1034,27 +705,13 @@ body.theme-sun .contact-icon {
 .skill-card {
   flex: 1;
   min-width: 0;
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 0;
-  padding: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
   border-left: 3px solid var(--color-border);
   text-align: center;
 }
 
 .skill-card.active {
   border-left-color: var(--color-primary);
-  background: var(--color-bg-subtle);
-  box-shadow: none;
-}
-
-.skill-card:hover {
-  border-left-color: var(--color-primary);
-  background: var(--color-bg-subtle);
 }
 
 .skill-card h3 {
@@ -1111,46 +768,6 @@ body.theme-sun .contact-icon {
 }
 
 /* ===================================
-   Education Section - Compressed
-   =================================== */
-
-.education-item {
-  background: var(--color-bg);
-  padding: 1rem;
-  border-radius: 0;
-  border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-primary);
-  transition: border-left-color 0.3s ease;
-}
-
-.education-item:hover {
-  border-left-color: var(--color-secondary);
-}
-
-.education-item h3 {
-  font-family: var(--font-header);
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 0.25rem;
-}
-
-.institution {
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  color: var(--color-primary);
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-
-.details {
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  color: var(--color-text-light);
-  margin-top: 0.25rem;
-}
-
-/* ===================================
    Blog Section - Compressed
    =================================== */
 
@@ -1161,23 +778,10 @@ body.theme-sun .contact-icon {
 }
 
 .blog-card {
-  background: var(--color-bg);
-  padding: 1rem;
-  border-radius: 0;
-  border: 1px solid var(--color-border);
-  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   height: 100%;
-}
-
-.blog-card:hover {
-  border-color: color-mix(
-    in srgb,
-    var(--color-border) 60%,
-    var(--color-primary) 40%
-  );
-  background: var(--color-bg-subtle);
+  overflow: visible;
 }
 
 .blog-card header {
@@ -1241,51 +845,20 @@ body.theme-sun .contact-icon {
 
 .projects-compact {
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
 
 .project-item {
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-primary);
-  border-radius: 0;
-  transition: all 0.3s ease;
-  display: grid;
-  grid-template-columns: minmax(180px, 240px) 1fr;
-  align-items: stretch;
-  position: relative;
-  min-height: 200px;
-}
-
-.project-item:hover {
-  border-left-color: var(--color-secondary);
-  background: var(--color-bg-subtle);
-}
-
-.project-visual {
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-}
-
-.project-visual img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.project-content {
-  padding: 1.25rem 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 0.75rem;
+  height: 100%;
+  overflow: visible;
 }
 
 .project-item h3 {
   font-family: var(--font-header);
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-text);
   margin: 0;
@@ -1296,6 +869,7 @@ body.theme-sun .contact-icon {
   line-height: 1.5;
   font-size: 0.95rem;
   margin: 0;
+  flex-grow: 1;
 }
 
 .project-tech {
@@ -1353,7 +927,7 @@ body.theme-sun .contact-icon {
 
   .cv-section {
     margin-left: 0;
-    padding: 1.4rem 1.5rem 1.75rem;
+    padding: 0;
   }
 
   .floating-controls {
@@ -1370,21 +944,6 @@ body.theme-sun .contact-icon {
     padding: 0.25rem 0.5rem;
   }
 
-  .floating-icon {
-    width: 36px;
-    height: 36px;
-  }
-
-  .print-button {
-    width: 48px;
-    height: 48px;
-  }
-
-  .print-button svg {
-    width: 20px;
-    height: 20px;
-  }
-
   .summary-text {
     padding: 1.3rem 1.25rem;
   }
@@ -1397,19 +956,6 @@ body.theme-sun .contact-icon {
     font-size: 1rem;
   }
 
-  .contact-info {
-    gap: 0.6rem;
-  }
-
-  .contact-icon {
-    padding: 0.2rem;
-  }
-
-  .contact-icon svg {
-    width: 18px;
-    height: 18px;
-  }
-
   .identity {
     flex-direction: column;
     gap: 1rem;
@@ -1419,12 +965,6 @@ body.theme-sun .contact-icon {
 
   .identity-text {
     text-align: center;
-  }
-
-  .profile-photo {
-    width: 110px;
-    height: 110px;
-    box-shadow: var(--shadow-sm);
   }
 
   .cv-section h2 {
@@ -1453,17 +993,8 @@ body.theme-sun .contact-icon {
     grid-template-columns: 1fr;
   }
 
-  .project-item {
+  .projects-compact {
     grid-template-columns: 1fr;
-    min-height: auto;
-  }
-
-  .project-visual {
-    height: 200px;
-  }
-
-  .project-content {
-    padding: 1rem 1.25rem 1.5rem;
   }
 }
 
@@ -1509,8 +1040,8 @@ body.theme-sun .contact-icon {
   /* Hide decorative elements for print */
   .theme-toggle-group,
   .floating-controls,
-  .print-button,
-  .screen-only {
+  .screen-only,
+  .timeline-player {
     display: none !important;
   }
 
@@ -1580,13 +1111,6 @@ body.theme-sun .contact-icon {
     align-items: flex-start;
   }
 
-  .profile-photo {
-    width: 70px;
-    height: 70px;
-    border: 1px solid #999;
-    box-shadow: none;
-  }
-
   .identity-text {
     text-align: left;
   }
@@ -1607,22 +1131,6 @@ body.theme-sun .contact-icon {
     font-size: 11pt;
     margin-bottom: 0.5rem;
     color: #333;
-  }
-
-  .contact-info {
-    justify-content: flex-start;
-    gap: 0.35rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .contact-icon {
-    padding: 0;
-    color: #000;
-  }
-
-  .contact-icon svg {
-    width: 16px;
-    height: 16px;
   }
 
   /* Section styling */
@@ -1788,30 +1296,6 @@ body.theme-sun .contact-icon {
     font-size: 10pt;
   }
 
-  /* Education section */
-  .education-item {
-    background: #f5f5f5;
-    padding: 0.6rem;
-    border-left: 2px solid #000;
-    page-break-inside: avoid;
-  }
-
-  .education-item h3 {
-    font-size: 10pt;
-    margin-bottom: 0.2rem;
-    color: #000;
-  }
-
-  .institution {
-    font-size: 9pt;
-    color: #000;
-    margin-bottom: 0.2rem;
-  }
-
-  .details {
-    font-size: 8pt;
-    color: #333;
-  }
 
   /* Blog section */
   .blog-list {
@@ -1876,14 +1360,6 @@ body.theme-sun .contact-icon {
     page-break-inside: avoid;
   }
 
-  .project-item::before {
-    display: none;
-  }
-
-  .project-visual {
-    display: none;
-  }
-
   .project-item h3 {
     font-size: 10pt;
     margin-bottom: 0.25rem;
@@ -1914,7 +1390,6 @@ body.theme-sun .contact-icon {
   }
 
   /* Remove hover effects */
-  .education-item:hover,
   .project-item:hover {
     transform: none;
     box-shadow: none;
