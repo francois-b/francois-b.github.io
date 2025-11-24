@@ -111,7 +111,8 @@ body::before {
   background-image: var(--texture-noise);
   background-repeat: repeat;
   background-size: 800px 800px;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease, filter 0.5s ease;
+  opacity: 0;
 }
 
 body.theme-night::before {
@@ -122,6 +123,7 @@ body.theme-night::before {
 
 body.theme-sun::before {
   mix-blend-mode: multiply;
+  filter: grayscale(1) contrast(0.55) brightness(1.1);
   opacity: 0.25;
 }
 
