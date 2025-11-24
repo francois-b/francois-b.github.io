@@ -10,35 +10,44 @@ const ThemeToggle: React.FC = () => {
 
   return (
     <div className="theme-toggle-group" role="group" aria-label="Theme toggle">
-      <button
-        type="button"
+      <a
+        href="#"
         className={`theme-button ${theme === "sun" ? "active" : ""}`}
-        onClick={() => setTheme("sun")}
+        onClick={(e) => {
+          e.preventDefault()
+          setTheme("sun")
+        }}
         aria-label="Sun theme"
         title="Sun theme"
       >
-        <img src={sunIcon} alt="" width={20} height={20} aria-hidden="true" />
-      </button>
+        Sun
+      </a>
 
-      <button
-        type="button"
+      <a
+        href="#"
         className={`theme-button ${theme === "rain" ? "active" : ""}`}
-        onClick={() => setTheme("rain")}
+        onClick={(e) => {
+          e.preventDefault()
+          setTheme("rain")
+        }}
         aria-label="Rain theme"
         title="Rain theme"
       >
-  <img src={umbrellaIcon} alt="" width={20} height={20} aria-hidden="true" />
-      </button>
+        Rain
+      </a>
 
-      <button
-        type="button"
+      <a
+        href="#"
         className={`theme-button ${theme === "night" ? "active" : ""}`}
-        onClick={() => setTheme("night")}
+        onClick={(e) => {
+          e.preventDefault()
+          setTheme("night")
+        }}
         aria-label="Night theme"
         title="Night theme"
       >
-  <img src={moonIcon} alt="" width={20} height={20} aria-hidden="true" />
-      </button>
+        Night
+      </a>
     </div>
   )
 }

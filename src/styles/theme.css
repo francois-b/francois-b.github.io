@@ -1,31 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
-
-:root {
-  --font-serif: 'Noto Serif', 'Merriweather', 'Georgia', 'Times New Roman', serif;
-  --font-header: 'Noto Sans', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-}
-
-body {
-  font-family: var(--font-serif);
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--color-text, #1f2937);
-  background-color: var(--color-bg, #fffbeb);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-header);
-}
-
 body.theme-sun {
   --color-primary: #f59e0b;
   --color-secondary: #f97316;
@@ -116,6 +88,7 @@ body.theme-sun .theme-toggle-group {
   transition: all 0.3s ease;
   padding: 0;
   position: relative;
+  text-decoration: none;
 }
 
 .theme-button:hover {
@@ -150,7 +123,7 @@ body.theme-night .theme-button img {
   filter: brightness(0) invert(1);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .theme-toggle-group {
     padding: 0.3rem;
     gap: 0.3rem;
