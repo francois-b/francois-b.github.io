@@ -7,8 +7,67 @@
 /**
  * @type {import('gatsby').GatsbySSR['onRenderBody']}
  */
-exports.onRenderBody = ({ setHtmlAttributes }) => {
+exports.onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
   setHtmlAttributes({ lang: `en` })
+
+  // Inject font preloads and blocking script to apply theme before render to prevent flash
+  setHeadComponents([
+    // Preconnect to Google Fonts
+    React.createElement("link", {
+      key: "preconnect-google-fonts",
+      rel: "preconnect",
+      href: "https://fonts.googleapis.com",
+    }),
+    React.createElement("link", {
+      key: "preconnect-gstatic",
+      rel: "preconnect",
+      href: "https://fonts.gstatic.com",
+      crossOrigin: "anonymous",
+    }),
+    // Load fonts with display=block to prevent FOUT
+    React.createElement("link", {
+      key: "google-fonts",
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=block",
+    }),
+    // Theme hydration script
+    React.createElement("script", {
+      key: "theme-hydration",
+      dangerouslySetInnerHTML: {
+        __html: `
+          (function() {
+            try {
+              var THEME_STORAGE_KEY = 'preferred-theme';
+
+              var stored = localStorage.getItem(THEME_STORAGE_KEY);
+              var theme = 'sun'; // default
+
+              if (stored === 'sun' || stored === 'rain' || stored === 'night') {
+                theme = stored;
+              } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                theme = 'night';
+              }
+
+              // Set attribute on documentElement to avoid any timing issues
+              document.documentElement.setAttribute('data-theme', theme);
+
+              // Also set on body when it's available
+              if (document.body) {
+                document.body.className = document.body.className.replace(/theme-\\w+/g, '').trim();
+                document.body.classList.add('theme-' + theme);
+              } else {
+                // If body doesn't exist yet, wait for it
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.body.className = document.body.className.replace(/theme-\\w+/g, '').trim();
+                  document.body.classList.add('theme-' + theme);
+                });
+              }
+            } catch (e) {}
+          })();
+        `,
+      },
+    }),
+  ])
 }
 
 const React = require("react")

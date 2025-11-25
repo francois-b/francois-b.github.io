@@ -49,55 +49,5 @@ export const jobs: Job[] = [
       "Collaborated with designers to prototype and ship interactive marketing experiences",
       "Optimized bundle size by 35% through code splitting and asset audits",
     ],
-  },
-  {
-    title: "Web Developer",
-    company: "Freelance",
-    period: "2015 - 2017",
-    achievements: [
-      "Implemented custom CMS features for small business clients using Gatsby and Netlify",
-      "Automated deployment pipelines to improve release cadence by 50%",
-      "Provided long-term maintenance and analytics reporting for recurring customers",
-    ],
-  },
-  {
-    title: "Support Engineer",
-    company: "Tech Support Co.",
-    period: "2013 - 2015",
-    achievements: [
-      "Resolved complex customer issues, maintaining a 4.8/5 satisfaction score",
-      "Documented troubleshooting playbooks adopted by the wider support organization",
-      "Built internal dashboards to track response times and ticket volumes",
-    ],
-  },
-]
-
-export const skills: Skill[] = [
-  {
-    category: "Frontend",
-    technologies: [
-      "React, TypeScript, Next.js",
-      "Gatsby, CSS/SASS, Tailwind",
-      "Redux, React Query, Context API",
-      "Responsive Design, Accessibility",
-    ],
-  },
-  {
-    category: "Backend",
-    technologies: [
-      "Node.js, Express, NestJS",
-      "PostgreSQL, MongoDB, Redis",
-      "GraphQL, REST APIs",
-      "Authentication & Authorization",
-    ],
-  },
-  {
-    category: "Tools & DevOps",
-    technologies: [
-      "AWS, Docker, Kubernetes",
-      "Git, CI/CD, GitHub Actions",
-      "Jest, Testing Library, Cypress",
-      "Webpack, Vite, Build Tools",
-    ],
-  },
+  }
 ]

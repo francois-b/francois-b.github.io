@@ -45,16 +45,18 @@ body {
 }
 a {
   background-color: transparent;
-  color: var(--color-primary);
+  color: #818cf8;
   text-decoration: none;
   font-weight: 500;
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 2px;
+  transition: color 0.3s ease;
 }
 a:active,
 a:hover {
   outline-width: 0;
+  color: #fe7c29;
   text-decoration: none;
 }
 abbr[title] {
@@ -254,17 +256,17 @@ pre tt:after {
 }
 
 .floating-link:hover {
-  color: var(--color-primary, #4b5563);
+  color: #fe7c29;
   text-decoration: underline;
 }
 
 .floating-link.active {
   font-weight: 600;
-  color: var(--color-primary, #4b5563);
+  color: #818cf8;
 }
 
 .floating-link.active:hover {
-  color: var(--color-secondary, #6b7280);
+  color: #fe7c29;
 }
 
 @media (max-width: 768px) {

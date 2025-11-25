@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Tags from "../components/Tags"
 import "../styles/blog.css"
 
 const BlogPage = ({ data }) => {
@@ -35,15 +36,7 @@ const BlogPage = ({ data }) => {
 
                 <p className="blog-post-card__excerpt">{node.excerpt}</p>
 
-                {node.frontmatter.tags?.length ? (
-                  <ul className="blog-post-card__tags">
-                    {node.frontmatter.tags.map(tag => (
-                      <li key={tag} className="blog-post-card__tag">
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
-                ) : null}
+                <Tags tags={node.frontmatter.tags} />
 
                 <Link
                   className="blog-post-card__read-more"

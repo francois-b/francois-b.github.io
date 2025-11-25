@@ -1,9 +1,10 @@
 import * as React from "react"
+import { Link } from "gatsby"
 import { useTheme, type ThemeName } from "../context/theme-context"
 
 const THEME_OPTIONS: Array<{ name: ThemeName; label: string }> = [
   { name: "sun", label: "Light theme" },
-  { name: "rain", label: "Rain theme" },
+  // { name: "rain", label: "Rain theme" },
   { name: "night", label: "Dark theme" },
 ]
 
@@ -27,35 +28,53 @@ const FloatingControls: React.FC = () => {
 
   return (
     <div className="floating-controls">
-      {THEME_OPTIONS.map(({ name, label }) => (
-        <a
-          key={name}
-          href="#"
-          className={`floating-link ${theme === name ? "active" : ""}`}
-          onClick={(e) => {
-            e.preventDefault()
-            setTheme(name)
-          }}
-          aria-label={label}
-          title={label}
-        >
-          {label}
-        </a>
-      ))}
+      {/* Theme links group */}
+      <div className="floating-controls-group">
+        {THEME_OPTIONS.map(({ name, label }) => (
+          <a
+            key={name}
+            href="#"
+            className={`floating-link ${theme === name ? "active" : ""}`}
+            onClick={(e) => {
+              e.preventDefault()
+              setTheme(name)
+            }}
+            aria-label={label}
+            title={label}
+          >
+            {label}
+          </a>
+        ))}
+      </div>
 
-      {CONTACT_LINKS.map(({ href, label }) => (
-        <a
-          key={href}
+      {/* Blog link group */}
+      <div className="floating-controls-group">
+        <Link
           className="floating-link"
-          href={href}
-          target={href.startsWith("http") ? "_blank" : undefined}
-          rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-          aria-label={label}
-          title={label}
+          to="/blog"
+          aria-label="Blog"
+          title="Blog"
         >
-          {label}
-        </a>
-      ))}
+          Blog
+        </Link>
+      </div>
+
+      {/* Contact links group */}
+      <div className="floating-controls-group">
+        {CONTACT_LINKS.map(({ href, label }) => (
+          <a
+            key={href}
+            className="floating-link"
+            href={href}
+            target={href.startsWith("http") ? "_blank" : undefined}
+            rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+            aria-label={label}
+            title={label}
+          >
+            {label}
+          </a>
+        ))}
+      </div>
     </div>
   )
 }

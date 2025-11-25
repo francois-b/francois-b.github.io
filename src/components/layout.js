@@ -11,6 +11,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import FloatingControls from "./FloatingControls"
 import "./layout.css"
+import "../styles/cv.css"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -24,29 +25,17 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      <FloatingControls />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: `var(--size-content)`,
-          padding: `var(--size-gutter)`,
-        }}
-      >
+    <div className="cv-container">
+      <aside className="cv-sidebar">
+        <FloatingControls />
+      </aside>
+
+      <div className="cv-content">
         <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
         <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `var(--space-5)`,
-            fontSize: `var(--font-sm)`,
-          }}
-        >
-          © {new Date().getFullYear()} &middot; Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
+      
       </div>
-    </>
+    </div>
   )
 }
 

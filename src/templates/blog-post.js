@@ -2,6 +2,8 @@ import * as React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Tags from "../components/Tags"
+import "../styles/blog.css"
 
 const BlogPostTemplate = ({ data }) => {
   const post = data.markdownRemark
@@ -11,28 +13,10 @@ const BlogPostTemplate = ({ data }) => {
       <article className="blog-post-article">
         <header className="blog-post-header">
           <h1 style={{ marginBottom: "0.5rem" }}>{post.frontmatter.title}</h1>
-          <p style={{ color: "#666", fontSize: "0.9rem" }}>
+          <p className="blog-post-card__meta">
             {post.frontmatter.date}
           </p>
-          {post.frontmatter.tags && (
-            <div style={{ marginTop: "1rem" }}>
-              {post.frontmatter.tags.map(tag => (
-                <span
-                  key={tag}
-                  style={{
-                    display: "inline-block",
-                    padding: "0.25rem 0.75rem",
-                    marginRight: "0.5rem",
-                    backgroundColor: "#f0f0f0",
-                    borderRadius: "4px",
-                    fontSize: "0.85rem",
-                  }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
+          <Tags tags={post.frontmatter.tags} />
         </header>
         <div
           className="blog-post-content"

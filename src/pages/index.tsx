@@ -3,20 +3,12 @@ import { graphql, Link } from "gatsby"
 import type { PageProps } from "gatsby"
 import FloatingControls from "../components/FloatingControls"
 // import TimelineVideoPlayer from "../components/TimelineVideoPlayer"
-import { jobs, skills } from "../data/cvContent"
+import { jobs } from "../data/cvContent"
 // import timelineVideo from "../images/Timeline2.mp4"
 import "../styles/cv.css"
 
 const AchievementList: React.FC<{ items: string[] }> = ({ items }) => (
   <ul className="achievements">
-    {items.map((item, index) => (
-      <li key={index}>{item}</li>
-    ))}
-  </ul>
-)
-
-const SkillList: React.FC<{ items: string[] }> = ({ items }) => (
-  <ul className="skill-list">
     {items.map((item, index) => (
       <li key={index}>{item}</li>
     ))}
@@ -39,7 +31,6 @@ type BlogPostsQuery = {
 }
 
 const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
-  const [selected, setSelected] = React.useState({ job: 0, skill: 0 })
   const posts = data.allMarkdownRemark.nodes
   const featuredPosts = React.useMemo(
     () =>
@@ -151,7 +142,7 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
           {/* Projects Section */}
           <div className="section-shell">
             <section className="cv-section projects-section">
-              <h2>Notable Projects</h2>
+              <h2>Current & past projects</h2>
               <div className="projects-compact">
                 <article className="card-base project-item">
                   <h3>E-Commerce Platform</h3>
@@ -188,61 +179,21 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
           </div>
 
           {/* Experience Section */}
-          <section className="cv-section experience-section">
-            <h2>Experience</h2>
-
-            <div className="experience-horizontal">
-              {jobs.map((job, index) => (
-                <div
-                  key={index}
-                  className={`card-base job-card ${
-                    selected.job === index ? "active" : ""
-                  }`}
-                  onMouseEnter={() => setSelected(prev => ({ ...prev, job: index }))}
-                >
-                  <div className="job-title">
-                    <h3>{job.title}</h3>
-                    <p className="company">{job.company}</p>
-                    <p className="period">{job.period}</p>
-                  </div>
-                  {/* Details hidden on screen, shown in print */}
-                  <div className="job-card-print-details">
-                    <AchievementList items={job.achievements} />
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Common details box below - only for screen */}
-            <div className="job-details-box screen-only">
-              <AchievementList items={jobs[selected.job].achievements} />
-            </div>
-          </section>
-
-          {/* Skills Section */}
           <div className="section-shell">
-            <section className="cv-section skills-section">
-              <h2>Skills</h2>
+            <section className="cv-section experience-section">
+              <h2>Experience</h2>
 
-              <div className="skills-horizontal">
-                {skills.map((skill, index) => (
-                  <div
-                    key={index}
-                    className={`card-base skill-card ${
-                      selected.skill === index ? "active" : ""
-                    }`}
-                    onMouseEnter={() => setSelected(prev => ({ ...prev, skill: index }))}
-                  >
-                    <h3>{skill.category}</h3>
-                    <div className="skill-card-print-details">
-                      <SkillList items={skill.technologies} />
+              <div className="experience-grid">
+                {jobs.map((job, index) => (
+                  <article key={index} className="card-base experience-card">
+                    <div className="job-title">
+                      <h3>{job.title}</h3>
+                      <p className="company">{job.company}</p>
+                      <p className="period">{job.period}</p>
                     </div>
-                  </div>
+                    <AchievementList items={job.achievements} />
+                  </article>
                 ))}
-              </div>
-
-              <div className="skill-details-box screen-only">
-                <SkillList items={skills[selected.skill].technologies} />
               </div>
             </section>
           </div>
@@ -261,16 +212,6 @@ export const Head = () => (
     <meta
       name="description"
       content="Professional CV of Francois Bouet - Software engineer"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossOrigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
     />
   </>
 )
