@@ -56,6 +56,14 @@ const SideMenu: React.FC = () => {
         >
           Articles
         </Link>
+        <Link
+          className="floating-link"
+          to="/projects"
+          aria-label="Projects"
+          title="Projects"
+        >
+          Projects
+        </Link>
       </div>
 
       {/* Contact links group */}

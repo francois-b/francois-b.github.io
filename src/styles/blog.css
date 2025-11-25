@@ -52,9 +52,10 @@
 }
 
 .blog-post-card__title a {
-  color: #818cf8;
+  color: #8593e8;
   text-decoration: none;
   transition: color 0.2s ease;
+  font-weight: 700;
 }
 
 .blog-post-card__title a:hover,
@@ -114,7 +115,7 @@
   font-family: var(--font-sans);
   font-size: 0.95rem;
   font-weight: 600;
-  color: #818cf8;
+  color: #8593e8;
   text-decoration: none;
   display: inline-flex;
   align-items: center;

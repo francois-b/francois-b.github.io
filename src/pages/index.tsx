@@ -142,7 +142,7 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
           {/* Projects Section */}
           <div className="section-shell">
             <section className="cv-section projects-section">
-              <h2>Some projects</h2>
+              <h2>Projects</h2>
               <div className="projects-compact">
                  <article className="card-base project-item">
                   <h3>Argument mapping</h3>

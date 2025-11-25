@@ -34,7 +34,7 @@ html[data-theme="night"] {
 
 /* Sun Theme (Default) */
 body.theme-sun {
-  --color-primary: #818cf8;
+  --color-primary: #8593e8;
   --color-secondary: #fbbf24;
   --color-text: #374151;
   --color-text-light: #4b5563;
@@ -60,7 +60,7 @@ body.theme-sun {
 
 /* Night Theme */
 body.theme-night {
-  --color-primary: #818cf8;
+  --color-primary: #8593e8;
   --color-secondary: #a78bfa;
   --color-text: #e2e8f0;
   --color-text-light: #cbd5e1;
@@ -68,7 +68,7 @@ body.theme-night {
   --color-bg: #0f172a;
   --color-bg-subtle: #1e293b;
   --color-border: #334155;
-  --gradient-1: #818cf8;
+  --gradient-1: #8593e8;
   --gradient-1-opacity: 0.2;
   --gradient-2: #a78bfa;
   --gradient-2-opacity: 0.1;
@@ -144,7 +144,7 @@ h6 {
 
 /* Global link styles */
 a {
-  color: #818cf8;
+  color: #8593e8;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -229,7 +229,7 @@ a:hover {
 
 .floating-link.active {
   font-weight: 600;
-  color: #818cf8;
+  color: #8593e8;
 }
 
 .floating-link.active:hover {
@@ -331,7 +331,7 @@ a:hover {
 .name {
   font-family: var(--font-serif);
   font-size: 2.5rem;
-  font-weight: 900;
+  font-weight: 700;
   color: var(--color-text);
   margin: 0 0 0.5rem 0;
   letter-spacing: -0.02em;
@@ -644,9 +644,10 @@ a:hover {
 }
 
 .blog-card h3 a {
-  color: #818cf8;
+  color: #8593e8;
   text-decoration: none;
   transition: color 0.3s ease;
+  font-weight: 700;
 }
 
 .blog-card h3 a:hover {
@@ -664,7 +665,7 @@ a:hover {
 .blog-card-link {
   font-family: var(--font-sans);
   font-size: 0.85rem;
-  color: #818cf8;
+  color: #8593e8;
   font-weight: 600;
   text-decoration: none;
   display: inline-flex;

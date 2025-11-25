@@ -64,6 +64,7 @@ exports.createPages = async ({ actions, graphql }) => {
             id
             frontmatter {
               slug
+              tags
             }
           }
         }
@@ -75,11 +76,24 @@ exports.createPages = async ({ actions, graphql }) => {
     throw result.errors
   }
 
-  // Create blog post pages
+  // Create blog post pages and project pages
   const posts = result.data.allMarkdownRemark.edges
   const blogPostTemplate = path.resolve("./src/templates/blog-post.js")
+  const projectTemplate = path.resolve("./src/templates/project.js")
 
   posts.forEach(({ node }) => {
+    const isProject = node.frontmatter.tags?.includes("project")
+    
+    if (isProject) {
+      createPage({
+        path: `/projects/${node.frontmatter.slug}`,
+        component: projectTemplate,
+        context: {
+          slug: node.frontmatter.slug,
+        },
+      })
+    }
+    
     createPage({
       path: `/blog/${node.frontmatter.slug}`,
       component: blogPostTemplate,

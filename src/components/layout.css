@@ -45,7 +45,7 @@ body {
 }
 a {
   background-color: transparent;
-  color: #818cf8;
+  color: #8593e8;
   text-decoration: none;
   font-weight: 500;
   text-decoration: underline;
@@ -262,7 +262,7 @@ pre tt:after {
 
 .floating-link.active {
   font-weight: 600;
-  color: #818cf8;
+  color: #8593e8;
 }
 
 .floating-link.active:hover {

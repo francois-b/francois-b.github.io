@@ -5,8 +5,6 @@ slug: "getting-started-with-gatsby"
 tags: ["gatsby", "react", "web development", "featured"]
 ---
 
-# Getting Started with Gatsby
-
 Gatsby is a powerful React-based framework for building fast, modern websites and applications. In this article, we'll explore the basics of getting started with Gatsby.
 
 ## What is Gatsby?
