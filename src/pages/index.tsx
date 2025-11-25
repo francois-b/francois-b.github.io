@@ -1,7 +1,7 @@
 import * as React from "react"
 import { graphql, Link } from "gatsby"
 import type { PageProps } from "gatsby"
-import FloatingControls from "../components/FloatingControls"
+import SideMenu from "../components/SideMenu"
 // import TimelineVideoPlayer from "../components/TimelineVideoPlayer"
 import { jobs } from "../data/cvContent"
 // import timelineVideo from "../images/Timeline2.mp4"
@@ -43,7 +43,7 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
   return (
     <div className="cv-container">
       <aside className="cv-sidebar">
-        <FloatingControls />
+        <SideMenu />
       </aside>
 
       <div className="cv-content">
@@ -95,9 +95,9 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
           <div className="section-shell">
             <section className="summary-section">
               <p style={{ fontSize: "medium" }}>
-                Hi there! Thanks for stopping by. On this page, you'll find more
+                Hi there! On this page, you'll find a bit
                 about myself, what I'm working on, and past projects. I am
-                passonate about knowledge management, technical communication,
+                focused on knowledge management, technical communication,
                 and product design. I have been working in tech since 2010 in
                 Paris, London, Boston, and Chicago.
               </p>
@@ -142,36 +142,33 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
           {/* Projects Section */}
           <div className="section-shell">
             <section className="cv-section projects-section">
-              <h2>Current & past projects</h2>
+              <h2>Some projects</h2>
               <div className="projects-compact">
-                <article className="card-base project-item">
-                  <h3>E-Commerce Platform</h3>
+                 <article className="card-base project-item">
+                  <h3>Argument mapping</h3>
                   <p>
-                    Full-featured online store with payment integration and
-                    admin dashboard
+                    This is a lightweight and versatile tool to map the reasoning behind decisions, such as Archetictural Decision Records, or any kind of discussion or debate.
                   </p>
                   <span className="project-tech">
-                    React • Node.js • Stripe • AWS
+                    LLM • Graph database • Custom viz
                   </span>
                 </article>
                 <article className="card-base project-item">
-                  <h3>Analytics Dashboard</h3>
+                  <h3>Chess openings helper</h3>
                   <p>
-                    Real-time data visualization dashboard processing millions
-                    of events
+                    Memorizing chess openings and why they work can be daunting. I endeavored to make that experience more fun and engaging.
                   </p>
                   <span className="project-tech">
-                    Next.js • GraphQL • D3.js • PostgreSQL
+                    React • Node.js • AWS
                   </span>
                 </article>
                 <article className="card-base project-item">
-                  <h3>Design System</h3>
+                  <h3>Privacy-first family journal</h3>
                   <p>
-                    Component library and documentation site used across product
-                    teams
+                    I didn't want to rely on 3rd-party services with unknown privacy guarantees. This project stands up a private journal on AWS that is auditable and secure.
                   </p>
                   <span className="project-tech">
-                    React • Storybook • TypeScript
+                    AWS CDK • React
                   </span>
                 </article>
               </div>
@@ -199,8 +196,6 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
           </div>
 
         </main>
-
-        <footer className="cv-footer"></footer>
       </div>
     </div>
   )

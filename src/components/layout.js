@@ -9,7 +9,7 @@ import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import FloatingControls from "./FloatingControls"
+import SideMenu from "./SideMenu"
 import "./layout.css"
 import "../styles/cv.css"
 
@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
   return (
     <div className="cv-container">
       <aside className="cv-sidebar">
-        <FloatingControls />
+        <SideMenu />
       </aside>
 
       <div className="cv-content">

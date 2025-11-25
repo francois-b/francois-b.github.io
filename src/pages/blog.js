@@ -14,7 +14,7 @@ const BlogPage = ({ data }) => {
   return (
     <Layout>
       <div className="blog-page">
-        <h1 className="blog-page__title">Blog</h1>
+        <h1 className="blog-page__title">Articles</h1>
 
         {posts.length === 0 ? (
           <p className="blog-page__empty">No blog posts found.</p>
@@ -30,20 +30,12 @@ const BlogPage = ({ data }) => {
                   </h2>
                   <p className="blog-post-card__meta">
                     {node.frontmatter.date}
-                    {node.timeToRead ? ` · ${node.timeToRead} min read` : ""}
                   </p>
                 </header>
 
                 <p className="blog-post-card__excerpt">{node.excerpt}</p>
 
                 <Tags tags={node.frontmatter.tags} />
-
-                <Link
-                  className="blog-post-card__read-more"
-                  to={`/blog/${node.frontmatter.slug}`}
-                >
-                  Read more
-                </Link>
               </article>
             ))}
           </div>
@@ -53,7 +45,7 @@ const BlogPage = ({ data }) => {
   )
 }
 
-export const Head = () => <Seo title="Blog" />
+export const Head = () => <Seo title="Articles" />
 
 export default BlogPage
 

@@ -12,7 +12,7 @@ const BlogPostTemplate = ({ data }) => {
     <Layout>
       <article className="blog-post-article">
         <header className="blog-post-header">
-          <h1 style={{ marginBottom: "0.5rem" }}>{post.frontmatter.title}</h1>
+          <h1 className="blog-post-title" style={{ marginBottom: "0.5rem" }}>{post.frontmatter.title}</h1>
           <p className="blog-post-card__meta">
             {post.frontmatter.date}
           </p>

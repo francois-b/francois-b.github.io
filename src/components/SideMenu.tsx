@@ -4,7 +4,6 @@ import { useTheme, type ThemeName } from "../context/theme-context"
 
 const THEME_OPTIONS: Array<{ name: ThemeName; label: string }> = [
   { name: "sun", label: "Light theme" },
-  // { name: "rain", label: "Rain theme" },
   { name: "night", label: "Dark theme" },
 ]
 
@@ -23,7 +22,7 @@ const CONTACT_LINKS = [
   },
 ]
 
-const FloatingControls: React.FC = () => {
+const SideMenu: React.FC = () => {
   const { theme, setTheme } = useTheme()
 
   return (
@@ -55,7 +54,7 @@ const FloatingControls: React.FC = () => {
           aria-label="Blog"
           title="Blog"
         >
-          Blog
+          Articles
         </Link>
       </div>
 
@@ -79,4 +78,4 @@ const FloatingControls: React.FC = () => {
   )
 }
 
-export default FloatingControls
+export default SideMenu

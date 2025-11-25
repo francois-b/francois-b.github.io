@@ -1,5 +1,5 @@
 .blog-page {
-  padding: 2rem 0 3rem;
+  /* padding: 2rem 0 3rem; */
   color: var(--color-text);
 }
 
@@ -29,14 +29,14 @@
 .blog-post-list {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  /* gap: 2rem; */
 }
 
 .blog-post-card {
   background: transparent;
   border: none;
   border-radius: 0;
-  padding: 1.75rem 0;
+  padding: 1rem 0;
   box-shadow: none;
   transition: none;
   position: relative;
@@ -70,7 +70,7 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin-top: 0.25rem;
-  margin-bottom: 0;
+  margin-bottom: 15px;
 }
 
 .blog-post-card__excerpt {
@@ -149,4 +149,8 @@
   .blog-post-card__excerpt {
     font-size: 0.95rem;
   }
+}
+
+.blog-post-title {
+  font-family: var(--font-serif);
 }
