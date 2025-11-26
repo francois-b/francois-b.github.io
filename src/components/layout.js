@@ -12,6 +12,7 @@ import Header from "./header"
 import SideMenu from "./SideMenu"
 import "./layout.css"
 import "../styles/cv.css"
+import "../styles/prism-theme.css"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`

@@ -1,0 +1,378 @@
+/**
+ * Coldark Theme for Prism.js - Scoped for theme switching
+ * Light theme (Sun/Rain): Coldark Cold
+ * Dark theme (Night): Coldark Dark
+ */
+
+/* ===================================
+   Light Theme - Coldark Cold
+   =================================== */
+
+body.theme-sun code[class*="language-"],
+body.theme-sun pre[class*="language-"],
+body.theme-rain code[class*="language-"],
+body.theme-rain pre[class*="language-"] {
+  color: #111b27;
+  background: none;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+body.theme-sun pre[class*="language-"]::-moz-selection,
+body.theme-sun pre[class*="language-"] ::-moz-selection,
+body.theme-sun code[class*="language-"]::-moz-selection,
+body.theme-sun code[class*="language-"] ::-moz-selection,
+body.theme-rain pre[class*="language-"]::-moz-selection,
+body.theme-rain pre[class*="language-"] ::-moz-selection,
+body.theme-rain code[class*="language-"]::-moz-selection,
+body.theme-rain code[class*="language-"] ::-moz-selection {
+  background: #8da1b9;
+}
+
+body.theme-sun pre[class*="language-"]::selection,
+body.theme-sun pre[class*="language-"] ::selection,
+body.theme-sun code[class*="language-"]::selection,
+body.theme-sun code[class*="language-"] ::selection,
+body.theme-rain pre[class*="language-"]::selection,
+body.theme-rain pre[class*="language-"] ::selection,
+body.theme-rain code[class*="language-"]::selection,
+body.theme-rain code[class*="language-"] ::selection {
+  background: #8da1b9;
+}
+
+body.theme-sun pre[class*="language-"],
+body.theme-rain pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+
+body.theme-sun :not(pre) > code[class*="language-"],
+body.theme-sun pre[class*="language-"],
+body.theme-rain :not(pre) > code[class*="language-"],
+body.theme-rain pre[class*="language-"] {
+  background: #e3eaf2;
+}
+
+body.theme-sun :not(pre) > code[class*="language-"],
+body.theme-rain :not(pre) > code[class*="language-"] {
+  padding: 0.1em 0.3em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+body.theme-sun .token.comment,
+body.theme-sun .token.prolog,
+body.theme-sun .token.doctype,
+body.theme-sun .token.cdata,
+body.theme-rain .token.comment,
+body.theme-rain .token.prolog,
+body.theme-rain .token.doctype,
+body.theme-rain .token.cdata {
+  color: #3c526d;
+}
+
+body.theme-sun .token.punctuation,
+body.theme-rain .token.punctuation {
+  color: #111b27;
+}
+
+body.theme-sun .token.delimiter.important,
+body.theme-sun .token.selector .parent,
+body.theme-sun .token.tag,
+body.theme-sun .token.tag .token.punctuation,
+body.theme-rain .token.delimiter.important,
+body.theme-rain .token.selector .parent,
+body.theme-rain .token.tag,
+body.theme-rain .token.tag .token.punctuation {
+  color: #006d6d;
+}
+
+body.theme-sun .token.attr-name,
+body.theme-sun .token.boolean,
+body.theme-sun .token.boolean.important,
+body.theme-sun .token.number,
+body.theme-sun .token.constant,
+body.theme-sun .token.selector .token.attribute,
+body.theme-rain .token.attr-name,
+body.theme-rain .token.boolean,
+body.theme-rain .token.boolean.important,
+body.theme-rain .token.number,
+body.theme-rain .token.constant,
+body.theme-rain .token.selector .token.attribute {
+  color: #755f00;
+}
+
+body.theme-sun .token.class-name,
+body.theme-sun .token.key,
+body.theme-sun .token.parameter,
+body.theme-sun .token.property,
+body.theme-sun .token.property-access,
+body.theme-sun .token.variable,
+body.theme-rain .token.class-name,
+body.theme-rain .token.key,
+body.theme-rain .token.parameter,
+body.theme-rain .token.property,
+body.theme-rain .token.property-access,
+body.theme-rain .token.variable {
+  color: #005a8e;
+}
+
+body.theme-sun .token.attr-value,
+body.theme-sun .token.inserted,
+body.theme-sun .token.color,
+body.theme-sun .token.selector .token.value,
+body.theme-sun .token.string,
+body.theme-sun .token.string .token.url-link,
+body.theme-rain .token.attr-value,
+body.theme-rain .token.inserted,
+body.theme-rain .token.color,
+body.theme-rain .token.selector .token.value,
+body.theme-rain .token.string,
+body.theme-rain .token.string .token.url-link {
+  color: #116b00;
+}
+
+body.theme-sun .token.builtin,
+body.theme-sun .token.keyword-array,
+body.theme-sun .token.package,
+body.theme-sun .token.regex,
+body.theme-rain .token.builtin,
+body.theme-rain .token.keyword-array,
+body.theme-rain .token.package,
+body.theme-rain .token.regex {
+  color: #af00af;
+}
+
+body.theme-sun .token.function,
+body.theme-sun .token.selector .token.class,
+body.theme-sun .token.selector .token.id,
+body.theme-rain .token.function,
+body.theme-rain .token.selector .token.class,
+body.theme-rain .token.selector .token.id {
+  color: #7c00aa;
+}
+
+body.theme-sun .token.atrule .token.rule,
+body.theme-sun .token.combinator,
+body.theme-sun .token.keyword,
+body.theme-sun .token.operator,
+body.theme-sun .token.pseudo-class,
+body.theme-sun .token.pseudo-element,
+body.theme-sun .token.selector,
+body.theme-sun .token.unit,
+body.theme-rain .token.atrule .token.rule,
+body.theme-rain .token.combinator,
+body.theme-rain .token.keyword,
+body.theme-rain .token.operator,
+body.theme-rain .token.pseudo-class,
+body.theme-rain .token.pseudo-element,
+body.theme-rain .token.selector,
+body.theme-rain .token.unit {
+  color: #a04900;
+}
+
+body.theme-sun .token.deleted,
+body.theme-sun .token.important,
+body.theme-rain .token.deleted,
+body.theme-rain .token.important {
+  color: #c22f2e;
+}
+
+body.theme-sun .token.keyword-this,
+body.theme-sun .token.this,
+body.theme-rain .token.keyword-this,
+body.theme-rain .token.this {
+  color: #005a8e;
+}
+
+body.theme-sun .token.important,
+body.theme-sun .token.keyword-this,
+body.theme-sun .token.this,
+body.theme-sun .token.bold,
+body.theme-rain .token.important,
+body.theme-rain .token.keyword-this,
+body.theme-rain .token.this,
+body.theme-rain .token.bold {
+  font-weight: bold;
+}
+
+body.theme-sun .token.delimiter.important,
+body.theme-rain .token.delimiter.important {
+  font-weight: inherit;
+}
+
+body.theme-sun .token.italic,
+body.theme-rain .token.italic {
+  font-style: italic;
+}
+
+body.theme-sun .token.entity,
+body.theme-rain .token.entity {
+  cursor: help;
+}
+
+/* ===================================
+   Dark Theme - Coldark Dark
+   =================================== */
+
+body.theme-night code[class*="language-"],
+body.theme-night pre[class*="language-"] {
+  color: #e3eaf2;
+  background: none;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+body.theme-night pre[class*="language-"]::-moz-selection,
+body.theme-night pre[class*="language-"] ::-moz-selection,
+body.theme-night code[class*="language-"]::-moz-selection,
+body.theme-night code[class*="language-"] ::-moz-selection {
+  background: #3c526d;
+}
+
+body.theme-night pre[class*="language-"]::selection,
+body.theme-night pre[class*="language-"] ::selection,
+body.theme-night code[class*="language-"]::selection,
+body.theme-night code[class*="language-"] ::selection {
+  background: #3c526d;
+}
+
+body.theme-night pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+
+body.theme-night :not(pre) > code[class*="language-"],
+body.theme-night pre[class*="language-"] {
+  background: #111b27;
+}
+
+body.theme-night :not(pre) > code[class*="language-"] {
+  padding: 0.1em 0.3em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+body.theme-night .token.comment,
+body.theme-night .token.prolog,
+body.theme-night .token.doctype,
+body.theme-night .token.cdata {
+  color: #8da1b9;
+}
+
+body.theme-night .token.punctuation {
+  color: #e3eaf2;
+}
+
+body.theme-night .token.delimiter.important,
+body.theme-night .token.selector .parent,
+body.theme-night .token.tag,
+body.theme-night .token.tag .token.punctuation {
+  color: #66cccc;
+}
+
+body.theme-night .token.attr-name,
+body.theme-night .token.boolean,
+body.theme-night .token.boolean.important,
+body.theme-night .token.number,
+body.theme-night .token.constant,
+body.theme-night .token.selector .token.attribute {
+  color: #e6d37a;
+}
+
+body.theme-night .token.class-name,
+body.theme-night .token.key,
+body.theme-night .token.parameter,
+body.theme-night .token.property,
+body.theme-night .token.property-access,
+body.theme-night .token.variable {
+  color: #6cb8e6;
+}
+
+body.theme-night .token.attr-value,
+body.theme-night .token.inserted,
+body.theme-night .token.color,
+body.theme-night .token.selector .token.value,
+body.theme-night .token.string,
+body.theme-night .token.string .token.url-link {
+  color: #91d076;
+}
+
+body.theme-night .token.builtin,
+body.theme-night .token.keyword-array,
+body.theme-night .token.package,
+body.theme-night .token.regex {
+  color: #f4adf4;
+}
+
+body.theme-night .token.function,
+body.theme-night .token.selector .token.class,
+body.theme-night .token.selector .token.id {
+  color: #c699e3;
+}
+
+body.theme-night .token.atrule .token.rule,
+body.theme-night .token.combinator,
+body.theme-night .token.keyword,
+body.theme-night .token.operator,
+body.theme-night .token.pseudo-class,
+body.theme-night .token.pseudo-element,
+body.theme-night .token.selector,
+body.theme-night .token.unit {
+  color: #e9ae7e;
+}
+
+body.theme-night .token.deleted,
+body.theme-night .token.important {
+  color: #cd6660;
+}
+
+body.theme-night .token.keyword-this,
+body.theme-night .token.this {
+  color: #6cb8e6;
+}
+
+body.theme-night .token.important,
+body.theme-night .token.keyword-this,
+body.theme-night .token.this,
+body.theme-night .token.bold {
+  font-weight: bold;
+}
+
+body.theme-night .token.delimiter.important {
+  font-weight: inherit;
+}
+
+body.theme-night .token.italic {
+  font-style: italic;
+}
+
+body.theme-night .token.entity {
+  cursor: help;
+}

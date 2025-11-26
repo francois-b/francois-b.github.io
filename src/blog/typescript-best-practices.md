@@ -9,7 +9,7 @@ tags: ["typescript", "javascript", "best practices"]
 
 TypeScript has become the standard for building large-scale JavaScript applications. Here are some best practices to help you write better TypeScript code.
 
-## 1. Use Strict Mode
+## Use Strict Mode
 
 Always enable strict mode in your `tsconfig.json`:
 
@@ -23,7 +23,7 @@ Always enable strict mode in your `tsconfig.json`:
 
 This enables all strict type-checking options and helps catch potential bugs early.
 
-## 2. Leverage Type Inference
+## Leverage Type Inference
 
 TypeScript is excellent at inferring types. Don't over-annotate when the compiler can figure it out:
 
@@ -35,7 +35,7 @@ const numbers = [1, 2, 3, 4, 5]
 const numbers: number[] = [1, 2, 3, 4, 5]
 ```
 
-## 3. Use Union Types Instead of Enums
+## Use Union Types Instead of Enums
 
 Union types are often more flexible than enums:
 
@@ -43,7 +43,7 @@ Union types are often more flexible than enums:
 type Status = 'pending' | 'approved' | 'rejected'
 ```
 
-## 4. Avoid `any`
+## Avoid `any`
 
 The `any` type defeats the purpose of TypeScript. Use `unknown` if you truly don't know the type:
 
@@ -56,7 +56,7 @@ function processValue(value: unknown) {
 }
 ```
 
-## 5. Use Utility Types
+## Use Utility Types
 
 TypeScript provides powerful utility types like `Partial`, `Pick`, `Omit`, and `Record`:
 

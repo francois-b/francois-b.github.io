@@ -7,7 +7,7 @@ tags: ["react", "performance", "optimization", "featured"]
 
 Performance is crucial for providing a great user experience. Here are some proven techniques to optimize your React applications.
 
-## 1. Use React.memo for Pure Components
+## Use React.memo for Pure Components
 
 Prevent unnecessary re-renders by wrapping components with `React.memo`:
 
@@ -17,7 +17,7 @@ const MyComponent = React.memo(({ data }) => {
 })
 ```
 
-## 2. Implement Code Splitting
+## Implement Code Splitting
 
 Use dynamic imports to split your code and reduce initial bundle size:
 
@@ -33,14 +33,14 @@ function App() {
 }
 ```
 
-## 3. Optimize Images
+## Optimize Images
 
 - Use modern image formats (WebP, AVIF)
 - Implement lazy loading
 - Serve responsive images with srcset
 - Use image CDNs
 
-## 4. Virtualize Long Lists
+## Virtualize Long Lists
 
 For long lists, only render visible items using libraries like `react-window` or `react-virtualized`:
 
@@ -60,7 +60,7 @@ const VirtualList = ({ items }) => (
 )
 ```
 
-## 5. Use useMemo and useCallback
+## Use useMemo and useCallback
 
 Memoize expensive calculations and callbacks:
 
@@ -74,7 +74,7 @@ const handleClick = useCallback(() => {
 }, [value])
 ```
 
-## 6. Debounce and Throttle Events
+## Debounce and Throttle Events
 
 Limit the frequency of expensive operations:
 

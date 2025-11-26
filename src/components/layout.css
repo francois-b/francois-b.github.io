@@ -296,3 +296,21 @@ pre tt:after {
 .blog-post-header {
   margin-bottom: 2rem;
 }
+
+.blog-post-content {
+  counter-reset: h2-counter;
+}
+
+.blog-post-content h2 {
+  position: relative;
+  counter-increment: h2-counter;
+}
+
+.blog-post-content h2::before {
+  content: counter(h2-counter) ".";
+  position: absolute;
+  right: 100%;
+  margin-right: 1rem;
+  font-weight: bold;
+  color: var(--color-primary, #8593e8);
+}
