@@ -570,6 +570,7 @@ a:hover {
   flex-direction: column;
   height: 100%;
   overflow: visible;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .job-title {
@@ -578,7 +579,7 @@ a:hover {
 
 .job-title h3 {
   font-family: var(--font-header);
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-text);
   margin: 0 0 0.35rem 0;
@@ -723,11 +724,12 @@ a:hover {
   flex-direction: column;
   height: 100%;
   overflow: visible;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .project-item h3 {
   font-family: var(--font-header);
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-text);
   margin: 0 0 0.75rem 0;
@@ -758,8 +760,8 @@ body.theme-night .project-icon {
 .project-item p {
   color: var(--color-text-light);
   line-height: 1.5;
-  font-size: 0.95rem;
-  margin-bottom: 0.85rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
   flex-grow: 1;
 }
 

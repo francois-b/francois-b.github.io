@@ -87,7 +87,7 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
                 </span>
                 ,
                 <br />
-                <span className="highlight highlight--ai">AI literacy</span>,
+                <span className="highlight highlight--ai">AI-native development</span>,
                 <br />
                 and{" "}
                 <span className="highlight highlight--domain">
@@ -151,16 +151,28 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
             <section className="cv-section projects-section">
               <h2>Projects</h2>
               <div className="projects-compact">
+                <article className="card-base project-item">
+                  <h3>
+                    <img src={graphIcon} alt="" className="project-icon" />
+                    Hygge Cards: Mindful flashcards
+                  </h3>
+                  <p>
+                    A non-flashy flashcard app with spaced-repetition and AI-generated Q&As.
+                  </p>
+                  <span className="project-tech">
+                    LLM • AWS CDK • Embeddings in dynamoDB
+                  </span>
+                </article>
                  <article className="card-base project-item">
                   <h3>
                     <img src={graphIcon} alt="" className="project-icon" />
-                    Argument mapping
+                    <Link to="/blog/mmx">mmx: Memex-like journaling</Link>
                   </h3>
                   <p>
                     This is a lightweight and versatile tool to map the reasoning behind decisions, such as Archetictural Decision Records, or any kind of discussion or debate.
                   </p>
                   <span className="project-tech">
-                    LLM • Graph database • Custom viz
+                    LLM • AWS CDK • PostgreSQL • Embeddings with pgvector
                   </span>
                 </article>
                 <article className="card-base project-item">
