@@ -21,10 +21,6 @@ const BlogPostTemplate = ({ data }) => {
         <div
           className="blog-post-content"
           dangerouslySetInnerHTML={{ __html: post.html }}
-          style={{
-            lineHeight: "1.7",
-            fontSize: "1.1rem",
-          }}
         />
         <hr style={{ margin: "3rem 0" }} />
         <Link to="/blog" style={{ textDecoration: "none" }}>

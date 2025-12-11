@@ -279,6 +279,8 @@ pre tt:after {
 
 .blog-post-content {
   counter-reset: h2-counter;
+  font-size: var(--font-size-base);
+  line-height: 1.7;
 }
 
 .blog-post-content h2 {
