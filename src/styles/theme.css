@@ -6,13 +6,13 @@
   z-index: 1000;
   background: var(--color-bg-subtle);
   padding: 0.35rem;
-  border-radius: 50px;
+  border-radius: var(--radius-full);
   border: 1.5px solid var(--color-border);
   box-shadow: var(--shadow-sm);
 }
 
 body.theme-sun .theme-toggle-group {
-  border-color: #111827;
+  border-color: var(--color-text);
 }
 
 .theme-button {
@@ -54,7 +54,7 @@ body.theme-sun .theme-toggle-group {
 }
 
 body.theme-night .theme-button {
-  color: #ffffff;
+  color: var(--color-text);
 }
 
 body.theme-night .theme-button img {

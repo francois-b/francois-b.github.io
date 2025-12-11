@@ -22,7 +22,7 @@
   border: 1px solid var(--color-border);
   border-left: 3px solid var(--color-primary);
   padding: 1.25rem 1.5rem;
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
 }
 
@@ -35,8 +35,8 @@
 .blog-post-card {
   background: transparent;
   border: none;
-  border-radius: 4px;
-  padding: 1rem 0;
+  border-radius: var(--radius-sm);
+  padding: var(--space-4) 0;
   box-shadow: none;
   transition: none;
   position: relative;
@@ -45,40 +45,40 @@
 
 .blog-post-card__title {
   font-family: var(--font-header);
-  font-size: 1.25rem;
+  font-size: var(--font-size-lg);
   font-weight: 700;
   margin: 0 0 0.35rem;
   color: var(--color-text);
 }
 
 .blog-post-card__title a {
-  color: #8593e8;
+  color: var(--color-link);
   text-decoration: none;
   font-weight: 700;
 }
 
 .blog-post-card__title a:hover,
 .blog-post-card__title a:focus-visible {
-  color: #fe7c29;
+  color: var(--color-link-hover);
   outline: none;
 }
 
 .blog-post-card__meta {
   font-family: var(--font-sans);
-  font-size: 0.7rem;
+  font-size: var(--font-size-xs);
   color: var(--color-text-lighter);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  margin-top: 0.25rem;
-  margin-bottom: 15px;
+  margin-top: var(--space-1);
+  margin-bottom: var(--space-4);
 }
 
 .blog-post-card__excerpt {
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   line-height: 1.7;
   color: var(--color-text-light);
-  margin-bottom: 1.1rem;
+  margin-bottom: var(--space-4);
 }
 
 .blog-post-card__tags {
@@ -92,11 +92,11 @@
 
 .blog-post-card__tag {
   font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-size: var(--font-size-sm);
   font-weight: 600;
   letter-spacing: 0.02em;
   padding: 0.10rem 0.35rem;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   background: color-mix(
     in srgb,
     var(--color-bg-subtle) 85%,
@@ -114,7 +114,7 @@
   font-family: var(--font-sans);
   font-size: 0.95rem;
   font-weight: 600;
-  color: #8593e8;
+  color: var(--color-link);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -123,7 +123,7 @@
 
 .blog-post-card__read-more:hover,
 .blog-post-card__read-more:focus-visible {
-  color: #fe7c29;
+  color: var(--color-link-hover);
   outline: none;
 }
 
