@@ -51,7 +51,6 @@ a {
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 2px;
-  transition: color 0.3s ease;
 }
 a:active,
 a:hover {
@@ -250,7 +249,6 @@ pre tt:after {
   cursor: pointer;
   display: block;
   text-align: left;
-  transition: all 0.3s ease;
   padding: 0.25rem 0;
   text-decoration: none;
 }

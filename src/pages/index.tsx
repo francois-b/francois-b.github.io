@@ -99,7 +99,7 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
           </div>
 
           {/* Summary Section */}
-          <div className="section-shell">
+          {/* <div className="section-shell">
             <section className="summary-section">
               <p style={{ fontSize: "medium" }}>
                 Hi there! On this page, you'll find a bit
@@ -109,9 +109,9 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
                 Paris, London, Boston, and Chicago.
               </p>
             </section>
-          </div>
+          </div> */}
 
-          <div className="section-shell">
+          <div className="section-shell" style={{marginTop: '40px'}}>
             <section className="cv-section blog-section">
               <h2>Featured articles</h2>
               {featuredPosts.length === 0 ? (

@@ -54,7 +54,6 @@
 .blog-post-card__title a {
   color: #8593e8;
   text-decoration: none;
-  transition: color 0.2s ease;
   font-weight: 700;
 }
 
@@ -120,7 +119,6 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  transition: color 0.2s ease;
 }
 
 .blog-post-card__read-more:hover,

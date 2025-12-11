@@ -9,7 +9,6 @@
   border-radius: 50px;
   border: 1.5px solid var(--color-border);
   box-shadow: var(--shadow-sm);
-  transition: all 0.3s ease;
 }
 
 body.theme-sun .theme-toggle-group {
@@ -27,14 +26,12 @@ body.theme-sun .theme-toggle-group {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
   padding: 0;
   position: relative;
   text-decoration: none;
 }
 
 .theme-button:hover {
-  transform: scale(1.1);
   background: var(--color-bg);
   border-color: var(--color-border);
 }
@@ -44,7 +41,6 @@ body.theme-sun .theme-toggle-group {
   width: 20px;
   height: 20px;
   object-fit: contain;
-  transition: transform 0.3s ease;
 }
 
 .theme-button img {
