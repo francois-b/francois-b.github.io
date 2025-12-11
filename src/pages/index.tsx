@@ -5,6 +5,9 @@ import SideMenu from "../components/SideMenu"
 // import TimelineVideoPlayer from "../components/TimelineVideoPlayer"
 import { jobs } from "../data/cvContent"
 // import timelineVideo from "../images/Timeline2.mp4"
+import graphIcon from "../images/graph.svg"
+import tacticIcon from "../images/tactic.svg"
+import albumIcon from "../images/album.svg"
 import "../styles/cv.css"
 
 const AchievementList: React.FC<{ items: string[] }> = ({ items }) => (
@@ -63,8 +66,12 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
           <div id="video-and-pitch" className="video-and-pitch">
             <div className="video-and-pitch__video">
               {/* <TimelineVideoPlayer src={timelineVideo} /> */}
-              <div style={{ background: 'var(--color-bg-subtle)', minHeight: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '8px' }}>
-                <p style={{ color: 'var(--color-text-lighter)' }}>Video placeholder</p>
+              <div className="video-placeholder">
+                <button className="video-placeholder__play" aria-label="Play video">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </button>
               </div>
             </div>
             <div id="helping" className="video-and-pitch__text">
@@ -145,7 +152,10 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
               <h2>Projects</h2>
               <div className="projects-compact">
                  <article className="card-base project-item">
-                  <h3>Argument mapping</h3>
+                  <h3>
+                    <img src={graphIcon} alt="" className="project-icon" />
+                    Argument mapping
+                  </h3>
                   <p>
                     This is a lightweight and versatile tool to map the reasoning behind decisions, such as Archetictural Decision Records, or any kind of discussion or debate.
                   </p>
@@ -154,7 +164,10 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
                   </span>
                 </article>
                 <article className="card-base project-item">
-                  <h3>Chess openings helper</h3>
+                  <h3>
+                    <img src={tacticIcon} alt="" className="project-icon" />
+                    Chess openings helper
+                  </h3>
                   <p>
                     Memorizing chess openings and why they work can be daunting. I endeavored to make that experience more fun and engaging.
                   </p>
@@ -163,7 +176,10 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
                   </span>
                 </article>
                 <article className="card-base project-item">
-                  <h3>Privacy-first family journal</h3>
+                  <h3>
+                    <img src={albumIcon} alt="" className="project-icon" />
+                    Privacy-first family journal
+                  </h3>
                   <p>
                     I didn't want to rely on 3rd-party services with unknown privacy guarantees. This project stands up a private journal on AWS that is auditable and secure.
                   </p>

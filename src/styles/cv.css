@@ -49,9 +49,9 @@ body.theme-sun {
   --path-color-1: rgba(250, 204, 21, 0.24);
   --path-color-2: rgba(251, 191, 36, 0.18);
 
-  --highlight-engineering: rgba(250, 204, 21, 0.34);
-  --highlight-ai: rgba(36, 251, 183, 0.3);
-  --highlight-domain: rgba(250, 137, 107, 0.3);
+  --highlight-engineering: rgba(250, 204, 21, 0.5);
+  --highlight-ai: rgba(74, 222, 128, 0.45);
+  --highlight-domain: rgba(251, 146, 137, 0.5);
 
   --shadow-sm: 0 1px 3px rgba(251, 191, 36, 0.08);
   --shadow-md: 0 4px 6px rgba(251, 191, 36, 0.12);
@@ -155,25 +155,14 @@ a:hover {
 
 .highlight {
   position: relative;
-  display: inline-block;
-  padding: 0 0.12em;
+  display: inline;
+  padding: 0 0.1em;
   z-index: 0;
-}
-
-.highlight::before {
-  content: "";
-  position: absolute;
-  left: -0.18em;
-  right: -0.1em;
-  top: 56%;
-  height: 60%;
-  background: var(--highlight-color, rgba(250, 204, 21, 0.32));
-  border-radius: 10px;
-  transform: rotate(-3deg);
-  transform-origin: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-  z-index: -1;
-  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    var(--highlight-color, rgba(250, 204, 21, 0.4)) 40%,
+    transparent 40%
+  );
 }
 
 .highlight--engineering {
@@ -277,6 +266,42 @@ a:hover {
 
 .video-and-pitch__video {
   width: 100%;
+}
+
+.video-placeholder {
+  background: var(--color-bg-subtle);
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  position: relative;
+}
+
+.video-placeholder__play {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.video-placeholder__play:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+.video-placeholder__play svg {
+  width: 24px;
+  height: 24px;
+  margin-left: 3px;
 }
 
 .video-and-pitch__text {
@@ -527,9 +552,9 @@ a:hover {
 
 .card-base {
   background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
-  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  padding: 1.25rem;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -620,31 +645,36 @@ a:hover {
   flex-direction: column;
   height: 100%;
   overflow: visible;
+  background: var(--color-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .blog-card header {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .blog-card-date {
   font-family: var(--font-sans);
-  font-size: 0.7rem !important;
-  color: var(--color-text-lighter);
-  letter-spacing: 0.04em;
+  font-size: 0.65rem;
+  color: #b45309;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  margin-top: 0.25rem;
+  margin-top: 0.35rem;
   margin-bottom: 0;
+  font-weight: 500;
 }
 
 .blog-card h3 {
   font-family: var(--font-header);
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 700;
   margin: 0;
+  line-height: 1.3;
 }
 
 .blog-card h3 a {
-  color: #8593e8;
+  color: var(--color-text);
   text-decoration: none;
   transition: color 0.3s ease;
   font-weight: 700;
@@ -657,16 +687,16 @@ a:hover {
 .blog-card p {
   color: var(--color-text-light);
   line-height: 1.5;
-  margin-bottom: 0.85rem;
-  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
   flex-grow: 1;
 }
 
 .blog-card-link {
   font-family: var(--font-sans);
-  font-size: 0.85rem;
-  color: #8593e8;
-  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  font-weight: 500;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -701,6 +731,28 @@ a:hover {
   font-weight: 700;
   color: var(--color-text);
   margin: 0 0 0.75rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  vertical-align: middle;
+  margin-bottom: 0;
+}
+
+/* Light theme - black icons */
+body.theme-sun .project-icon,
+body.theme-rain .project-icon {
+  filter: brightness(0);
+}
+
+/* Dark theme - white icons */
+body.theme-night .project-icon {
+  filter: brightness(0) invert(1);
 }
 
 .project-item p {
