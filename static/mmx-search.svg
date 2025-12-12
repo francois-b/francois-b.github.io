@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 720" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="720" fill="#f8f7f4"/>
+
+  <!-- Header bar -->
+  <rect x="0" y="0" width="800" height="50" fill="#faf9f6"/>
+  <rect x="0" y="49" width="800" height="1" fill="#e5e5e5"/>
+
+  <!-- Back link -->
+  <text x="30" y="32" font-size="14" fill="#6b7280">← Dashboard</text>
+
+  <!-- Title -->
+  <text x="130" y="32" font-size="16" font-weight="600" fill="#1f2937">SEARCH</text>
+
+  <!-- Search box -->
+  <rect x="30" y="70" width="740" height="44" rx="8" fill="white" stroke="#d1d5db" stroke-width="1"/>
+  <text x="55" y="98" font-size="16" fill="#9ca3af">🔍</text>
+  <text x="85" y="98" font-size="16" fill="#1f2937">MongoDB</text>
+
+  <!-- Filter chips row 1 -->
+  <text x="30" y="145" font-size="13" fill="#6b7280">Type:</text>
+  <rect x="70" y="128" width="60" height="26" rx="4" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+  <text x="100" y="146" font-size="12" fill="#374151" text-anchor="middle">[All ▼]</text>
+
+  <text x="150" y="145" font-size="13" fill="#6b7280">Confidence:</text>
+  <rect x="230" y="128" width="60" height="26" rx="4" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+  <text x="260" y="146" font-size="12" fill="#374151" text-anchor="middle">[All ▼]</text>
+
+  <text x="310" y="145" font-size="13" fill="#6b7280">Verified:</text>
+  <rect x="375" y="128" width="60" height="26" rx="4" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+  <text x="405" y="146" font-size="12" fill="#374151" text-anchor="middle">[All ▼]</text>
+
+  <!-- Filter chips row 2 -->
+  <text x="30" y="180" font-size="13" fill="#6b7280">Entity:</text>
+  <rect x="80" y="163" width="65" height="26" rx="4" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+  <text x="112" y="181" font-size="12" fill="#374151" text-anchor="middle">[Any ▼]</text>
+
+  <text x="165" y="180" font-size="13" fill="#6b7280">Date:</text>
+  <rect x="205" y="163" width="90" height="26" rx="4" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+  <text x="250" y="181" font-size="12" fill="#374151" text-anchor="middle">[Any time ▼]</text>
+
+  <text x="315" y="180" font-size="13" fill="#6b7280">Tags:</text>
+  <rect x="355" y="163" width="70" height="26" rx="4" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+  <text x="390" y="181" font-size="12" fill="#374151" text-anchor="middle">[None ▼]</text>
+
+  <!-- Divider line -->
+  <line x1="30" y1="210" x2="770" y2="210" stroke="#e5e5e5" stroke-width="2"/>
+
+  <!-- ENTITY Section -->
+  <text x="30" y="245" font-size="12" font-weight="600" fill="#6b7280" letter-spacing="0.05em">ENTITY</text>
+  <rect x="30" y="255" width="740" height="80" rx="10" fill="white" filter="url(#shadow)"/>
+  <text x="50" y="285" font-size="16" font-weight="600" fill="#1f2937">MongoDB</text>
+  <text x="140" y="285" font-size="14" fill="#6b7280">(technology)</text>
+  <text x="50" y="308" font-size="13" fill="#6b7280">3 facts • 1 decision • 0 arguments</text>
+  <text x="700" y="295" font-size="13" fill="#3b82f6" text-anchor="end">[View Entity →]</text>
+
+  <!-- FACTS Section -->
+  <text x="30" y="365" font-size="12" font-weight="600" fill="#6b7280" letter-spacing="0.05em">FACTS (3)</text>
+  <rect x="30" y="375" width="740" height="110" rx="10" fill="white" filter="url(#shadow)"/>
+
+  <circle cx="55" cy="400" r="5" fill="#22c55e"/>
+  <text x="70" y="405" font-size="13" fill="#22c55e">[verified]</text>
+  <text x="145" y="405" font-size="13" fill="#1f2937">MongoDB uses B-tree indexes</text>
+
+  <circle cx="55" cy="430" r="5" fill="none" stroke="#9ca3af" stroke-width="2"/>
+  <text x="70" y="435" font-size="13" fill="#9ca3af">[unverified]</text>
+  <text x="160" y="435" font-size="13" fill="#1f2937">MongoDB Atlas starts at ~$50/month</text>
+
+  <circle cx="55" cy="460" r="5" fill="#22c55e"/>
+  <text x="70" y="465" font-size="13" fill="#22c55e">[verified]</text>
+  <text x="145" y="465" font-size="13" fill="#1f2937">Evaluated MongoDB for journal bot</text>
+
+  <!-- DECISIONS Section -->
+  <text x="30" y="515" font-size="12" font-weight="600" fill="#6b7280" letter-spacing="0.05em">DECISIONS (1)</text>
+  <rect x="30" y="525" width="740" height="85" rx="10" fill="white" filter="url(#shadow)"/>
+  <text x="50" y="555" font-size="14" font-weight="500" fill="#1f2937">Chose PostgreSQL over MongoDB for journal bot</text>
+  <text x="50" y="578" font-size="13" fill="#6b7280" font-style="italic">"Need vector search and complex joins"</text>
+  <text x="50" y="598" font-size="12" fill="#9ca3af">2024-11-01 • Has argument</text>
+
+  <!-- REFLECTIONS Section -->
+  <text x="30" y="640" font-size="12" font-weight="600" fill="#6b7280" letter-spacing="0.05em">REFLECTIONS (1)</text>
+  <rect x="30" y="650" width="740" height="55" rx="10" fill="white" filter="url(#shadow)"/>
+  <text x="50" y="680" font-size="13" fill="#1f2937" font-style="italic">"Impressed by MongoDB's developer experience"</text>
+  <text x="50" y="698" font-size="12" fill="#9ca3af">2024-10-15</text>
+</svg>

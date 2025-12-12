@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.1"/>
+    </filter>
+    <filter id="shadow-sm" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="620" fill="#f8f7f4"/>
+
+  <!-- Header bar -->
+  <rect x="0" y="0" width="800" height="50" fill="#faf9f6"/>
+  <rect x="0" y="49" width="800" height="1" fill="#e5e5e5"/>
+
+  <!-- Back link -->
+  <text x="30" y="32" font-size="14" fill="#6b7280">← Dashboard</text>
+
+  <!-- Title -->
+  <text x="130" y="32" font-size="16" font-weight="600" fill="#1f2937">ARGUMENT: TPM Transition</text>
+
+  <!-- Edit and menu buttons -->
+  <text x="700" y="32" font-size="14" fill="#6b7280">[Edit]</text>
+  <text x="750" y="32" font-size="14" fill="#6b7280">[⋮]</text>
+
+  <!-- Status bar -->
+  <text x="30" y="80" font-size="14" fill="#1f2937"><tspan font-weight="600">Status:</tspan> OPEN</text>
+  <text x="770" y="80" font-size="14" fill="#9ca3af" text-anchor="end">Created: 2024-11-10</text>
+
+  <!-- Main argument diagram container -->
+  <rect x="30" y="100" width="740" height="380" rx="12" fill="white" filter="url(#shadow)"/>
+
+  <!-- CLAIM label -->
+  <text x="400" y="130" font-size="13" font-weight="600" fill="#6b7280" text-anchor="middle">CLAIM</text>
+
+  <!-- Claim box -->
+  <rect x="150" y="145" width="500" height="45" rx="6" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+  <text x="400" y="174" font-size="15" fill="#1f2937" text-anchor="middle">I should <tspan font-weight="700">PROBABLY</tspan> switch to a TPM role</text>
+
+  <!-- Vertical line from claim -->
+  <line x1="400" y1="190" x2="400" y2="220" stroke="#d1d5db" stroke-width="2"/>
+
+  <!-- Horizontal split line -->
+  <line x1="250" y1="220" x2="550" y2="220" stroke="#d1d5db" stroke-width="2"/>
+
+  <!-- Left vertical (SUPPORTS) -->
+  <line x1="250" y1="220" x2="250" y2="250" stroke="#d1d5db" stroke-width="2"/>
+
+  <!-- Right vertical (REFUTES) -->
+  <line x1="550" y1="220" x2="550" y2="250" stroke="#d1d5db" stroke-width="2"/>
+
+  <!-- SUPPORTS label -->
+  <text x="250" y="270" font-size="12" font-weight="600" fill="#22c55e" text-anchor="middle">SUPPORTS</text>
+
+  <!-- REFUTES label -->
+  <text x="550" y="270" font-size="12" font-weight="600" fill="#ef4444" text-anchor="middle">REFUTES</text>
+
+  <!-- Lines down from SUPPORTS -->
+  <line x1="250" y1="280" x2="250" y2="300" stroke="#d1d5db" stroke-width="2"/>
+  <line x1="175" y1="300" x2="325" y2="300" stroke="#d1d5db" stroke-width="2"/>
+  <line x1="175" y1="300" x2="175" y2="320" stroke="#d1d5db" stroke-width="2"/>
+  <line x1="325" y1="300" x2="325" y2="320" stroke="#d1d5db" stroke-width="2"/>
+
+  <!-- Arrow heads for SUPPORTS -->
+  <polygon points="175,320 170,310 180,310" fill="#d1d5db"/>
+  <polygon points="325,320 320,310 330,310" fill="#d1d5db"/>
+
+  <!-- Line down from REFUTES -->
+  <line x1="550" y1="280" x2="550" y2="320" stroke="#d1d5db" stroke-width="2"/>
+  <polygon points="550,320 545,310 555,310" fill="#d1d5db"/>
+
+  <!-- Evidence Card 1: Strong (Skip-level praised) -->
+  <rect x="100" y="325" width="150" height="110" rx="8" fill="white" stroke="#22c55e" stroke-width="2" filter="url(#shadow-sm)"/>
+  <rect x="100" y="325" width="150" height="28" rx="8" fill="#22c55e"/>
+  <rect x="100" y="340" width="150" height="13" fill="#22c55e"/>
+  <text x="175" y="345" font-size="12" font-weight="600" fill="white" text-anchor="middle">Strong</text>
+  <line x1="110" y1="358" x2="240" y2="358" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="175" y="380" font-size="12" fill="#374151" text-anchor="middle">Skip-level</text>
+  <text x="175" y="396" font-size="12" fill="#374151" text-anchor="middle">praised</text>
+  <text x="175" y="412" font-size="12" fill="#374151" text-anchor="middle">communic.</text>
+
+  <!-- Evidence Card 2: Medium (More coord than code) -->
+  <rect x="260" y="325" width="130" height="110" rx="8" fill="white" stroke="#f59e0b" stroke-width="2" filter="url(#shadow-sm)"/>
+  <rect x="260" y="325" width="130" height="28" rx="8" fill="#f59e0b"/>
+  <rect x="260" y="340" width="130" height="13" fill="#f59e0b"/>
+  <text x="325" y="345" font-size="12" font-weight="600" fill="white" text-anchor="middle">Medium</text>
+  <line x1="270" y1="358" x2="380" y2="358" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="325" y="380" font-size="12" fill="#374151" text-anchor="middle">More</text>
+  <text x="325" y="396" font-size="12" fill="#374151" text-anchor="middle">coord</text>
+  <text x="325" y="412" font-size="12" fill="#374151" text-anchor="middle">than code</text>
+
+  <!-- Evidence Card 3: Medium (Might miss hands-on) - REFUTES -->
+  <rect x="485" y="325" width="130" height="110" rx="8" fill="white" stroke="#f59e0b" stroke-width="2" filter="url(#shadow-sm)"/>
+  <rect x="485" y="325" width="130" height="28" rx="8" fill="#f59e0b"/>
+  <rect x="485" y="340" width="130" height="13" fill="#f59e0b"/>
+  <text x="550" y="345" font-size="12" font-weight="600" fill="white" text-anchor="middle">Medium</text>
+  <line x1="495" y1="358" x2="605" y2="358" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="550" y="380" font-size="12" fill="#374151" text-anchor="middle">Might</text>
+  <text x="550" y="396" font-size="12" fill="#374151" text-anchor="middle">miss</text>
+  <text x="550" y="412" font-size="12" fill="#374151" text-anchor="middle">hands-on</text>
+  <text x="550" y="428" font-size="10" fill="#6b7280" text-anchor="middle">[premise]</text>
+
+  <!-- Grounded in link -->
+  <line x1="175" y1="435" x2="175" y2="450" stroke="#d1d5db" stroke-width="1"/>
+  <line x1="175" y1="450" x2="200" y2="450" stroke="#d1d5db" stroke-width="1"/>
+  <text x="210" y="454" font-size="11" fill="#6b7280">Grounded in: <tspan fill="#3b82f6">Fact #142</tspan></text>
+
+  <!-- Action buttons -->
+  <rect x="30" y="500" width="120" height="32" rx="6" fill="white" stroke="#d1d5db" stroke-width="1"/>
+  <text x="90" y="521" font-size="13" fill="#374151" text-anchor="middle">[+ Add Evidence]</text>
+
+  <rect x="165" y="500" width="180" height="32" rx="6" fill="white" stroke="#d1d5db" stroke-width="1"/>
+  <text x="255" y="521" font-size="13" fill="#374151" text-anchor="middle">[Conclude with Decision]</text>
+
+  <rect x="360" y="500" width="90" height="32" rx="6" fill="white" stroke="#d1d5db" stroke-width="1"/>
+  <text x="405" y="521" font-size="13" fill="#374151" text-anchor="middle">[Abandon]</text>
+
+  <!-- Related Knowledge section -->
+  <text x="30" y="565" font-size="14" font-weight="600" fill="#1f2937">RELATED KNOWLEDGE</text>
+  <text x="30" y="588" font-size="13" fill="#6b7280">• 5 facts about "TPM", "career"</text>
+  <text x="30" y="606" font-size="13" fill="#6b7280">• 3 reflections mentioning career transition</text>
+  <text x="400" y="588" font-size="13" fill="#6b7280">• 1 decision: "Focus on AI orchestration skills"</text>
+</svg>
