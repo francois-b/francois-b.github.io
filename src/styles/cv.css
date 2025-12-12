@@ -134,6 +134,23 @@ body {
   background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: color 0.5s, background-color 0.5s;
+}
+
+/* Theme transition for all elements using theme colors */
+*,
+*::before,
+*::after {
+  transition: color 0.5s, background-color 0.5s, border-color 0.5s, box-shadow 0.5s;
+}
+
+/* Remove transitions on link hover */
+a,
+a:hover,
+a:active,
+.floating-link,
+.floating-link:hover {
+  transition: none;
 }
 
 body::before {
@@ -179,10 +196,21 @@ h6 {
 a {
   color: var(--color-link);
   text-decoration: none;
+  padding: 0 0.1em;
+  background: linear-gradient(
+    to top,
+    transparent 40%,
+    transparent 40%
+  );
 }
 
 a:hover {
   color: var(--color-link-hover);
+  background: linear-gradient(
+    to top,
+    var(--highlight-engineering) 40%,
+    transparent 40%
+  );
 }
 
 .highlight {
@@ -294,7 +322,11 @@ a:hover {
 
 .floating-link:hover {
   color: var(--color-link-hover);
-  text-decoration: underline;
+  background: linear-gradient(
+    to top,
+    var(--highlight-engineering) 40%,
+    transparent 40%
+  );
 }
 
 .floating-link.active {

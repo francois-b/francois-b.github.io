@@ -30,15 +30,17 @@ a {
   color: var(--color-link);
   text-decoration: none;
   font-weight: 500;
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 2px;
+  padding: 0 0.1em;
 }
 a:active,
 a:hover {
   outline-width: 0;
   color: var(--color-link-hover);
-  text-decoration: none;
+  background: linear-gradient(
+    to top,
+    var(--highlight-engineering) 40%,
+    transparent 40%
+  );
 }
 abbr[title] {
   border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
@@ -237,7 +239,11 @@ pre tt:after {
 
 .floating-link:hover {
   color: var(--color-link-hover);
-  text-decoration: underline;
+  background: linear-gradient(
+    to top,
+    var(--highlight-engineering) 40%,
+    transparent 40%
+  );
 }
 
 .floating-link.active {
