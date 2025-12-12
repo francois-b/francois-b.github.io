@@ -286,12 +286,27 @@ pre tt:after {
 .blog-post-content {
   counter-reset: h2-counter;
   font-size: var(--font-size-base);
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
+/* ===================================
+   Blog Post Typography
+   =================================== */
+
+/* Headings */
 .blog-post-content h2 {
   position: relative;
   counter-increment: h2-counter;
+  font-family: var(--font-header);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.blog-post-content h2:first-child {
+  margin-top: 0;
 }
 
 .blog-post-content h2::before {
@@ -301,4 +316,165 @@ pre tt:after {
   margin-right: 1rem;
   font-weight: bold;
   color: var(--color-link);
+}
+
+.blog-post-content h3 {
+  font-family: var(--font-header);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.blog-post-content h4 {
+  font-family: var(--font-header);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text-light);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Paragraphs */
+.blog-post-content p {
+  margin-bottom: 1.25rem;
+  max-width: none;
+}
+
+.blog-post-content h2 + p,
+.blog-post-content h3 + p,
+.blog-post-content h4 + p {
+  margin-top: 0;
+}
+
+/* Lists */
+.blog-post-content ul,
+.blog-post-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.25rem;
+  padding-left: 0.5rem;
+}
+
+.blog-post-content li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+}
+
+.blog-post-content li:last-child {
+  margin-bottom: 0;
+}
+
+.blog-post-content ul ul,
+.blog-post-content ol ol,
+.blog-post-content ul ol,
+.blog-post-content ol ul {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Tables */
+.blog-post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.blog-post-content thead {
+  border-bottom: 2px solid var(--color-text-light);
+}
+
+.blog-post-content th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.blog-post-content td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.blog-post-content tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* Code blocks */
+.blog-post-content pre {
+  margin-top: 1.25rem;
+  margin-bottom: 2rem;
+  padding: 1.25rem;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.blog-post-content .gatsby-highlight {
+  margin-bottom: 2rem;
+}
+
+.blog-post-content pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+  color: var(--color-text);
+  border: none;
+}
+
+/* Inline code */
+.blog-post-content :not(pre) > code {
+  font-size: 0.875em;
+  padding: 0.2em 0.4em;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+}
+
+/* Blockquotes */
+.blog-post-content blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid var(--color-link);
+  background: var(--color-bg-subtle);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-style: italic;
+  color: var(--color-text-light);
+}
+
+.blog-post-content blockquote p {
+  margin-bottom: 0.5rem;
+}
+
+.blog-post-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Horizontal rules */
+.blog-post-content hr {
+  margin: 2.5rem 0;
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-border) 20%,
+    var(--color-border) 80%,
+    transparent
+  );
+}
+
+/* Strong and emphasis within content */
+.blog-post-content strong {
+  font-weight: 600;
+  color: var(--color-text);
 }
