@@ -254,7 +254,8 @@ Sources where the content represents external information.
 | Embeddings | Bedrock Titan | AWS ecosystem, 1536 dimensions |
 | LLM | Claude (Anthropic API) | Best reasoning for extraction |
 
-### DynamoDB Schema (Single-Table Design)
+<details>
+<summary>DynamoDB Schema (Single-Table Design)</summary>
 
 ```
 Conversations and Messages:
@@ -276,7 +277,10 @@ GSI: type-index
   SK: {timestamp}
 ```
 
-### PostgreSQL Schema
+</details>
+
+<details>
+<summary>PostgreSQL Schema</summary>
 
 ```sql
 -- Entities
@@ -290,7 +294,7 @@ CREATE TABLE entities (
   embedding VECTOR(1536)
 );
 
-CREATE INDEX idx_entities_embedding ON entities 
+CREATE INDEX idx_entities_embedding ON entities
   USING ivfflat (embedding vector_cosine_ops);
 CREATE INDEX idx_entities_type ON entities(entity_type);
 CREATE INDEX idx_entities_name ON entities(name);
@@ -311,7 +315,7 @@ CREATE TABLE facts (
   embedding VECTOR(1536)
 );
 
-CREATE INDEX idx_facts_embedding ON facts 
+CREATE INDEX idx_facts_embedding ON facts
   USING ivfflat (embedding vector_cosine_ops);
 CREATE INDEX idx_facts_entity ON facts(entity_id);
 CREATE INDEX idx_facts_verification ON facts(verification_status);
@@ -331,7 +335,7 @@ CREATE TABLE reflections (
   embedding VECTOR(1536)
 );
 
-CREATE INDEX idx_reflections_embedding ON reflections 
+CREATE INDEX idx_reflections_embedding ON reflections
   USING ivfflat (embedding vector_cosine_ops);
 CREATE INDEX idx_reflections_question ON reflections(is_question);
 
@@ -350,7 +354,7 @@ CREATE TABLE decisions (
   embedding VECTOR(1536)
 );
 
-CREATE INDEX idx_decisions_embedding ON decisions 
+CREATE INDEX idx_decisions_embedding ON decisions
   USING ivfflat (embedding vector_cosine_ops);
 CREATE INDEX idx_decisions_argument ON decisions(argument_id);
 
@@ -366,7 +370,7 @@ CREATE TABLE references (
   embedding VECTOR(1536)
 );
 
-CREATE INDEX idx_references_embedding ON references 
+CREATE INDEX idx_references_embedding ON references
   USING ivfflat (embedding vector_cosine_ops);
 CREATE INDEX idx_references_document ON references(document_id);
 
@@ -448,6 +452,8 @@ CREATE TABLE entity_mentions (
 CREATE INDEX idx_entity_mentions_entity ON entity_mentions(entity_id);
 CREATE INDEX idx_entity_mentions_item ON entity_mentions(item_type, item_id);
 ```
+
+</details>
 
 ---
 
@@ -975,7 +981,8 @@ Response: {
 
 ![AWS Architecture Diagram](/mmx-architecture.svg)
 
-### CDK Stack Overview
+<details>
+<summary>CDK Stack Overview</summary>
 
 ```typescript
 // lib/journal-bot-stack.ts
@@ -1023,6 +1030,8 @@ export class JournalBotStack extends cdk.Stack {
   }
 }
 ```
+
+</details>
 
 ### Cost Estimate
 

@@ -478,3 +478,49 @@ pre tt:after {
   font-weight: 600;
   color: var(--color-text);
 }
+
+/* Collapsible sections */
+.blog-post-content details {
+  margin: 1.5rem 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-subtle);
+}
+
+.blog-post-content summary {
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: var(--color-link);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.blog-post-content summary::-webkit-details-marker {
+  display: none;
+}
+
+.blog-post-content summary::before {
+  content: "▶";
+  font-size: 0.7em;
+  transition: transform 0.2s;
+}
+
+.blog-post-content details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.blog-post-content summary:hover {
+  color: var(--color-link-hover);
+}
+
+.blog-post-content details > *:not(summary) {
+  padding: 0 1rem;
+}
+
+.blog-post-content details > pre {
+  margin: 0 1rem 1rem;
+  border-radius: var(--radius-sm);
+}
