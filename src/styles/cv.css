@@ -812,6 +812,7 @@ a:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
+  align-self: flex-start;
 }
 
 .blog-card-link:hover {
