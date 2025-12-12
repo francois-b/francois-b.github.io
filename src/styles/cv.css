@@ -225,7 +225,57 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: var(--space-2);
+}
+
+.sidebar-identity {
+  gap: var(--space-1);
+}
+
+.sidebar-name {
+  font-family: var(--font-header);
+  font-size: 25pt;
+  font-weight: 700;
+  color: var(--color-text-light);
+  margin: 0;
+  line-height: 1.2;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-title {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  margin: 0;
+}
+
+.sidebar-theme-toggle {
+  margin-top: auto;
+}
+
+.theme-toggle-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-subtle);
+  color: var(--color-text-light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.theme-toggle-button:hover {
+  color: var(--color-text);
+  border-color: var(--color-text-lighter);
+}
+
+.theme-toggle-button svg {
+  width: 20px;
+  height: 20px;
 }
 
 .floating-link {
@@ -270,7 +320,7 @@ a:hover {
 }
 
 .cv-sidebar {
-  width: 200px;
+  width: 230px;
   flex-shrink: 0;
   padding: 2rem 1.5rem;
   position: sticky;
@@ -290,7 +340,7 @@ a:hover {
 .video-and-pitch {
   display: grid;
   grid-template-columns: 60% 40%;
-  align-items: center;
+  align-items: normal;
   gap: 1.5rem;
   margin-bottom: 1.25rem;
 }
@@ -539,6 +589,7 @@ a:hover {
 .cv-main {
   position: relative;
   z-index: 1;
+  padding-top: 30px;
 }
 
 .cv-section {
@@ -567,9 +618,9 @@ a:hover {
    =================================== */
 
 .experience-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
 }
 
 /* ===================================
@@ -630,6 +681,9 @@ a:hover {
   list-style: none;
   padding-left: 0;
   margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2) var(--space-6);
 }
 
 .achievements li {

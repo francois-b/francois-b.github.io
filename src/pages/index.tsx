@@ -50,18 +50,6 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
       </aside>
 
       <div className="cv-content">
-        {/* Main Content */}
-        <header className="cv-header">
-          <div className="header-content">
-            <div className="identity">
-              <div className="identity-text">
-                <h1 className="name">François Bouet</h1>
-                <p className="title">Web & AI engineering</p>
-              </div>
-            </div>
-          </div>
-        </header>
-
         <main className="cv-main">
           <div id="video-and-pitch" className="video-and-pitch">
             <div className="video-and-pitch__video">
