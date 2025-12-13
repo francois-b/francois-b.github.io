@@ -40,8 +40,8 @@
   --radius-full: 50px;
 
   /* Semantic colors (theme-independent) */
-  --color-link: #5689d9;
-  --color-link-hover: #b45309;
+  --color-link: #4a7dc4;
+  --color-link-hover: #1e3a5f;
   --color-accent: #b45309;
 
   /* Textures */
@@ -55,7 +55,7 @@
 
 /* Prevent flash of wrong theme by setting background on html element */
 html[data-theme="sun"] {
-  background-color: #fffdf5;
+  background-color: #fefdfb;
 }
 
 html[data-theme="rain"] {
@@ -70,39 +70,45 @@ html[data-theme="night"] {
    Theme Variables
    =================================== */
 
-/* Sun Theme (Default) */
+/* Sun Theme (Default)
+   Palette: Warm cream base with amber accents, blue for links
+   Based on analogous warm scheme (cream → tan → amber → burnt orange)
+   with blue as complementary accent for interactive elements */
 body.theme-sun {
-  --color-primary: #5689d9;
-  --color-secondary: #fbbf24;
-  --color-text: #374151;
-  --color-text-light: #4b5563;
-  --color-text-lighter: #94a3b8;
-  --color-bg: #fffdf5;
-  --color-bg-subtle: #fef9ec;
-  --color-border: #ccc;
+  /* Core palette - warm neutrals */
+  --color-primary: #3b6eb5;           /* Muted blue for links/interactive */
+  --color-secondary: #d97706;         /* Amber for accents */
+  --color-text: #44403c;              /* Warm dark brown-gray */
+  --color-text-light: #57534e;        /* Warm medium gray */
+  --color-text-lighter: #a8a29e;      /* Warm light gray */
+  --color-bg: #fefdfb;                /* Warm off-white */
+  --color-bg-subtle: #faf8f5;         /* Slightly darker cream */
+  --color-border: #e7e5e4;            /* Warm light border */
 
-  --highlight-engineering: rgba(250, 204, 21, 0.5);
-  --highlight-ai: rgba(74, 222, 128, 0.45);
-  --highlight-domain: rgba(251, 146, 137, 0.5);
+  /* Highlights - distinct but warm-harmonized */
+  --highlight-engineering: rgba(245, 158, 11, 0.32);  /* Amber/gold */
+  --highlight-ai: rgba(20, 184, 166, 0.22);           /* Warm teal */
+  --highlight-domain: rgba(244, 114, 182, 0.24);      /* Warm rose */
 
-  --shadow-sm: 0 1px 3px rgba(251, 191, 36, 0.08);
-  --shadow-md: 0 4px 6px rgba(251, 191, 36, 0.12);
-  --shadow-lg: 0 10px 25px rgba(251, 191, 36, 0.18);
+  /* Shadows - warm tinted */
+  --shadow-sm: 0 1px 2px rgba(68, 64, 60, 0.06);
+  --shadow-md: 0 4px 6px rgba(68, 64, 60, 0.08);
+  --shadow-lg: 0 10px 20px rgba(68, 64, 60, 0.1);
 
-  /* Syntax highlighting (Coldark Cold) */
-  --code-bg: #e3eaf2;
-  --code-text: #111b27;
-  --code-selection: #8da1b9;
-  --code-comment: #3c526d;
-  --code-punctuation: #111b27;
-  --code-tag: #006d6d;
-  --code-number: #755f00;
-  --code-property: #005a8e;
-  --code-string: #116b00;
-  --code-builtin: #af00af;
-  --code-function: #7c00aa;
-  --code-keyword: #a04900;
-  --code-deleted: #c22f2e;
+  /* Syntax highlighting - warm-shifted */
+  --code-bg: #f5f5f4;                 /* Stone 100 */
+  --code-text: #1c1917;               /* Stone 900 */
+  --code-selection: #d6d3d1;          /* Stone 300 */
+  --code-comment: #78716c;            /* Stone 500 */
+  --code-punctuation: #44403c;        /* Stone 700 */
+  --code-tag: #0d6968;                /* Teal 700 */
+  --code-number: #a16207;             /* Amber 700 */
+  --code-property: #1d4ed8;           /* Blue 700 */
+  --code-string: #15803d;             /* Green 700 */
+  --code-builtin: #9333ea;            /* Purple 600 */
+  --code-function: #7c3aed;           /* Violet 600 */
+  --code-keyword: #c2410c;            /* Orange 700 */
+  --code-deleted: #dc2626;            /* Red 600 */
 }
 
 /* Night Theme */
