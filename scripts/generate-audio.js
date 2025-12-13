@@ -16,7 +16,9 @@ const matter = require('gray-matter');
 
 const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY;
 const VOICE_ID = process.env.ELEVENLABS_VOICE_ID;
-const MODEL_ID = 'eleven_multilingual_v2';
+// Use Eleven v3 (alpha) for audio tag support, fallback to v2 for stability
+const MODEL_ID = process.env.ELEVENLABS_MODEL_ID || 'eleven_multilingual_v2';
+const USE_V3 = MODEL_ID.includes('v3') || MODEL_ID === 'eleven_v3';
 
 if (!ELEVENLABS_API_KEY) {
   console.error('Error: ELEVENLABS_API_KEY not set in .env');
@@ -37,9 +39,12 @@ const targetSlug = slugIndex !== -1 ? args[slugIndex + 1] : null;
 /**
  * Strip markdown formatting to get plain text for TTS
  * Removes code blocks, tables, and sections marked with <!-- no-narrate -->
+ * Preserves [audio tags] for Eleven v3 model
  */
 function stripMarkdown(text) {
-  return text
+  let result = text
+    // Convert audio direction comments to v3 tags: <!-- audio: thoughtful --> becomes [thoughtful]
+    .replace(/<!--\s*audio:\s*([^>]+?)\s*-->/gi, USE_V3 ? '[$1]' : '')
     // Remove explicitly marked no-narrate sections
     .replace(/<!--\s*no-narrate\s*-->[\s\S]*?<!--\s*\/no-narrate\s*-->/gi, '')
     // Remove <details> collapsible sections (often contain code/schemas)
@@ -54,8 +59,6 @@ function stripMarkdown(text) {
     .replace(/^\|.+\|$/gm, '')
     // Remove table separator lines
     .replace(/^\s*\|?[-:| ]+\|?\s*$/gm, '')
-    // Convert links to just text
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
     // Remove images
     .replace(/!\[([^\]]*)\]\([^)]+\)/g, '')
     // Remove headers but keep text
@@ -72,11 +75,22 @@ function stripMarkdown(text) {
     // Remove list markers
     .replace(/^[\s]*[-*+]\s+/gm, '')
     .replace(/^[\s]*\d+\.\s+/gm, '')
-    // Remove any remaining HTML tags
+    // Remove any remaining HTML tags (but not [audio tags])
     .replace(/<[^>]+>/g, '')
     // Clean up multiple newlines
     .replace(/\n{3,}/g, '\n\n')
     .trim();
+
+  // Handle markdown links - convert to text but preserve [audio tags]
+  // Audio tags are single words or short phrases in brackets without parentheses after
+  result = result.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+
+  // If not using v3, strip audio tags as they won't be interpreted
+  if (!USE_V3) {
+    result = result.replace(/\[([^\]]+)\]/g, '$1');
+  }
+
+  return result;
 }
 
 /**
@@ -218,6 +232,7 @@ async function main() {
   }
 
   console.log(`\n🎧 ElevenLabs Audio Generator`);
+  console.log(`   Model: ${MODEL_ID}${USE_V3 ? ' (audio tags enabled)' : ''}`);
   console.log(`   Voice ID: ${VOICE_ID}`);
   console.log(`   Posts to process: ${posts.length}\n`);
 

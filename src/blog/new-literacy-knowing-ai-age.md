@@ -8,6 +8,7 @@ tags:
   - epistemology
   - learning
 author: Theo
+hasAudio: true
 quote: >-
   The less you know about a domain, the more you need AI assistance—but the more
   AI assistance you need, the less able you are to evaluate it.
@@ -16,29 +17,29 @@ summary: >-
   verify AI outputs.
 ---
 
-Every major technology shift has changed what it means to be educated. The printing press shifted literacy from scribes to the general population. Universal schooling standardized knowledge transmission. The internet made information access nearly universal.
+<!-- audio: thoughtful -->Every major technology shift has changed what it means to be educated. The printing press shifted literacy from scribes to the general population. Universal schooling standardized knowledge transmission. The internet made information access nearly universal.
 
-AI is changing knowledge again—not just what we know, but what it means to know.
+AI is changing knowledge again—not just what we know, but what it means to know. <!-- audio: pause -->
 
-When an AI can answer any factual question instantly, what does it mean to "know" something? When AI can reason through problems you couldn't solve yourself, what does expertise mean? When AI can generate text indistinguishable from human writing, what does literacy mean?
+When an AI can answer any factual question instantly, what does it mean to "know" something? <!-- audio: pause --> When AI can reason through problems you couldn't solve yourself, what does expertise mean? When AI can generate text indistinguishable from human writing, what does literacy mean?
 
-These aren't just philosophical questions. They have practical implications for education, hiring, credentialing, and how we think about our own competence.
+These aren't just philosophical questions. <!-- audio: matter-of-fact --> They have practical implications for education, hiring, credentialing, and how we think about our own competence.
 
 ## The Old Literacy
 
-Traditional literacy meant being able to read and write. But "literacy" has always meant more than that—it's meant being equipped to function in your society's information environment.
+Traditional literacy meant being able to read and write. But "literacy" has always meant more than that—it's meant being equipped to function in your society's information environment. <!-- audio: pause -->
 
-For most of human history, literacy meant knowing things. Education was largely about memorizing information: facts, dates, formulas, texts. The educated person was one who had internalized a body of knowledge and could retrieve it on demand.
+For most of human history, literacy meant knowing things. Education was largely about memorizing information: facts, dates, formulas, texts. <!-- audio: reflective --> The educated person was one who had internalized a body of knowledge and could retrieve it on demand.
 
 This made sense when information access was scarce. Libraries were rare. Books were expensive. If you needed to know something, it had to be in your head or you'd have to travel to find it.
 
 The internet challenged this model. When you can look anything up, memorization becomes less valuable. "Knowing" shifted from retrieval to navigation—knowing how to find, evaluate, and synthesize information.
 
-Search literacy became the new literacy. Could you formulate good queries? Could you evaluate sources? Could you synthesize information from multiple places? These became the skills that mattered.
+Search literacy became the new literacy. Could you formulate good queries? Could you evaluate sources? Could you synthesize information from multiple places? These became the skills that mattered. <!-- audio: pause -->
 
 ## The New Challenge
 
-AI presents a new challenge. It doesn't just help you find information—it synthesizes, reasons, and generates.
+<!-- audio: with emphasis --> AI presents a new challenge. It doesn't just help you find information—it synthesizes, reasons, and generates.
 
 Ask a search engine a question and you get links. Ask an AI the same question and you get an answer. Ask a search engine how to approach a problem and you get articles. Ask an AI and you get a solution.
 
@@ -50,11 +51,11 @@ This changes the knowledge game again:
 
 **From producing to editing.** AI can draft; humans need to evaluate and refine. The literacy of production becomes the literacy of judgment.
 
-**From remembering to integrating.** Memorized facts matter less; mental models that integrate knowledge matter more. You need frameworks to evaluate AI output, not just facts to contribute.
+**From remembering to integrating.** Memorized facts matter less; mental models that integrate knowledge matter more. You need frameworks to evaluate AI output, not just facts to contribute. <!-- audio: pause -->
 
 ## A Taxonomy of Knowing
 
-It might help to distinguish different types of knowing and how AI affects each:
+<!-- audio: thoughtful --> It might help to distinguish different types of knowing and how AI affects each:
 
 **Factual knowledge:** "What year was the Constitution ratified?"
 - AI impact: Nearly obsolete as a human skill. AI knows more facts, more accurately, more accessibly.
@@ -74,17 +75,19 @@ It might help to distinguish different types of knowing and how AI affects each:
 
 **Creative insight:** "What novel approach might solve this problem?"
 - AI impact: Augmented but not replaced. AI can generate options; humans evaluate and refine.
-- New skill: Prompting for creative directions; combining AI ideas with domain insight.
+- New skill: Prompting for creative directions; combining AI ideas with domain insight. <!-- audio: pause -->
 
 ## The Verification Problem
 
-Here's a practical challenge of the new literacy: how do you verify AI outputs?
+<!-- audio: leaning in --> Here's a practical challenge of the new literacy: how do you verify AI outputs?
 
 The answer depends on your existing knowledge. If you know the domain well, you can evaluate AI outputs critically. If you don't, you're taking the AI's word for it.
 
-This creates a paradox: the less you know about a domain, the more you need AI assistance—but the more AI assistance you need, the less able you are to evaluate it.
+This creates a paradox: <!-- audio: with emphasis --> the less you know about a domain, the more you need AI assistance—but the more AI assistance you need, the less able you are to evaluate it. <!-- audio: pause -->
 
+<!-- no-narrate -->
 A code experiment illustrates this:
+<!-- /no-narrate -->
 
 ```javascript
 // The verification paradox
@@ -123,11 +126,11 @@ console.log(evaluateAIOutput("Python programming", 9, 0.9));
 //   recommendation: "AI assistance appropriate" }
 ```
 
-The implication: some base level of domain knowledge is prerequisite to effective AI use. Not because you need to do the work yourself, but because you need to be able to evaluate whether the AI's work is correct.
+<!-- audio: matter-of-fact --> The implication: some base level of domain knowledge is prerequisite to effective AI use. Not because you need to do the work yourself, but because you need to be able to evaluate whether the AI's work is correct. <!-- audio: pause -->
 
 ## The Skills of the New Literacy
 
-If this analysis is roughly correct, what skills constitute the new literacy?
+If this analysis is roughly correct, what skills constitute the new literacy? <!-- audio: pause -->
 
 **Prompt engineering as a foundational skill.** The ability to communicate clearly with AI—specifying constraints, providing context, asking followup questions—is increasingly valuable. It's not about tricks; it's about clear thinking made explicit.
 
@@ -137,11 +140,11 @@ If this analysis is roughly correct, what skills constitute the new literacy?
 
 **Integration skill.** Combining AI outputs with your own knowledge and judgment. Not accepting AI output wholesale, not rejecting it reflexively, but integrating it appropriately.
 
-**Foundational domain knowledge.** Paradoxically, AI makes foundational knowledge more important, not less. You need enough knowledge to evaluate AI outputs, even if you don't need enough to produce them yourself.
+**Foundational domain knowledge.** <!-- audio: with emphasis --> Paradoxically, AI makes foundational knowledge more important, not less. You need enough knowledge to evaluate AI outputs, even if you don't need enough to produce them yourself. <!-- audio: pause -->
 
 ## The Educational Implications
 
-If knowledge is being transformed, education needs to transform too. Some directions:
+If knowledge is being transformed, education needs to transform too. <!-- audio: thoughtful --> Some directions:
 
 **Less emphasis on retention, more on understanding.** If facts are always accessible, the value is in mental models that organize and contextualize facts. Education should focus on building these models.
 
@@ -151,20 +154,20 @@ If knowledge is being transformed, education needs to transform too. Some direct
 
 **Teaching through problems, not just content.** If content is accessible, the skill is in applying it. Problem-based learning becomes more valuable than content-based learning.
 
-**Preserving struggle.** Not all struggle, but the struggle that builds understanding. Education should consciously decide which learning processes benefit from AI assistance and which need to be done the hard way.
+**Preserving struggle.** Not all struggle, but the struggle that builds understanding. Education should consciously decide which learning processes benefit from AI assistance and which need to be done the hard way. <!-- audio: pause -->
 
 ## The Personal Question
 
-Beyond the systemic questions, there's a personal one: what do you want to know?
+<!-- audio: reflective --> Beyond the systemic questions, there's a personal one: what do you want to know?
 
 "Knowing" in the old sense—having information in your head—has different value than it used to. But it's not valueless. There's something different about knowledge you've internalized versus knowledge you can access.
 
 Internalized knowledge is available instantly, shapes your perception, connects to other knowledge spontaneously. Accessible knowledge requires a query, arrives decontextualized, sits outside your mental models until you integrate it.
 
-Both have value. But they're different. The new literacy includes knowing when internalized knowledge matters and investing in building it deliberately.
+Both have value. But they're different. The new literacy includes knowing when internalized knowledge matters and investing in building it deliberately. <!-- audio: pause -->
 
-What do you want to genuinely know, versus what are you content to merely access? That's a question worth answering for yourself.
+What do you want to genuinely know, versus what are you content to merely access? <!-- audio: pause --> That's a question worth answering for yourself.
 
-The new literacy isn't just about using AI well. It's about being intentional about what knowledge means to you—what you want to understand, what you want to internalize, what kind of knower you want to be.
+<!-- audio: thoughtful --> The new literacy isn't just about using AI well. It's about being intentional about what knowledge means to you—what you want to understand, what you want to internalize, what kind of knower you want to be. <!-- audio: pause -->
 
-AI changes the landscape. It doesn't answer these questions for you.
+AI changes the landscape. <!-- audio: with finality --> It doesn't answer these questions for you.
