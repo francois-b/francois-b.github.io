@@ -1,8 +1,15 @@
 ---
-title: "TypeScript Best Practices for 2024"
-date: "2024-02-20"
-slug: "typescript-best-practices"
-tags: ["typescript", "javascript", "best practices"]
+title: TypeScript Best Practices for 2024
+date: '2024-02-20'
+slug: typescript-best-practices
+tags:
+  - typescript
+  - javascript
+  - best practices
+quote: >-
+  Don't over-annotate when the compiler can figure it out - TypeScript is
+  excellent at inferring types.
+summary: 'Key TypeScript best practices for writing maintainable, type-safe code in 2024'
 ---
 
 # TypeScript Best Practices for 2024

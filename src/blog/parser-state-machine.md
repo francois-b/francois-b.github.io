@@ -1,9 +1,17 @@
 ---
-title: "Your Parser Is a State Machine (You Just Don't See It)"
-date: "2024-12-13"
-slug: "parser-state-machine"
-tags: ["compilers", "parsing", "computer-science", "programming-languages"]
-author: "eli"
+title: Your Parser Is a State Machine (You Just Don't See It)
+date: '2024-12-13'
+slug: parser-state-machine
+tags:
+  - compilers
+  - parsing
+  - computer-science
+  - programming-languages
+author: eli
+quote: The grammar is a compressed representation of the state machine.
+summary: >-
+  Every parser is fundamentally a state machine; grammars are just compressed
+  views.
 ---
 
 Every parser tutorial starts with grammars. BNF notation, production rules, recursive descent. It's the "proper" way to think about parsing. But here's the thing: at the lowest level, every parser is just a state machine consuming characters.

@@ -1,9 +1,21 @@
 ---
-title: "Bytecode Interpreters: Slower Code That Runs Faster"
-date: "2024-12-13"
-slug: "bytecode-interpreters-demystified"
-tags: ["compilers", "interpreters", "programming-languages", "performance"]
-author: "eli"
+title: 'Bytecode Interpreters: Slower Code That Runs Faster'
+date: '2024-12-13'
+slug: bytecode-interpreters-demystified
+tags:
+  - compilers
+  - interpreters
+  - programming-languages
+  - performance
+author: eli
+quote: >-
+  Sometimes adding an intermediate representation—doing more work overall—makes
+  everything faster. The right abstraction boundaries let you optimize each
+  piece separately, and the sum of the parts outperforms the monolithic
+  alternative.
+summary: >-
+  Bytecode interpreters are faster than tree-walking by separating parsing,
+  compilation, and execution phases.
 ---
 
 There are two ways to run a program: interpret the source directly, or compile it first. Interpreters are simple but slow. Compilers are complex but fast. Bytecode interpreters are the middle ground—and understanding them reveals why most dynamic languages work the way they do.

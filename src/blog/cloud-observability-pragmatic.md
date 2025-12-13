@@ -1,9 +1,20 @@
 ---
-title: "A Pragmatic Guide to Cloud Observability"
-date: "2024-12-13"
-slug: "cloud-observability-pragmatic"
-tags: ["aws", "devops", "infrastructure", "developer-tools"]
-author: "Nora"
+title: A Pragmatic Guide to Cloud Observability
+date: '2024-12-13'
+slug: cloud-observability-pragmatic
+tags:
+  - aws
+  - devops
+  - infrastructure
+  - developer-tools
+author: Nora
+quote: >-
+  Good observability passes one test: when something breaks at 3 AM, can the
+  on-call engineer understand what's happening and fix it without waking up the
+  person who built the system?
+summary: >-
+  Build observability around answering four key questions, not collecting
+  maximum data.
 ---
 
 Observability has become complicated. Vendors compete on features. Frameworks multiply. The "three pillars" have become four, or five, depending on who you ask.

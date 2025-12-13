@@ -1,9 +1,19 @@
 ---
-title: "Designing for Humans Who Use Machines: A Philosophy of Multi-Modal Interfaces"
-date: "2024-12-13"
-slug: "designing-for-humans-machines"
-tags: ["ai", "product-design", "ux", "multi-modal"]
-author: "Theo"
+title: 'Designing for Humans Who Use Machines: A Philosophy of Multi-Modal Interfaces'
+date: '2024-12-13'
+slug: designing-for-humans-machines
+tags:
+  - ai
+  - product-design
+  - ux
+  - multi-modal
+author: Theo
+quote: >-
+  Multi-modal AI is a medium. Like all media, it will shape those who use it.
+  The question is whether we're designing it to shape us in ways we'd choose.
+summary: >-
+  Multi-modal AI interfaces need intentional design philosophy balancing
+  efficiency, agency, and collaboration.
 ---
 
 The history of interface design has been the history of expanding channels. Text gave way to graphics. Graphics added motion. Screens added touch. Now we're adding voice, vision, and natural language to the mix.

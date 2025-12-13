@@ -1,9 +1,19 @@
 ---
-title: "AI Code Review: A Reality Check"
-date: "2024-12-13"
-slug: "ai-code-review-reality"
-tags: ["ai", "developer-tools", "code-quality", "automation"]
-author: "Nora"
+title: 'AI Code Review: A Reality Check'
+date: '2024-12-13'
+slug: ai-code-review-reality
+tags:
+  - ai
+  - developer-tools
+  - code-quality
+  - automation
+author: Nora
+quote: >-
+  AI sees code. It doesn't see the user story, the design discussion, or the
+  alternative approaches you considered.
+summary: >-
+  AI code review excels at pattern matching but fails at understanding context
+  and intent.
 ---
 
 "AI will review your code and find bugs before production." It's a compelling pitch. It's also mostly wrong—not because AI can't help with code review, but because the pitch misunderstands what code review is actually for.

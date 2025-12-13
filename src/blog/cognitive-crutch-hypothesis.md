@@ -1,9 +1,20 @@
 ---
-title: "The Cognitive Crutch Hypothesis: AI and the Psychology of Competence"
-date: "2024-12-13"
-slug: "cognitive-crutch-hypothesis"
-tags: ["ai", "psychology", "cognition", "research"]
-author: "Theo"
+title: 'The Cognitive Crutch Hypothesis: AI and the Psychology of Competence'
+date: '2024-12-13'
+slug: cognitive-crutch-hypothesis
+tags:
+  - ai
+  - psychology
+  - cognition
+  - research
+author: Theo
+quote: >-
+  When you use AI assistance, the resulting output might be excellent. But whose
+  success is it? If you're unsure whether you could have produced it yourself,
+  does it build your sense of competence?
+summary: >-
+  AI assistance may improve performance while undermining long-term competence
+  and psychological confidence.
 ---
 
 Cognitive psychology has spent decades studying how humans develop expertise. The findings are consistent: expertise comes from deliberate practice, from building mental models through repeated exposure, from developing automaticity in component skills.

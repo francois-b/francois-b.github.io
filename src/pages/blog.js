@@ -111,6 +111,14 @@ const BlogPage = ({ data }) => {
 
   const [searchActive, setSearchActive] = React.useState(false)
 
+  // Get random highlights (posts with quotes) - pick 3 random ones
+  const highlights = React.useMemo(() => {
+    const postsWithQuotes = allPosts.filter(({ node }) => node.frontmatter.quote)
+    // Shuffle and take 3
+    const shuffled = [...postsWithQuotes].sort(() => Math.random() - 0.5)
+    return shuffled.slice(0, 3)
+  }, [allPosts])
+
   return (
     <Layout>
       <div className="blog-page">
@@ -118,6 +126,25 @@ const BlogPage = ({ data }) => {
 
         {/* Semantic Search */}
         <SemanticSearch onResultsChange={setSearchActive} />
+
+        {/* Highlights Section - show when no search or filters active */}
+        {!searchActive && !hasActiveFilter && highlights.length > 0 && (
+          <section className="blog-highlights" aria-label="Article highlights">
+            <h2 className="blog-highlights__title">Highlights</h2>
+            <div className="blog-highlights__grid">
+              {highlights.map(({ node }) => (
+                <blockquote key={node.id} className="blog-highlight">
+                  <p className="blog-highlight__quote">"{node.frontmatter.quote}"</p>
+                  <footer className="blog-highlight__source">
+                    <Link to={`/blog/${node.frontmatter.slug}`}>
+                      {node.frontmatter.title}
+                    </Link>
+                  </footer>
+                </blockquote>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Topic Clusters, Tag Filter, and Posts List - hide when search results are shown */}
         {!searchActive && (
@@ -235,6 +262,7 @@ export const query = graphql`
             date(formatString: "MMMM DD, YYYY")
             slug
             tags
+            quote
           }
         }
       }

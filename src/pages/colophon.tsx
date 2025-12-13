@@ -13,7 +13,7 @@ const ColophonPage: React.FC = () => {
         </p>
 
         {/* AI Use and Disclosure */}
-        <section className="colophon-section">
+        <section id="ai-use" className="colophon-section">
           <h2 className="colophon-section__title">AI Use & Disclosure</h2>
           <p>
             This site uses AI in several ways. In the spirit of transparency, here's a full accounting:

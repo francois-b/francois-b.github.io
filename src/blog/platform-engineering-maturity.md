@@ -1,9 +1,20 @@
 ---
-title: "Platform Engineering Maturity: Where Are You Really?"
-date: "2024-12-13"
-slug: "platform-engineering-maturity"
-tags: ["devops", "infrastructure", "developer-tools", "strategy"]
-author: "Nora"
+title: 'Platform Engineering Maturity: Where Are You Really?'
+date: '2024-12-13'
+slug: platform-engineering-maturity
+tags:
+  - devops
+  - infrastructure
+  - developer-tools
+  - strategy
+author: Nora
+quote: >-
+  Platform teams often build for power users—other infrastructure engineers. But
+  the people who need the platform most are developers who don't want to think
+  about infrastructure at all.
+summary: >-
+  Most organizations overestimate their platform maturity and underinvest in
+  developer experience.
 ---
 
 Everyone wants a platform team now. The pitch is compelling: abstract away infrastructure complexity, improve developer productivity, reduce cognitive load. The reality is messier.

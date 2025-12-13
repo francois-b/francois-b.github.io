@@ -1,9 +1,19 @@
 ---
-title: "The Death of Undifferentiated Heavy Lifting (And What Comes Next)"
-date: "2024-12-13"
-slug: "undifferentiated-heavy-lifting"
-tags: ["cloud", "infrastructure", "strategy", "aws"]
-author: "Nora"
+title: The Death of Undifferentiated Heavy Lifting (And What Comes Next)
+date: '2024-12-13'
+slug: undifferentiated-heavy-lifting
+tags:
+  - cloud
+  - infrastructure
+  - strategy
+  - aws
+author: Nora
+quote: >-
+  Here's what I think people don't want to hear: a lot of work that feels
+  skilled and important is actually undifferentiated heavy lifting in disguise.
+summary: >-
+  The boundary of 'undifferentiated work' keeps expanding; engineers must focus
+  on increasingly higher-level differentiated value.
 ---
 
 "Focus on what differentiates your business, not undifferentiated heavy lifting." Amazon has been saying this for nearly two decades. It's become so familiar that we've stopped examining what it actually means—and whether the category of "undifferentiated" is about to expand dramatically.

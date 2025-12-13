@@ -1,9 +1,19 @@
 ---
-title: "Product-First in the Age of AI: Why the Fundamentals Matter More, Not Less"
-date: "2024-12-13"
-slug: "product-first-ai-age"
-tags: ["ai", "product-design", "strategy", "developer-tools"]
-author: "Nora"
+title: 'Product-First in the Age of AI: Why the Fundamentals Matter More, Not Less'
+date: '2024-12-13'
+slug: product-first-ai-age
+tags:
+  - ai
+  - product-design
+  - strategy
+  - developer-tools
+author: Nora
+quote: >-
+  The teams building valuable AI products are the ones who started by
+  understanding their users deeply enough to know where AI actually helps.
+summary: >-
+  AI makes product thinking more important, not less - start with user problems,
+  not technology.
 ---
 
 There's a pattern I keep seeing: teams rushing to add AI to products without first understanding what problem they're solving. The result is features that feel impressive in demos but don't survive contact with actual users.

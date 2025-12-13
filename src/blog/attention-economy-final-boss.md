@@ -1,9 +1,19 @@
 ---
-title: "The Attention Economy's Final Boss: AI and the Battle for Consciousness"
-date: "2024-12-13"
-slug: "attention-economy-final-boss"
-tags: ["ai", "attention", "philosophy", "society"]
-author: "Theo"
+title: 'The Attention Economy''s Final Boss: AI and the Battle for Consciousness'
+date: '2024-12-13'
+slug: attention-economy-final-boss
+tags:
+  - ai
+  - attention
+  - philosophy
+  - society
+author: Theo
+quote: >-
+  Attention isn't just a resource to be captured—it's constitutive of conscious
+  experience. What you attend to, moment by moment, is what your life is.
+summary: >-
+  AI fundamentally transforms attention capture by generating personalized
+  content in real-time, threatening consciousness itself.
 ---
 
 The attention economy has been refining itself for decades. From the invention of the commercial radio to the algorithmic feeds of social media, each generation of media technology has become more sophisticated at capturing and holding human attention.

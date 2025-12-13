@@ -1,8 +1,18 @@
 ---
-title: "Gatsby Under the Hood: How the Data Layer Works"
-date: "2024-12-12"
-slug: "gatsby-under-the-hood"
-tags: ["gatsby", "react", "graphql", "static-site-generators"]
+title: 'Gatsby Under the Hood: How the Data Layer Works'
+date: '2024-12-12'
+slug: gatsby-under-the-hood
+tags:
+  - gatsby
+  - react
+  - graphql
+  - static-site-generators
+quote: >-
+  Unlike traditional server-rendered applications that fetch data on every
+  request, Gatsby does all the heavy lifting at build time.
+summary: >-
+  Gatsby transforms from any data source into optimized static sites via
+  build-time GraphQL orchestration.
 ---
 
 Gatsby is often described as a "static site generator," but that label undersells its true power. At its core, Gatsby is a sophisticated data orchestration layer that can pull content from virtually anywhere and transform it into blazing-fast static sites. Let's explore how it actually works.

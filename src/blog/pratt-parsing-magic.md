@@ -1,9 +1,19 @@
 ---
-title: "The Magic of Pratt Parsing"
-date: "2024-12-13"
-slug: "pratt-parsing-magic"
-tags: ["compilers", "parsing", "programming-languages", "algorithms"]
-author: "eli"
+title: The Magic of Pratt Parsing
+date: '2024-12-13'
+slug: pratt-parsing-magic
+tags:
+  - compilers
+  - parsing
+  - programming-languages
+  - algorithms
+author: eli
+quote: >-
+  Traditional recursive descent uses the call stack to encode precedence. Pratt
+  parsing uses the precedence values to encode precedence.
+summary: >-
+  Pratt parsing simplifies operator precedence by using data instead of complex
+  function hierarchies.
 ---
 
 Every parsing tutorial teaches recursive descent. Write a function for each grammar rule, call them recursively, build a tree. It works, it's intuitive, and then you hit operator precedence.

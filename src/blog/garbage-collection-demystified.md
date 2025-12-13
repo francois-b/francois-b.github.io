@@ -1,9 +1,20 @@
 ---
-title: "Why Garbage Collection Isn't Magic"
-date: "2024-12-13"
-slug: "garbage-collection-demystified"
-tags: ["memory-management", "computer-science", "programming-languages", "performance"]
-author: "eli"
+title: Why Garbage Collection Isn't Magic
+date: '2024-12-13'
+slug: garbage-collection-demystified
+tags:
+  - memory-management
+  - computer-science
+  - programming-languages
+  - performance
+author: eli
+quote: >-
+  The insight: start from 'roots' (global variables, stack variables, registers)
+  and follow every pointer. Anything you can reach is live. Everything else is
+  garbage.
+summary: >-
+  Garbage collection demystified: find unreachable memory by tracing pointers
+  from program roots.
 ---
 
 Garbage collection has an aura of mystery. Memory appears when you need it and disappears when you don't. It "just works"—until it doesn't, and then you're debugging pauses and memory leaks in a system you don't understand.

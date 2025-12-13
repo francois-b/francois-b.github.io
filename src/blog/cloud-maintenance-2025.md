@@ -1,9 +1,20 @@
 ---
-title: "Cloud Maintenance in 2025: The Boring Work That Keeps Everything Running"
-date: "2024-12-13"
-slug: "cloud-maintenance-2025"
-tags: ["aws", "infrastructure", "cloud", "devops"]
-author: "Nora"
+title: 'Cloud Maintenance in 2025: The Boring Work That Keeps Everything Running'
+date: '2024-12-13'
+slug: cloud-maintenance-2025
+tags:
+  - aws
+  - infrastructure
+  - cloud
+  - devops
+author: Nora
+quote: >-
+  For every hour spent building new infrastructure, teams spend three to five
+  hours maintaining what exists. This ratio isn't a failure. It's the cost of
+  running systems at scale.
+summary: >-
+  Cloud maintenance now consumes most engineering time and requires dedicated
+  investment, not afterthought treatment.
 ---
 
 Every cloud conference talks about innovation. Nobody talks about maintenance. Yet maintenance is where most cloud engineering time actually goes—and in 2025, the maintenance landscape has quietly shifted in ways that matter.

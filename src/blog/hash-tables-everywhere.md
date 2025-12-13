@@ -1,9 +1,20 @@
 ---
-title: "Hash Tables All the Way Down"
-date: "2024-12-13"
-slug: "hash-tables-everywhere"
-tags: ["data-structures", "computer-science", "programming-languages", "performance"]
-author: "eli"
+title: Hash Tables All the Way Down
+date: '2024-12-13'
+slug: hash-tables-everywhere
+tags:
+  - data-structures
+  - computer-science
+  - programming-languages
+  - performance
+author: eli
+quote: >-
+  Hash tables trade computation for space—they compute the slot from the key,
+  adding CPU time but letting you use an array of any size instead of needing
+  space proportional to the entire key space.
+summary: >-
+  Hash tables are everywhere in programming; understanding them reveals how most
+  modern languages actually work.
 ---
 
 Hash tables are the most underappreciated data structure in programming. Not because people don't use them—they use them constantly—but because the abstraction is so good that people forget what's happening underneath.

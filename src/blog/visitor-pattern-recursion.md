@@ -1,9 +1,19 @@
 ---
-title: "The Visitor Pattern Is Just Recursion in Disguise"
-date: "2024-12-13"
-slug: "visitor-pattern-recursion"
-tags: ["design-patterns", "compilers", "programming-languages", "computer-science"]
-author: "eli"
+title: The Visitor Pattern Is Just Recursion in Disguise
+date: '2024-12-13'
+slug: visitor-pattern-recursion
+tags:
+  - design-patterns
+  - compilers
+  - programming-languages
+  - computer-science
+author: eli
+quote: >-
+  The Visitor pattern is a way to write recursive functions when you can't
+  modify the data structure.
+summary: >-
+  The Visitor pattern is simply recursion with pluggable behavior for tree
+  traversal.
 ---
 
 The Visitor pattern has a reputation for being confusing. Double dispatch, accept methods, visitor interfaces—the ceremony obscures what's actually happening. But strip away the object-oriented machinery and you'll find something familiar: it's just recursion with pluggable behavior.

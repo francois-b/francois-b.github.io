@@ -1,9 +1,20 @@
 ---
-title: "Growth in the Age of Assistance: What Does Personal Development Mean Now?"
-date: "2024-12-13"
-slug: "growth-age-of-assistance"
-tags: ["ai", "personal-growth", "philosophy", "learning"]
-author: "Theo"
+title: 'Growth in the Age of Assistance: What Does Personal Development Mean Now?'
+date: '2024-12-13'
+slug: growth-age-of-assistance
+tags:
+  - ai
+  - personal-growth
+  - philosophy
+  - learning
+author: Theo
+quote: >-
+  When AI handles cognitive work, are we more like the climber using better
+  gear, or more like the airlifted visitor? The answer depends on how much we
+  engage with the process, how much we struggle, how much we grow along the way.
+summary: >-
+  AI forces us to redefine personal growth from capability-building to judgment,
+  relationships, and meaningful struggle.
 ---
 
 The self-improvement industry is built on a simple premise: you can become better through effort. Read more, practice deliberately, build habits, and you'll grow. The struggle is the path.

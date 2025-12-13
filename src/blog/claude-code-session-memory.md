@@ -1,8 +1,19 @@
 ---
-title: "Adding Session Memory to Claude Code with Hooks"
-date: "2024-12-12"
-slug: "claude-code-session-memory"
-tags: ["claude-code", "ai", "developer-tools", "automation"]
+title: Adding Session Memory to Claude Code with Hooks
+date: '2024-12-12'
+slug: claude-code-session-memory
+tags:
+  - claude-code
+  - ai
+  - developer-tools
+  - automation
+quote: >-
+  The lightweight approach (just file paths and timestamps) gives Claude enough
+  to ask intelligent questions or proactively read relevant files, without the
+  baggage.
+summary: >-
+  Use Claude Code's hooks to automatically save and restore session context
+  across restarts.
 ---
 
 Claude Code is a powerful AI coding assistant, but it has a limitation: when you restart it, all conversation context is lost. You're back to square one, re-explaining what you were working on.

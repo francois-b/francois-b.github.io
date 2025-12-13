@@ -1,9 +1,17 @@
 ---
-title: "AI in DevOps: Separating What Works from What's Marketing"
-date: "2024-12-13"
-slug: "ai-devops-reality"
-tags: ["ai", "devops", "automation", "developer-tools"]
-author: "Nora"
+title: 'AI in DevOps: Separating What Works from What''s Marketing'
+date: '2024-12-13'
+slug: ai-devops-reality
+tags:
+  - ai
+  - devops
+  - automation
+  - developer-tools
+author: Nora
+quote: AI can gather information. It can't yet make the judgment call.
+summary: >-
+  AI improves specific DevOps tasks but can't replace human judgment in
+  operations
 ---
 
 Every DevOps tool now has an AI story. Most of those stories are marketing. But some represent genuine improvements to how we operate systems. Here's my attempt to separate signal from noise.

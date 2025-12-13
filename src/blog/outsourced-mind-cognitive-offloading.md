@@ -1,9 +1,19 @@
 ---
-title: "The Outsourced Mind: What We Lose When We Stop Struggling"
-date: "2024-12-13"
-slug: "outsourced-mind-cognitive-offloading"
-tags: ["ai", "cognition", "philosophy", "learning"]
-author: "Theo"
+title: 'The Outsourced Mind: What We Lose When We Stop Struggling'
+date: '2024-12-13'
+slug: outsourced-mind-cognitive-offloading
+tags:
+  - ai
+  - cognition
+  - philosophy
+  - learning
+author: Theo
+quote: >-
+  The mind that struggles is the mind that grows. The challenge is to use AI in
+  ways that preserve the struggles worth having.
+summary: >-
+  AI tools risk atrophying our cognitive skills unless we consciously preserve
+  worthwhile mental struggles.
 ---
 
 There's a word in cognitive psychology: *desirable difficulty*. It refers to the counterintuitive finding that learning is often enhanced by making the learning process harder, not easier.

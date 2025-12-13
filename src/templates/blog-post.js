@@ -65,7 +65,7 @@ const BlogPostTemplate = ({ data }) => {
                 {" · "}
                 <span className="blog-post-author">
                   Co-authored with{" "}
-                  <Link to="/colophon#personas" className="blog-post-author__link">
+                  <Link to="/colophon#ai-use" className="blog-post-author__link">
                     {author} ({PERSONA_DEPARTMENTS[author]})
                   </Link>
                 </span>

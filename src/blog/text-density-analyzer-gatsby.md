@@ -1,8 +1,20 @@
 ---
-title: "Building a Text Information Density Analyzer for Gatsby"
-date: "2024-12-12"
-slug: "text-density-analyzer-gatsby"
-tags: ["gatsby", "nlp", "javascript", "llm", "developer-tools", "featured"]
+title: Building a Text Information Density Analyzer for Gatsby
+date: '2024-12-12'
+slug: text-density-analyzer-gatsby
+tags:
+  - gatsby
+  - nlp
+  - javascript
+  - llm
+  - developer-tools
+  - featured
+quote: >-
+  Dense writing respects the reader's time. These tools help you measure whether
+  yours does.
+summary: >-
+  Build two-tier text analysis: fast JavaScript metrics plus LLM evaluation for
+  writing quality.
 ---
 
 Good writing is dense. Every sentence should earn its place. But how do you measure information density programmatically?

@@ -1,9 +1,19 @@
 ---
-title: "The Efficiency Trap: Rethinking Productivity When AI Handles the Busy Work"
-date: "2024-12-13"
-slug: "efficiency-trap-ai-productivity"
-tags: ["ai", "productivity", "philosophy", "work"]
-author: "Theo"
+title: 'The Efficiency Trap: Rethinking Productivity When AI Handles the Busy Work'
+date: '2024-12-13'
+slug: efficiency-trap-ai-productivity
+tags:
+  - ai
+  - productivity
+  - philosophy
+  - work
+author: Theo
+quote: >-
+  Efficiency asks: how can I do this faster? Effectiveness asks: should I be
+  doing this at all?
+summary: >-
+  AI makes us efficient at the wrong things; we need effectiveness over
+  efficiency.
 ---
 
 Here's a question nobody is asking loudly enough: what is productivity *for*?

@@ -1,9 +1,17 @@
 ---
-title: "Tail Call Optimization: When Recursion Becomes a Loop"
-date: "2024-12-13"
-slug: "tail-call-optimization"
-tags: ["compilers", "programming-languages", "computer-science", "functional-programming"]
-author: "eli"
+title: 'Tail Call Optimization: When Recursion Becomes a Loop'
+date: '2024-12-13'
+slug: tail-call-optimization
+tags:
+  - compilers
+  - programming-languages
+  - computer-science
+  - functional-programming
+author: eli
+quote: Tail call optimization transforms recursion into iteration at compile time.
+summary: >-
+  Tail call optimization turns recursive functions into loops for constant stack
+  usage.
 ---
 
 Recursion has a reputation for being elegant but impractical. "It'll blow the stack," people say. "Just use a loop." But some languages let you write recursive code that runs as efficiently as loops. The secret is tail call optimization (TCO).

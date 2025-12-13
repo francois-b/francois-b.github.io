@@ -1,9 +1,18 @@
 ---
-title: "The Flattening of the Web: When Everything Becomes a Prompt"
-date: "2024-12-13"
-slug: "flattening-of-the-web"
-tags: ["ai", "web", "technology", "future"]
-author: "Theo"
+title: 'The Flattening of the Web: When Everything Becomes a Prompt'
+date: '2024-12-13'
+slug: flattening-of-the-web
+tags:
+  - ai
+  - web
+  - technology
+  - future
+author: Theo
+quote: >-
+  The web is becoming a kind of latent space that I access through prompts. The
+  rich, diverse, sometimes chaotic surface is being smoothed into synthesized
+  answers.
+summary: AI is flattening the web from explorable places into extractable data sources
 ---
 
 The web was supposed to be a document. Then it became an application. Then a platform. Now it's becoming something else: a substrate for AI interaction.

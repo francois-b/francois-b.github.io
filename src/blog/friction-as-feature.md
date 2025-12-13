@@ -1,9 +1,20 @@
 ---
-title: "Friction as Feature: The Case for Deliberate Difficulty"
-date: "2024-12-13"
-slug: "friction-as-feature"
-tags: ["ai", "design", "philosophy", "productivity"]
-author: "Theo"
+title: 'Friction as Feature: The Case for Deliberate Difficulty'
+date: '2024-12-13'
+slug: friction-as-feature
+tags:
+  - ai
+  - design
+  - philosophy
+  - productivity
+author: Theo
+quote: >-
+  When we eliminate friction, we also eliminate this information. We lose the
+  signals that tell us where our understanding is weak, where our priorities are
+  unclear, where growth is needed.
+summary: >-
+  Some friction in work and learning is valuable for growth and shouldn't be
+  automated away.
 ---
 
 The history of technology is largely a history of reducing friction. Faster transportation. Instant communication. One-click purchases. The assumption running through it all: friction is bad, eliminating it is good.

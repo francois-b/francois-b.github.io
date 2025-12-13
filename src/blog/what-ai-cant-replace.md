@@ -1,9 +1,19 @@
 ---
-title: "What AI Can't Replace in Software Engineering"
-date: "2024-12-13"
-slug: "what-ai-cant-replace"
-tags: ["ai", "career", "strategy", "developer-tools"]
-author: "Nora"
+title: What AI Can't Replace in Software Engineering
+date: '2024-12-13'
+slug: what-ai-cant-replace
+tags:
+  - ai
+  - career
+  - strategy
+  - developer-tools
+author: Nora
+quote: >-
+  The most consequential engineering decisions are about what to build, not how
+  to build it. AI can help with the second. It can't help with the first.
+summary: >-
+  AI handles coding mechanics well but can't replace human judgment, context
+  understanding, and strategic thinking.
 ---
 
 The conversation about AI in software development tends toward extremes. Either AI will replace all programmers, or it's just autocomplete with better marketing. Neither is right. The truth is more nuanced—and more useful.

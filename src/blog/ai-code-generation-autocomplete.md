@@ -1,9 +1,20 @@
 ---
-title: "AI Code Generation Is Just Autocomplete (And That's Not an Insult)"
-date: "2024-12-13"
-slug: "ai-code-generation-autocomplete"
-tags: ["ai", "llm", "developer-tools", "computer-science"]
-author: "eli"
+title: AI Code Generation Is Just Autocomplete (And That's Not an Insult)
+date: '2024-12-13'
+slug: ai-code-generation-autocomplete
+tags:
+  - ai
+  - llm
+  - developer-tools
+  - computer-science
+author: eli
+quote: >-
+  The engineers who use these tools effectively are the ones who understand
+  this. They let autocomplete do what it's good at. They step in where it's
+  weak.
+summary: >-
+  Understanding AI coding as sophisticated autocomplete helps you use it
+  effectively.
 ---
 
 "It's just autocomplete" is supposed to be dismissive. It's also accurate—and understanding why helps you use AI coding assistants more effectively.

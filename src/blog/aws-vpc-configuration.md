@@ -1,8 +1,19 @@
 ---
-title: "AWS VPC Configuration: Building a Production-Ready Network"
-date: "2024-12-12"
-slug: "aws-vpc-configuration"
-tags: ["aws", "vpc", "networking", "infrastructure"]
+title: 'AWS VPC Configuration: Building a Production-Ready Network'
+date: '2024-12-12'
+slug: aws-vpc-configuration
+tags:
+  - aws
+  - vpc
+  - networking
+  - infrastructure
+quote: >-
+  The key insight: subnets determine accessibility, not security groups. A
+  resource in a public subnet can have a public IP and receive internet traffic.
+  A resource in a private subnet cannot, regardless of security group rules.
+summary: >-
+  Subnets control internet accessibility; security groups only filter allowed
+  traffic.
 ---
 
 A well-designed VPC is the foundation of any secure AWS deployment. Yet many teams treat networking as an afterthought, creating tangled configurations that become operational nightmares. Let's build a production-ready VPC from first principles.

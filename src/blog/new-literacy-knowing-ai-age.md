@@ -1,9 +1,19 @@
 ---
-title: "The New Literacy: What Does It Mean to 'Know' Something Now?"
-date: "2024-12-13"
-slug: "new-literacy-knowing-ai-age"
-tags: ["ai", "knowledge", "epistemology", "learning"]
-author: "Theo"
+title: 'The New Literacy: What Does It Mean to ''Know'' Something Now?'
+date: '2024-12-13'
+slug: new-literacy-knowing-ai-age
+tags:
+  - ai
+  - knowledge
+  - epistemology
+  - learning
+author: Theo
+quote: >-
+  The less you know about a domain, the more you need AI assistance—but the more
+  AI assistance you need, the less able you are to evaluate it.
+summary: >-
+  AI makes foundational knowledge more important because you need expertise to
+  verify AI outputs.
 ---
 
 Every major technology shift has changed what it means to be educated. The printing press shifted literacy from scribes to the general population. Universal schooling standardized knowledge transmission. The internet made information access nearly universal.

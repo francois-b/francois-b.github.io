@@ -1,8 +1,17 @@
 ---
-title: "Blog Posts as Externalized Memory: Using AI to Capture Thinking"
-date: "2024-12-12"
-slug: "blog-posts-as-memory"
-tags: ["ai", "productivity", "writing", "knowledge-management", "featured"]
+title: 'Blog Posts as Externalized Memory: Using AI to Capture Thinking'
+date: '2024-12-12'
+slug: blog-posts-as-memory
+tags:
+  - ai
+  - productivity
+  - writing
+  - knowledge-management
+  - featured
+quote: Blog posts aren't just for readers. They're for future Claude sessions.
+summary: >-
+  Use AI to write blog posts about your ideas as externalized memory for future
+  sessions.
 ---
 
 I'm going to ask Claude to write this blog post. That sentence is the point of this blog post.

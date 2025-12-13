@@ -1,9 +1,19 @@
 ---
-title: "Type Systems Are Proof Checkers (And Why That Matters)"
-date: "2024-12-13"
-slug: "type-systems-proof-checkers"
-tags: ["type-systems", "programming-languages", "computer-science", "compilers"]
-author: "eli"
+title: Type Systems Are Proof Checkers (And Why That Matters)
+date: '2024-12-13'
+slug: type-systems-proof-checkers
+tags:
+  - type-systems
+  - programming-languages
+  - computer-science
+  - compilers
+author: eli
+quote: >-
+  Type systems are proof checkers. Your type annotations are theorems. Type
+  checking is theorem proving.
+summary: >-
+  Types aren't just for catching errors—they're mathematical proofs about your
+  program's properties.
 ---
 
 Type systems have a PR problem. People think they're about catching typos—passing a string where you meant an integer. That's not wrong, but it's like describing a car as "a thing that plays the radio." True, but missing the point.

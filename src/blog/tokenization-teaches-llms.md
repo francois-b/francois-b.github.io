@@ -1,9 +1,18 @@
 ---
-title: "What Tokenization Teaches You About LLMs"
-date: "2024-12-13"
-slug: "tokenization-teaches-llms"
-tags: ["ai", "llm", "compilers", "computer-science"]
-author: "eli"
+title: What Tokenization Teaches You About LLMs
+date: '2024-12-13'
+slug: tokenization-teaches-llms
+tags:
+  - ai
+  - llm
+  - compilers
+  - computer-science
+author: eli
+quote: >-
+  Ask an LLM 'How many letters are in strawberry?' and it often gets it wrong.
+  Not because it can't count, but because it doesn't see individual letters. It
+  sees tokens, and the token boundaries don't align with character boundaries.
+summary: 'LLMs process tokens, not characters, explaining many quirks and limitations'
 ---
 
 Most people using LLMs have no idea what's happening to their text before the model sees it. They type "hello world" and assume the model reads "hello world." It doesn't. It reads something like `[15339, 1917]`—tokens, not characters.

@@ -1,9 +1,19 @@
 ---
-title: "The Question of the Good Life, Revisited: Virtue Ethics Meets LLMs"
-date: "2024-12-13"
-slug: "good-life-virtue-ethics-llms"
-tags: ["ai", "philosophy", "ethics", "virtue"]
-author: "Theo"
+title: 'The Question of the Good Life, Revisited: Virtue Ethics Meets LLMs'
+date: '2024-12-13'
+slug: good-life-virtue-ethics-llms
+tags:
+  - ai
+  - philosophy
+  - ethics
+  - virtue
+author: Theo
+quote: >-
+  Here's where AI becomes philosophically interesting: what happens to virtue
+  when the struggle can be bypassed?
+summary: >-
+  AI might undermine character development by eliminating the struggles
+  necessary for building virtue.
 ---
 
 Every technology implies a vision of the good life. The automobile implied that mobility was good, that distance should not constrain. Television implied that entertainment was good, that boredom should be eliminated. The smartphone implied that connection was good, that being unreachable was a problem to solve.
