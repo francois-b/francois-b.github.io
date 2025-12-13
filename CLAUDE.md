@@ -84,6 +84,49 @@ author: "persona-name"    # Required when written by a persona
 ---
 ```
 
+## Audio Narration (ElevenLabs)
+
+Blog posts can have AI-generated audio narration using ElevenLabs TTS.
+
+### Setup
+Add to `.env`:
+```
+ELEVENLABS_API_KEY=your-api-key
+ELEVENLABS_VOICE_ID=your-voice-id
+```
+
+### Usage
+```bash
+# Generate audio for a specific post
+npm run generate-audio -- --slug my-post-slug
+
+# Generate audio for all posts missing audio
+npm run generate-audio
+
+# Force regenerate all audio (overwrites existing)
+npm run generate-audio -- --force
+```
+
+### How It Works
+1. Script reads markdown, strips formatting, sends to ElevenLabs API
+2. Audio saved to `static/audio/{slug}.mp3`
+3. Long posts (>5000 chars) are automatically chunked
+4. AudioPlayer component detects if audio exists and shows play button
+5. Global player persists across page navigation
+
+### Workflow
+**Manual (recommended):** Run `generate-audio` for posts you want narrated. This gives you control over:
+- Cost (~$0.30-0.50 per post)
+- Which posts get audio
+- Quality review before publishing
+
+### Files
+- `scripts/generate-audio.js` — Generation script
+- `src/context/audio-context.tsx` — Global audio state
+- `src/components/AudioPlayer.js` — Blog post trigger button
+- `src/components/GlobalAudioPlayer.tsx` — Persistent bottom player
+- `static/audio/` — Generated MP3 files (committed to repo for deployment)
+
 ## Notes
 - Video placeholder exists but actual video not yet implemented
 - Project icons use theme-aware filtering (black in light mode, white in dark)
