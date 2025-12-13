@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="sourceGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="pluginGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="graphqlGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e535ab;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c026d3;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="buildGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#663399;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#542c85;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="outputGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" font-size="20" font-weight="600" fill="#1e293b">Gatsby Build Architecture</text>
+
+  <!-- Data Sources Section -->
+  <text x="400" y="70" text-anchor="middle" font-size="12" fill="#64748b" font-weight="500">DATA SOURCES</text>
+
+  <!-- Source boxes -->
+  <g transform="translate(40, 85)">
+    <rect width="100" height="45" rx="6" fill="url(#sourceGrad)"/>
+    <text x="50" y="20" text-anchor="middle" font-size="11" fill="white" font-weight="500">Markdown</text>
+    <text x="50" y="34" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Files</text>
+  </g>
+
+  <g transform="translate(155, 85)">
+    <rect width="100" height="45" rx="6" fill="url(#sourceGrad)"/>
+    <text x="50" y="20" text-anchor="middle" font-size="11" fill="white" font-weight="500">Contentful</text>
+    <text x="50" y="34" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">CMS</text>
+  </g>
+
+  <g transform="translate(270, 85)">
+    <rect width="100" height="45" rx="6" fill="url(#sourceGrad)"/>
+    <text x="50" y="20" text-anchor="middle" font-size="11" fill="white" font-weight="500">WordPress</text>
+    <text x="50" y="34" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">CMS</text>
+  </g>
+
+  <g transform="translate(385, 85)">
+    <rect width="100" height="45" rx="6" fill="url(#sourceGrad)"/>
+    <text x="50" y="20" text-anchor="middle" font-size="11" fill="white" font-weight="500">REST APIs</text>
+    <text x="50" y="34" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">External</text>
+  </g>
+
+  <g transform="translate(500, 85)">
+    <rect width="100" height="45" rx="6" fill="url(#sourceGrad)"/>
+    <text x="50" y="20" text-anchor="middle" font-size="11" fill="white" font-weight="500">JSON/YAML</text>
+    <text x="50" y="34" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Config</text>
+  </g>
+
+  <g transform="translate(615, 85)">
+    <rect width="100" height="45" rx="6" fill="url(#sourceGrad)"/>
+    <text x="50" y="20" text-anchor="middle" font-size="11" fill="white" font-weight="500">Database</text>
+    <text x="50" y="34" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">SQL/NoSQL</text>
+  </g>
+
+  <!-- Arrows from sources to source plugins -->
+  <line x1="90" y1="135" x2="90" y2="165" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="205" y1="135" x2="205" y2="165" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="320" y1="135" x2="320" y2="165" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="435" y1="135" x2="435" y2="165" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="550" y1="135" x2="550" y2="165" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="665" y1="135" x2="665" y2="165" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Source Plugins -->
+  <g transform="translate(60, 175)">
+    <rect width="640" height="55" rx="8" fill="url(#pluginGrad)"/>
+    <text x="320" y="22" text-anchor="middle" font-size="14" fill="white" font-weight="600">Source Plugins</text>
+    <text x="320" y="40" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">gatsby-source-filesystem  |  gatsby-source-contentful  |  gatsby-source-wordpress  |  gatsby-source-graphql</text>
+  </g>
+
+  <!-- Arrow to transformer -->
+  <line x1="380" y1="235" x2="380" y2="265" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Transformer Plugins -->
+  <g transform="translate(60, 275)">
+    <rect width="640" height="55" rx="8" fill="url(#pluginGrad)"/>
+    <text x="320" y="22" text-anchor="middle" font-size="14" fill="white" font-weight="600">Transformer Plugins</text>
+    <text x="320" y="40" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">gatsby-transformer-remark  |  gatsby-transformer-sharp  |  gatsby-transformer-json</text>
+  </g>
+
+  <!-- Arrow to GraphQL -->
+  <line x1="380" y1="335" x2="380" y2="365" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- GraphQL Data Layer -->
+  <g transform="translate(100, 375)">
+    <rect width="560" height="65" rx="10" fill="url(#graphqlGrad)" stroke="#a855f7" stroke-width="2"/>
+    <text x="280" y="28" text-anchor="middle" font-size="16" fill="white" font-weight="700">GraphQL Data Layer</text>
+    <text x="280" y="48" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.9)">Unified schema auto-generated from all sources</text>
+  </g>
+
+  <!-- Arrow to Build -->
+  <line x1="380" y1="445" x2="380" y2="475" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Gatsby Build -->
+  <g transform="translate(150, 485)">
+    <rect width="200" height="50" rx="8" fill="url(#buildGrad)"/>
+    <text x="100" y="22" text-anchor="middle" font-size="13" fill="white" font-weight="600">Gatsby Build</text>
+    <text x="100" y="38" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)">createPages + Templates</text>
+  </g>
+
+  <!-- React Components box -->
+  <g transform="translate(580, 395)">
+    <rect width="120" height="50" rx="6" fill="#3b82f6" stroke="#2563eb" stroke-width="1"/>
+    <text x="60" y="22" text-anchor="middle" font-size="11" fill="white" font-weight="500">React</text>
+    <text x="60" y="36" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)">Components</text>
+  </g>
+
+  <!-- Arrow from React to Build -->
+  <path d="M 580 420 L 500 420 L 500 510 L 355 510" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Arrow from build to outputs -->
+  <line x1="350" y1="510" x2="350" y2="540" stroke="#64748b" stroke-width="2"/>
+  <line x1="200" y1="540" x2="560" y2="540" stroke="#64748b" stroke-width="2"/>
+  <line x1="200" y1="540" x2="200" y2="555" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="310" y1="540" x2="310" y2="555" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="420" y1="540" x2="420" y2="555" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="560" y1="540" x2="560" y2="555" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Output boxes -->
+  <g transform="translate(150, 565)">
+    <rect width="100" height="30" rx="5" fill="url(#outputGrad)"/>
+    <text x="50" y="20" text-anchor="middle" font-size="10" fill="white" font-weight="500">Static HTML</text>
+  </g>
+
+  <g transform="translate(260, 565)">
+    <rect width="100" height="30" rx="5" fill="url(#outputGrad)"/>
+    <text x="50" y="20" text-anchor="middle" font-size="10" fill="white" font-weight="500">JS Bundles</text>
+  </g>
+
+  <g transform="translate(370, 565)">
+    <rect width="100" height="30" rx="5" fill="url(#outputGrad)"/>
+    <text x="50" y="20" text-anchor="middle" font-size="10" fill="white" font-weight="500">Optimized Images</text>
+  </g>
+
+  <g transform="translate(510, 565)">
+    <rect width="100" height="30" rx="5" fill="url(#outputGrad)"/>
+    <text x="50" y="20" text-anchor="middle" font-size="10" fill="white" font-weight="500">Page Data JSON</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(620, 485)">
+    <rect width="130" height="80" rx="6" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="65" y="18" text-anchor="middle" font-size="10" fill="#64748b" font-weight="600">LEGEND</text>
+    <rect x="10" y="28" width="14" height="10" rx="2" fill="url(#sourceGrad)"/>
+    <text x="30" y="37" font-size="9" fill="#475569">Data Sources</text>
+    <rect x="10" y="43" width="14" height="10" rx="2" fill="url(#pluginGrad)"/>
+    <text x="30" y="52" font-size="9" fill="#475569">Plugins</text>
+    <rect x="10" y="58" width="14" height="10" rx="2" fill="url(#graphqlGrad)"/>
+    <text x="30" y="67" font-size="9" fill="#475569">GraphQL Layer</text>
+  </g>
+</svg>

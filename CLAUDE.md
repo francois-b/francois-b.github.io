@@ -86,3 +86,58 @@ type: "blog" | "project"  # Filters display location
 - Video placeholder exists but actual video not yet implemented
 - Project icons use theme-aware filtering (black in light mode, white in dark)
 - Highlight styles use gradient underline effect
+
+## Image Generation (MCP Gemini Server)
+
+**MANDATORY: ASCII-First Workflow for Diagrams**
+
+When generating technical diagrams via `mcp__gemini-image__generate_image`, you MUST follow this two-step process:
+
+### Step 1: Create ASCII Diagram First
+Before ANY image generation, create a detailed ASCII diagram that defines:
+- Exact spatial layout and positioning of all elements
+- All labels, text, and annotations
+- Connection lines and arrows showing relationships
+- Grouping boxes and boundaries
+
+### Step 2: Prompt Gemini with ASCII + Style Instructions
+Structure the prompt as:
+```
+[STYLE INSTRUCTIONS]
+Brief description of visual style, colors, icon style.
+
+[LAYOUT SPECIFICATION]
+<paste ASCII diagram here>
+
+[RENDERING RULES]
+- Preserve exact spatial arrangement from ASCII
+- Keep all labels exactly as written
+- Use [specific icon style] for components
+- [Color scheme instructions]
+```
+
+### Why This Matters
+- Claude excels at conceptual layout and information architecture
+- Gemini excels at visual rendering and aesthetics
+- Letting Gemini decide layout produces inconsistent, often incorrect diagrams
+- ASCII-first ensures the diagram accurately represents the intended architecture
+
+### Example Prompt Structure
+```
+Professional AWS architecture diagram with official AWS icons.
+Orange for compute, blue for networking, green for databases.
+White background, clean lines.
+
+LAYOUT (render this exactly):
+┌─────────────────────────┐
+│        VPC              │
+│  ┌─────┐    ┌─────┐    │
+│  │ EC2 │───▶│ RDS │    │
+│  └─────┘    └─────┘    │
+└─────────────────────────┘
+
+Render as a polished diagram preserving this exact layout.
+```
+
+### Enforcement
+This is a STRICT requirement. Never call `generate_image` for technical diagrams without first creating and including an ASCII layout in the prompt.

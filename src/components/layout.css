@@ -348,6 +348,16 @@ pre tt:after {
   margin-top: 0;
 }
 
+/* Reduce gap when h2 is immediately followed by h3 */
+.blog-post-content h2 + h3 {
+  margin-top: 1.25rem;
+}
+
+/* Reduce gap when h3 is immediately followed by h4 */
+.blog-post-content h3 + h4 {
+  margin-top: 1rem;
+}
+
 /* Lists */
 .blog-post-content ul,
 .blog-post-content ol {
