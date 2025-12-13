@@ -2,7 +2,7 @@
 title: "AWS VPC Configuration: Building a Production-Ready Network"
 date: "2024-12-12"
 slug: "aws-vpc-configuration"
-tags: ["aws", "vpc", "networking", "infrastructure", "featured"]
+tags: ["aws", "vpc", "networking", "infrastructure"]
 ---
 
 A well-designed VPC is the foundation of any secure AWS deployment. Yet many teams treat networking as an afterthought, creating tangled configurations that become operational nightmares. Let's build a production-ready VPC from first principles.

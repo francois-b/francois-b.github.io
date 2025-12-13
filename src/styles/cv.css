@@ -19,8 +19,11 @@
   --font-size-base: 1rem;
   --font-size-md: 1.1rem;
   --font-size-lg: 1.25rem;
-  --font-size-xl: 1.5rem;
-  --font-size-2xl: 2rem;
+
+  /* Line heights */
+  --line-height-dense: 1.4;
+  --line-height-normal: 1.6;
+  --line-height-loose: 1.8;
 
   /* Spacing */
   --space-1: 0.25rem;
@@ -37,8 +40,8 @@
   --radius-full: 50px;
 
   /* Semantic colors (theme-independent) */
-  --color-link: #8593e8;
-  --color-link-hover: #fe7c29;
+  --color-link: #5689d9;
+  --color-link-hover: #b45309;
   --color-accent: #b45309;
 
   /* Textures */
@@ -69,7 +72,7 @@ html[data-theme="night"] {
 
 /* Sun Theme (Default) */
 body.theme-sun {
-  --color-primary: #8593e8;
+  --color-primary: #5689d9;
   --color-secondary: #fbbf24;
   --color-text: #374151;
   --color-text-light: #4b5563;
@@ -77,12 +80,6 @@ body.theme-sun {
   --color-bg: #fffdf5;
   --color-bg-subtle: #fef9ec;
   --color-border: #ccc;
-  --gradient-1: #facc15;
-  --gradient-1-opacity: 0.12;
-  --gradient-2: #fbbf24;
-  --gradient-2-opacity: 0.07;
-  --path-color-1: rgba(250, 204, 21, 0.24);
-  --path-color-2: rgba(251, 191, 36, 0.18);
 
   --highlight-engineering: rgba(250, 204, 21, 0.5);
   --highlight-ai: rgba(74, 222, 128, 0.45);
@@ -91,6 +88,21 @@ body.theme-sun {
   --shadow-sm: 0 1px 3px rgba(251, 191, 36, 0.08);
   --shadow-md: 0 4px 6px rgba(251, 191, 36, 0.12);
   --shadow-lg: 0 10px 25px rgba(251, 191, 36, 0.18);
+
+  /* Syntax highlighting (Coldark Cold) */
+  --code-bg: #e3eaf2;
+  --code-text: #111b27;
+  --code-selection: #8da1b9;
+  --code-comment: #3c526d;
+  --code-punctuation: #111b27;
+  --code-tag: #006d6d;
+  --code-number: #755f00;
+  --code-property: #005a8e;
+  --code-string: #116b00;
+  --code-builtin: #af00af;
+  --code-function: #7c00aa;
+  --code-keyword: #a04900;
+  --code-deleted: #c22f2e;
 }
 
 /* Night Theme */
@@ -103,12 +115,6 @@ body.theme-night {
   --color-bg: #0f172a;
   --color-bg-subtle: #1e293b;
   --color-border: #334155;
-  --gradient-1: #8593e8;
-  --gradient-1-opacity: 0.2;
-  --gradient-2: #a78bfa;
-  --gradient-2-opacity: 0.1;
-  --path-color-1: rgba(129, 140, 248, 0.3);
-  --path-color-2: rgba(167, 139, 250, 0.2);
 
   --highlight-engineering: rgba(129, 140, 248, 0.28);
   --highlight-ai: rgba(147, 197, 253, 0.26);
@@ -117,6 +123,21 @@ body.theme-night {
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+
+  /* Syntax highlighting (Coldark Dark) */
+  --code-bg: #111b27;
+  --code-text: #e3eaf2;
+  --code-selection: #3c526d;
+  --code-comment: #8da1b9;
+  --code-punctuation: #e3eaf2;
+  --code-tag: #66cccc;
+  --code-number: #e6d37a;
+  --code-property: #6cb8e6;
+  --code-string: #91d076;
+  --code-builtin: #f4adf4;
+  --code-function: #c699e3;
+  --code-keyword: #e9ae7e;
+  --code-deleted: #cd6660;
 }
 
 /* Reset & Base Styles */
@@ -196,21 +217,10 @@ h6 {
 a {
   color: var(--color-link);
   text-decoration: none;
-  padding: 0 0.1em;
-  background: linear-gradient(
-    to top,
-    transparent 40%,
-    transparent 40%
-  );
 }
 
 a:hover {
   color: var(--color-link-hover);
-  background: linear-gradient(
-    to top,
-    var(--highlight-engineering) 40%,
-    transparent 40%
-  );
 }
 
 .highlight {
@@ -322,11 +332,6 @@ a:hover {
 
 .floating-link:hover {
   color: var(--color-link-hover);
-  background: linear-gradient(
-    to top,
-    var(--highlight-engineering) 40%,
-    transparent 40%
-  );
 }
 
 .floating-link.active {
@@ -769,7 +774,7 @@ a:hover {
 .blog-card p.blog-card-date {
   font-family: var(--font-sans);
   font-size: var(--font-size-xs);
-  color: var(--color-accent);
+  color: var(--color-text-lighter);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin-top: var(--space-1);

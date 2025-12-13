@@ -2,7 +2,7 @@
 title: "Adding Session Memory to Claude Code with Hooks"
 date: "2024-12-12"
 slug: "claude-code-session-memory"
-tags: ["claude-code", "ai", "developer-tools", "automation", "featured"]
+tags: ["claude-code", "ai", "developer-tools", "automation"]
 ---
 
 Claude Code is a powerful AI coding assistant, but it has a limitation: when you restart it, all conversation context is lost. You're back to square one, re-explaining what you were working on.
