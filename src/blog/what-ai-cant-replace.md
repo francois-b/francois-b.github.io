@@ -3,6 +3,7 @@ title: "What AI Can't Replace in Software Engineering"
 date: "2024-12-13"
 slug: "what-ai-cant-replace"
 tags: ["ai", "career", "strategy", "developer-tools"]
+author: "Nora"
 ---
 
 The conversation about AI in software development tends toward extremes. Either AI will replace all programmers, or it's just autocomplete with better marketing. Neither is right. The truth is more nuanced—and more useful.

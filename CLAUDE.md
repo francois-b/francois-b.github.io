@@ -78,7 +78,9 @@ title: "Post Title"
 date: "YYYY-MM-DD"
 slug: "url-slug"
 excerpt: "Short description"
+tags: ["tag1", "tag2"]
 type: "blog" | "project"  # Filters display location
+author: "persona-name"    # Required when written by a persona
 ---
 ```
 

@@ -3,6 +3,7 @@ title: "A Pragmatic Guide to Cloud Observability"
 date: "2024-12-13"
 slug: "cloud-observability-pragmatic"
 tags: ["aws", "devops", "infrastructure", "developer-tools"]
+author: "Nora"
 ---
 
 Observability has become complicated. Vendors compete on features. Frameworks multiply. The "three pillars" have become four, or five, depending on who you ask.

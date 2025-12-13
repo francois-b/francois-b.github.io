@@ -3,6 +3,7 @@ title: "Staying Level-Headed When AI Is Changing Everything"
 date: "2024-12-13"
 slug: "staying-calm-ai-change"
 tags: ["ai", "career", "productivity", "knowledge-management"]
+author: "Nora"
 ---
 
 Every week brings a new announcement that's supposed to change everything. Every month, someone declares a skill obsolete. Every quarter, the predictions about AI's impact on software development get more dramatic.

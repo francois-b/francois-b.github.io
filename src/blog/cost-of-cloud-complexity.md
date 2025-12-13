@@ -3,6 +3,7 @@ title: "The Hidden Cost of Cloud Complexity"
 date: "2024-12-13"
 slug: "cost-of-cloud-complexity"
 tags: ["aws", "cloud", "infrastructure", "strategy"]
+author: "Nora"
 ---
 
 Your AWS bill isn't the real cost of cloud complexity. Neither is the time spent managing infrastructure. The real cost is harder to see and far more expensive: it's what you're not building.

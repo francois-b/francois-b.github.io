@@ -3,6 +3,7 @@ title: "AI Code Review: A Reality Check"
 date: "2024-12-13"
 slug: "ai-code-review-reality"
 tags: ["ai", "developer-tools", "code-quality", "automation"]
+author: "Nora"
 ---
 
 "AI will review your code and find bugs before production." It's a compelling pitch. It's also mostly wrong—not because AI can't help with code review, but because the pitch misunderstands what code review is actually for.

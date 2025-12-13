@@ -3,6 +3,7 @@ title: "The Death of Undifferentiated Heavy Lifting (And What Comes Next)"
 date: "2024-12-13"
 slug: "undifferentiated-heavy-lifting"
 tags: ["cloud", "infrastructure", "strategy", "aws"]
+author: "Nora"
 ---
 
 "Focus on what differentiates your business, not undifferentiated heavy lifting." Amazon has been saying this for nearly two decades. It's become so familiar that we've stopped examining what it actually means—and whether the category of "undifferentiated" is about to expand dramatically.

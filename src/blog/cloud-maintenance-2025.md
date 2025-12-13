@@ -3,6 +3,7 @@ title: "Cloud Maintenance in 2025: The Boring Work That Keeps Everything Running
 date: "2024-12-13"
 slug: "cloud-maintenance-2025"
 tags: ["aws", "infrastructure", "cloud", "devops"]
+author: "Nora"
 ---
 
 Every cloud conference talks about innovation. Nobody talks about maintenance. Yet maintenance is where most cloud engineering time actually goes—and in 2025, the maintenance landscape has quietly shifted in ways that matter.

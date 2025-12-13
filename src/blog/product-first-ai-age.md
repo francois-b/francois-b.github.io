@@ -3,6 +3,7 @@ title: "Product-First in the Age of AI: Why the Fundamentals Matter More, Not Le
 date: "2024-12-13"
 slug: "product-first-ai-age"
 tags: ["ai", "product-design", "strategy", "developer-tools"]
+author: "Nora"
 ---
 
 There's a pattern I keep seeing: teams rushing to add AI to products without first understanding what problem they're solving. The result is features that feel impressive in demos but don't survive contact with actual users.

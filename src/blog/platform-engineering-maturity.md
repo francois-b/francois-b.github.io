@@ -3,6 +3,7 @@ title: "Platform Engineering Maturity: Where Are You Really?"
 date: "2024-12-13"
 slug: "platform-engineering-maturity"
 tags: ["devops", "infrastructure", "developer-tools", "strategy"]
+author: "Nora"
 ---
 
 Everyone wants a platform team now. The pitch is compelling: abstract away infrastructure complexity, improve developer productivity, reduce cognitive load. The reality is messier.
