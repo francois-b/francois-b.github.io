@@ -559,3 +559,35 @@ pre tt:after {
 .blog-post-content details > pre:last-child {
   margin-bottom: 1rem;
 }
+
+/* ===================================
+   Theme-aware images (light/dark variants)
+   =================================== */
+
+.theme-image {
+  display: block;
+  margin: 1.5rem 0;
+}
+
+.theme-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.theme-image .light-only {
+  display: block;
+}
+
+.theme-image .dark-only {
+  display: none;
+}
+
+body.theme-night .theme-image .light-only {
+  display: none;
+}
+
+body.theme-night .theme-image .dark-only {
+  display: block;
+}

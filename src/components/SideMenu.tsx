@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
-import { useTheme, type ThemeName } from "../context/theme-context"
+import { useTheme, type ThemePreference } from "../context/theme-context"
 
 const SunIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -22,7 +22,21 @@ const MoonIcon = () => (
   </svg>
 )
 
-const THEME_CYCLE: ThemeName[] = ["sun", "night"]
+const SystemIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+    <line x1="8" y1="21" x2="16" y2="21" />
+    <line x1="12" y1="17" x2="12" y2="21" />
+  </svg>
+)
+
+const THEME_CYCLE: ThemePreference[] = ["system", "sun", "night"]
+
+const THEME_LABELS: Record<ThemePreference, string> = {
+  system: "System theme",
+  sun: "Light theme",
+  night: "Dark theme",
+}
 
 const CONTACT_LINKS = [
   {
@@ -40,12 +54,20 @@ const CONTACT_LINKS = [
 ]
 
 const SideMenu: React.FC = () => {
-  const { theme, setTheme } = useTheme()
+  const { preference, setPreference } = useTheme()
 
   const cycleTheme = () => {
-    const currentIndex = THEME_CYCLE.indexOf(theme)
+    const currentIndex = THEME_CYCLE.indexOf(preference)
     const nextIndex = (currentIndex + 1) % THEME_CYCLE.length
-    setTheme(THEME_CYCLE[nextIndex])
+    setPreference(THEME_CYCLE[nextIndex])
+  }
+
+  const getIcon = () => {
+    switch (preference) {
+      case "system": return <SystemIcon />
+      case "sun": return <SunIcon />
+      case "night": return <MoonIcon />
+    }
   }
 
   return (
@@ -101,10 +123,10 @@ const SideMenu: React.FC = () => {
         <button
           className="theme-toggle-button"
           onClick={cycleTheme}
-          aria-label={theme === "sun" ? "Switch to dark theme" : "Switch to light theme"}
-          title={theme === "sun" ? "Switch to dark theme" : "Switch to light theme"}
+          aria-label={THEME_LABELS[preference]}
+          title={THEME_LABELS[preference]}
         >
-          {theme === "sun" ? <MoonIcon /> : <SunIcon />}
+          {getIcon()}
         </button>
       </div>
     </div>

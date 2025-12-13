@@ -764,25 +764,40 @@ memoization (not React 19 core)"
 
 #### 1. Dashboard
 
-![Dashboard wireframe](/mmx-dashboard.svg)
+<div class="theme-image">
+  <img class="light-only" src="/mmx-dashboard.svg" alt="Dashboard wireframe" />
+  <img class="dark-only" src="/mmx-dashboard-dark.svg" alt="Dashboard wireframe" />
+</div>
 
 #### 2. Review Queue
 
-![Review Queue wireframe](/mmx-review-queue.svg)
+<div class="theme-image">
+  <img class="light-only" src="/mmx-review-queue.svg" alt="Review Queue wireframe" />
+  <img class="dark-only" src="/mmx-review-queue-dark.svg" alt="Review Queue wireframe" />
+</div>
 
 #### 3. Argument Viewer
 
-![Argument Viewer wireframe](/mmx-argument-viewer.svg)
+<div class="theme-image">
+  <img class="light-only" src="/mmx-argument-viewer.svg" alt="Argument Viewer wireframe" />
+  <img class="dark-only" src="/mmx-argument-viewer-dark.svg" alt="Argument Viewer wireframe" />
+</div>
 
 #### 4. Search
 
 Unified search with filters, replacing separate browsers.
 
-![Search wireframe](/mmx-search.svg)
+<div class="theme-image">
+  <img class="light-only" src="/mmx-search.svg" alt="Search wireframe" />
+  <img class="dark-only" src="/mmx-search-dark.svg" alt="Search wireframe" />
+</div>
 
 **Entity detail view** (modal or drill-down from search):
 
-![Entity Detail View wireframe](/mmx-entity-detail.svg)
+<div class="theme-image">
+  <img class="light-only" src="/mmx-entity-detail.svg" alt="Entity Detail View wireframe" />
+  <img class="dark-only" src="/mmx-entity-detail-dark.svg" alt="Entity Detail View wireframe" />
+</div>
 
 
 #### Knowledge
@@ -979,7 +994,10 @@ Response: {
 
 ### Architecture Diagram
 
-![AWS Architecture Diagram](/mmx-architecture.svg)
+<div class="theme-image">
+  <img class="light-only" src="/mmx-architecture.svg" alt="AWS Architecture Diagram" />
+  <img class="dark-only" src="/mmx-architecture-dark.svg" alt="AWS Architecture Diagram" />
+</div>
 
 <details>
 <summary>CDK Stack Overview</summary>
