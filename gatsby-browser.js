@@ -6,7 +6,12 @@
 
 const React = require("react")
 const { ThemeProvider } = require("./src/context/theme-context")
+const { AudioProvider } = require("./src/context/audio-context")
 
 exports.wrapRootElement = ({ element }) => (
-	React.createElement(ThemeProvider, null, element)
+	React.createElement(
+		ThemeProvider,
+		null,
+		React.createElement(AudioProvider, null, element)
+	)
 )

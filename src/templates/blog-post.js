@@ -13,6 +13,9 @@ const BlogPostTemplate = ({ data }) => {
   return (
     <Layout>
       <article className="blog-post-article">
+        <Link to="/blog" className="blog-post-back-link">
+          ← Back to the list of articles
+        </Link>
         <header className="blog-post-header">
           <h1 className="blog-post-title" style={{ marginBottom: "0.5rem" }}>{post.frontmatter.title}</h1>
           <p className="blog-post-card__meta">
@@ -20,7 +23,7 @@ const BlogPostTemplate = ({ data }) => {
           </p>
           <Tags tags={post.frontmatter.tags} />
         </header>
-        <AudioPlayer slug={post.frontmatter.slug} />
+        <AudioPlayer slug={post.frontmatter.slug} title={post.frontmatter.title} />
         <div
           className="blog-post-content"
           dangerouslySetInnerHTML={{ __html: post.html }}

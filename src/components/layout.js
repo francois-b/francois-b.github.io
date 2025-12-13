@@ -10,6 +10,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import SideMenu from "./SideMenu"
+import GlobalAudioPlayer from "./GlobalAudioPlayer"
 import "./layout.css"
 import "../styles/cv.css"
 import "../styles/prism-theme.css"
@@ -26,17 +27,20 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <div className="cv-container">
-      <aside className="cv-sidebar">
-        <SideMenu />
-      </aside>
+    <>
+      <div className="cv-container">
+        <aside className="cv-sidebar">
+          <SideMenu />
+        </aside>
 
-      <div className="cv-content">
-        <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-        <main>{children}</main>
-      
+        <div className="cv-content">
+          <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+          <main>{children}</main>
+
+        </div>
       </div>
-    </div>
+      <GlobalAudioPlayer />
+    </>
   )
 }
 

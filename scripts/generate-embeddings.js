@@ -3,7 +3,7 @@
  * This script runs during the Gatsby build process via gatsby-node.js
  */
 
-const { pipeline } = require('@xenova/transformers');
+const { pipeline } = require('@huggingface/transformers');
 const fs = require('fs');
 const path = require('path');
 

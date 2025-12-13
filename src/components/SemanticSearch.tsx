@@ -51,15 +51,16 @@ const SemanticSearch: React.FC<SemanticSearchProps> = ({ onResultsChange }) => {
 
     setModelLoading(true);
     try {
-      const transformers = await import('@xenova/transformers');
+      const { pipeline, env } = await import('@huggingface/transformers');
 
       // Configure environment for browser usage
-      transformers.env.allowLocalModels = false;
-      transformers.env.useBrowserCache = true;
+      env.allowLocalModels = false;
+      env.useBrowserCache = true;
 
-      embedderRef.current = await transformers.pipeline(
+      embedderRef.current = await pipeline(
         'feature-extraction',
-        'Xenova/all-MiniLM-L6-v2'
+        'sentence-transformers/all-MiniLM-L6-v2',
+        { dtype: 'fp32' }
       );
       setModelLoading(false);
       return embedderRef.current;
