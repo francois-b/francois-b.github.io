@@ -174,7 +174,14 @@ exports.onPostBuild = async ({ graphql }) => {
       posts,
       path.join(__dirname, "public", "embeddings.json")
     )
+
+    // Generate topic clusters from tags
+    console.log("\n🏷️  Generating topic clusters...")
+    const { generateClusters } = require("./scripts/generate-clusters")
+    await generateClusters({
+      outputPath: path.join(__dirname, "public", "clusters.json")
+    })
   } catch (error) {
-    console.error("Error generating embeddings:", error)
+    console.error("Error generating embeddings or clusters:", error)
   }
 }

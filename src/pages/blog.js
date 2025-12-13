@@ -3,22 +3,30 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import SemanticSearch from "../components/SemanticSearch"
+import TopicClusters from "../components/TopicClusters"
 import "../styles/blog.css"
-
-// Topic clusters - group related tags under broader themes
-const TOPIC_CLUSTERS = {
-  "AI & Tools": ["ai", "claude-code", "llm", "developer-tools", "automation"],
-  "Web Development": ["gatsby", "react", "typescript", "javascript", "graphql", "static-site-generators"],
-  "Infrastructure": ["aws", "vpc", "networking", "infrastructure"],
-  "Knowledge": ["productivity", "writing", "knowledge-management", "nlp"],
-}
 
 // Tags to exclude from display
 const HIDDEN_TAGS = ["featured", "project"]
 
 const BlogPage = ({ data }) => {
   const [activeCluster, setActiveCluster] = React.useState(null)
-  const [activeTag, setActiveTag] = React.useState(null)
+  const [activeTags, setActiveTags] = React.useState([])
+  const [clusters, setClusters] = React.useState([])
+
+  // Load clusters on mount
+  React.useEffect(() => {
+    fetch("/clusters.json")
+      .then((r) => r.ok ? r.json() : null)
+      .then((data) => {
+        if (data?.clusters) {
+          setClusters(data.clusters)
+        }
+      })
+      .catch(() => {
+        // Clusters will remain empty, filtering by cluster disabled
+      })
+  }, [])
 
   // Filter out project posts
   const allPosts = React.useMemo(
@@ -26,6 +34,12 @@ const BlogPage = ({ data }) => {
       ({ node }) => !node.frontmatter.tags?.includes("project")
     ),
     [data.allMarkdownRemark.edges]
+  )
+
+  // Get all slugs for TopicClusters component
+  const allSlugs = React.useMemo(
+    () => allPosts.map(({ node }) => node.frontmatter.slug),
+    [allPosts]
   )
 
   // Get all unique tags with counts (excluding hidden tags)
@@ -41,73 +55,96 @@ const BlogPage = ({ data }) => {
     return counts
   }, [allPosts])
 
-  // Get cluster counts
-  const clusterCounts = React.useMemo(() => {
-    const counts = {}
-    Object.entries(TOPIC_CLUSTERS).forEach(([cluster, clusterTags]) => {
-      const postsInCluster = allPosts.filter(({ node }) =>
-        node.frontmatter.tags?.some(tag => clusterTags.includes(tag))
-      )
-      counts[cluster] = postsInCluster.length
-    })
-    return counts
-  }, [allPosts])
+  // Get active cluster data
+  const activeClusterData = React.useMemo(() => {
+    if (!activeCluster) return null
+    return clusters.find(c => c.id === activeCluster)
+  }, [activeCluster, clusters])
 
-  // Filter posts based on active cluster or tag
+  // Filter posts based on active cluster or tags
   const filteredPosts = React.useMemo(() => {
-    if (activeTag) {
+    if (activeTags.length > 0) {
       return allPosts.filter(({ node }) =>
-        node.frontmatter.tags?.includes(activeTag)
+        activeTags.every(tag => node.frontmatter.tags?.includes(tag))
       )
     }
-    if (activeCluster) {
-      const clusterTags = TOPIC_CLUSTERS[activeCluster]
+    if (activeClusterData) {
       return allPosts.filter(({ node }) =>
-        node.frontmatter.tags?.some(tag => clusterTags.includes(tag))
+        activeClusterData.articles.includes(node.frontmatter.slug)
       )
     }
     return allPosts
-  }, [allPosts, activeCluster, activeTag])
+  }, [allPosts, activeClusterData, activeTags])
 
-  // Get tags relevant to current view (for secondary filtering)
-  const visibleTags = React.useMemo(() => {
+  // Get all tags with counts from filtered posts
+  const visibleTagCounts = React.useMemo(() => {
     const tags = {}
-    const postsToCount = activeCluster ? filteredPosts : allPosts
-    postsToCount.forEach(({ node }) => {
+    filteredPosts.forEach(({ node }) => {
       node.frontmatter.tags?.forEach(tag => {
         if (!HIDDEN_TAGS.includes(tag)) {
           tags[tag] = (tags[tag] || 0) + 1
         }
       })
     })
-    // Sort by count descending
-    return Object.entries(tags).sort((a, b) => b[1] - a[1])
-  }, [allPosts, filteredPosts, activeCluster])
+    return tags
+  }, [filteredPosts])
+
+  // Build tag list: active tags first, then co-occurring tags, sorted by count
+  const visibleTags = React.useMemo(() => {
+    // When tags are selected, show active tags + co-occurring tags only
+    if (activeTags.length > 0) {
+      const result = []
+      // Add active tags first
+      activeTags.forEach(tag => {
+        result.push([tag, visibleTagCounts[tag] || 0])
+      })
+      // Add co-occurring tags (sorted by count)
+      Object.entries(visibleTagCounts)
+        .filter(([tag]) => !activeTags.includes(tag))
+        .sort((a, b) => b[1] - a[1])
+        .forEach(([tag, count]) => {
+          result.push([tag, count])
+        })
+      return result
+    }
+    // No active tags - show all tags sorted by count
+    return Object.entries(tagCounts).sort((a, b) => b[1] - a[1])
+  }, [activeTags, visibleTagCounts, tagCounts])
+
+  // Get co-occurring tags (tags that appear with all active tags)
+  const coOccurringTags = React.useMemo(() => {
+    if (activeTags.length === 0) return new Set()
+    return new Set(
+      Object.keys(visibleTagCounts).filter(tag => !activeTags.includes(tag))
+    )
+  }, [visibleTagCounts, activeTags])
 
   const handleClusterClick = (cluster) => {
     if (activeCluster === cluster) {
       setActiveCluster(null)
     } else {
       setActiveCluster(cluster)
-      setActiveTag(null) // Clear tag filter when switching clusters
+      setActiveTags([]) // Clear tag filter when switching clusters
     }
   }
 
   const handleTagClick = (tag) => {
-    if (activeTag === tag) {
-      setActiveTag(null)
+    if (activeTags.includes(tag)) {
+      // Remove tag from active tags
+      setActiveTags(activeTags.filter(t => t !== tag))
     } else {
-      setActiveTag(tag)
-      setActiveCluster(null) // Clear cluster filter when selecting a tag
+      // Add tag to active tags
+      setActiveTags([...activeTags, tag])
+      setActiveCluster(null) // Clear cluster filter when selecting tags
     }
   }
 
   const clearFilters = () => {
     setActiveCluster(null)
-    setActiveTag(null)
+    setActiveTags([])
   }
 
-  const hasActiveFilter = activeCluster || activeTag
+  const hasActiveFilter = activeCluster || activeTags.length > 0
 
   const [searchActive, setSearchActive] = React.useState(false)
 
@@ -149,35 +186,29 @@ const BlogPage = ({ data }) => {
         {/* Topic Clusters, Tag Filter, and Posts List - hide when search results are shown */}
         {!searchActive && (
           <>
-            <nav className="blog-clusters" aria-label="Filter by topic">
-              {Object.entries(TOPIC_CLUSTERS).map(([cluster, _]) => (
-                clusterCounts[cluster] > 0 && (
-                  <button
-                    key={cluster}
-                    className={`blog-cluster ${activeCluster === cluster ? "blog-cluster--active" : ""}`}
-                    onClick={() => handleClusterClick(cluster)}
-                    aria-pressed={activeCluster === cluster}
-                  >
-                    {cluster}
-                    <span className="blog-cluster__count">{clusterCounts[cluster]}</span>
-                  </button>
-                )
-              ))}
-            </nav>
+            <TopicClusters
+              onClusterSelect={handleClusterClick}
+              activeCluster={activeCluster}
+              articleSlugs={allSlugs}
+            />
 
             {/* Tag Filter */}
             <div className="blog-tags-filter">
-              {visibleTags.map(([tag, count]) => (
-                <button
-                  key={tag}
-                  className={`blog-tag-filter ${activeTag === tag ? "blog-tag-filter--active" : ""}`}
-                  onClick={() => handleTagClick(tag)}
-                  aria-pressed={activeTag === tag}
-                >
-                  {tag}
-                  <span className="blog-tag-filter__count">{count}</span>
-                </button>
-              ))}
+              {visibleTags.map(([tag, count]) => {
+                const isActive = activeTags.includes(tag)
+                const isCoOccurring = coOccurringTags.has(tag)
+                return (
+                  <button
+                    key={tag}
+                    className={`blog-tag-filter ${isActive ? "blog-tag-filter--active" : ""} ${isCoOccurring ? "blog-tag-filter--co-occurring" : ""}`}
+                    onClick={() => handleTagClick(tag)}
+                    aria-pressed={isActive}
+                  >
+                    {tag}
+                    <span className="blog-tag-filter__count">{count}</span>
+                  </button>
+                )
+              })}
             </div>
 
             {/* Active Filter Indicator */}
@@ -185,8 +216,8 @@ const BlogPage = ({ data }) => {
               <div className="blog-filter-status">
                 <span>
                   Showing {filteredPosts.length} {filteredPosts.length === 1 ? "post" : "posts"}
-                  {activeCluster && ` in "${activeCluster}"`}
-                  {activeTag && ` tagged "${activeTag}"`}
+                  {activeClusterData && ` in "${activeClusterData.label}"`}
+                  {activeTags.length > 0 && ` tagged "${activeTags.join(" + ")}"`}
                 </span>
                 <button className="blog-filter-clear" onClick={clearFilters}>
                   Clear filter
@@ -209,6 +240,20 @@ const BlogPage = ({ data }) => {
                       </h2>
                       <p className="blog-post-card__meta">
                         {node.frontmatter.date}
+                        {node.frontmatter.vimeoId && (
+                          <span className="blog-post-card__media-icon" title="Has video">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M8 5v14l11-7z"/>
+                            </svg>
+                          </span>
+                        )}
+                        {node.frontmatter.hasAudio && (
+                          <span className="blog-post-card__media-icon" title="Has audio">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                            </svg>
+                          </span>
+                        )}
                       </p>
                     </header>
 
@@ -222,7 +267,7 @@ const BlogPage = ({ data }) => {
                           .map(tag => (
                             <li key={tag}>
                               <button
-                                className={`blog-post-card__tag ${activeTag === tag ? "blog-post-card__tag--active" : ""}`}
+                                className={`blog-post-card__tag ${activeTags.includes(tag) ? "blog-post-card__tag--active" : ""}`}
                                 onClick={() => handleTagClick(tag)}
                               >
                                 {tag}
@@ -263,6 +308,8 @@ export const query = graphql`
             slug
             tags
             quote
+            vimeoId
+            hasAudio
           }
         }
       }
