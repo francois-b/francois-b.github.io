@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@xenova/transformers": "^2.17.2",
     "gatsby": "^5.14.6",
     "gatsby-plugin-image": "^3.14.0",
     "gatsby-plugin-manifest": "^5.14.0",
@@ -25,11 +26,13 @@
     "@types/react-dom": "^19.2.2",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
+    "dotenv": "^17.2.3",
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "gatsby-plugin-typescript": "^5.15.0",
     "gh-pages": "^6.3.0",
+    "gray-matter": "^4.0.3",
     "prettier": "^2.8.8",
     "typescript": "^5.9.3"
   },
@@ -45,7 +48,8 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "generate-audio": "node scripts/generate-audio.js"
   },
   "repository": {
     "type": "git",

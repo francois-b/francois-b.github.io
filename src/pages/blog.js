@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import SemanticSearch from "../components/SemanticSearch"
 import "../styles/blog.css"
 
 // Topic clusters - group related tags under broader themes
@@ -108,97 +109,106 @@ const BlogPage = ({ data }) => {
 
   const hasActiveFilter = activeCluster || activeTag
 
+  const [searchActive, setSearchActive] = React.useState(false)
+
   return (
     <Layout>
       <div className="blog-page">
         <h1 className="blog-page__title">Articles</h1>
 
-        {/* Topic Clusters */}
-        <nav className="blog-clusters" aria-label="Filter by topic">
-          {Object.entries(TOPIC_CLUSTERS).map(([cluster, _]) => (
-            clusterCounts[cluster] > 0 && (
-              <button
-                key={cluster}
-                className={`blog-cluster ${activeCluster === cluster ? "blog-cluster--active" : ""}`}
-                onClick={() => handleClusterClick(cluster)}
-                aria-pressed={activeCluster === cluster}
-              >
-                {cluster}
-                <span className="blog-cluster__count">{clusterCounts[cluster]}</span>
-              </button>
-            )
-          ))}
-        </nav>
+        {/* Semantic Search */}
+        <SemanticSearch onResultsChange={setSearchActive} />
 
-        {/* Tag Filter */}
-        <div className="blog-tags-filter">
-          {visibleTags.map(([tag, count]) => (
-            <button
-              key={tag}
-              className={`blog-tag-filter ${activeTag === tag ? "blog-tag-filter--active" : ""}`}
-              onClick={() => handleTagClick(tag)}
-              aria-pressed={activeTag === tag}
-            >
-              {tag}
-              <span className="blog-tag-filter__count">{count}</span>
-            </button>
-          ))}
-        </div>
+        {/* Topic Clusters, Tag Filter, and Posts List - hide when search results are shown */}
+        {!searchActive && (
+          <>
+            <nav className="blog-clusters" aria-label="Filter by topic">
+              {Object.entries(TOPIC_CLUSTERS).map(([cluster, _]) => (
+                clusterCounts[cluster] > 0 && (
+                  <button
+                    key={cluster}
+                    className={`blog-cluster ${activeCluster === cluster ? "blog-cluster--active" : ""}`}
+                    onClick={() => handleClusterClick(cluster)}
+                    aria-pressed={activeCluster === cluster}
+                  >
+                    {cluster}
+                    <span className="blog-cluster__count">{clusterCounts[cluster]}</span>
+                  </button>
+                )
+              ))}
+            </nav>
 
-        {/* Active Filter Indicator */}
-        {hasActiveFilter && (
-          <div className="blog-filter-status">
-            <span>
-              Showing {filteredPosts.length} {filteredPosts.length === 1 ? "post" : "posts"}
-              {activeCluster && ` in "${activeCluster}"`}
-              {activeTag && ` tagged "${activeTag}"`}
-            </span>
-            <button className="blog-filter-clear" onClick={clearFilters}>
-              Clear filter
-            </button>
-          </div>
-        )}
+            {/* Tag Filter */}
+            <div className="blog-tags-filter">
+              {visibleTags.map(([tag, count]) => (
+                <button
+                  key={tag}
+                  className={`blog-tag-filter ${activeTag === tag ? "blog-tag-filter--active" : ""}`}
+                  onClick={() => handleTagClick(tag)}
+                  aria-pressed={activeTag === tag}
+                >
+                  {tag}
+                  <span className="blog-tag-filter__count">{count}</span>
+                </button>
+              ))}
+            </div>
 
-        {/* Posts List */}
-        {filteredPosts.length === 0 ? (
-          <p className="blog-page__empty">No posts match the current filter.</p>
-        ) : (
-          <div className="blog-post-list">
-            {filteredPosts.map(({ node }) => (
-              <article key={node.id} className="blog-post-card">
-                <header>
-                  <h2 className="blog-post-card__title">
-                    <Link to={`/blog/${node.frontmatter.slug}`}>
-                      {node.frontmatter.title}
-                    </Link>
-                  </h2>
-                  <p className="blog-post-card__meta">
-                    {node.frontmatter.date}
-                  </p>
-                </header>
+            {/* Active Filter Indicator */}
+            {hasActiveFilter && (
+              <div className="blog-filter-status">
+                <span>
+                  Showing {filteredPosts.length} {filteredPosts.length === 1 ? "post" : "posts"}
+                  {activeCluster && ` in "${activeCluster}"`}
+                  {activeTag && ` tagged "${activeTag}"`}
+                </span>
+                <button className="blog-filter-clear" onClick={clearFilters}>
+                  Clear filter
+                </button>
+              </div>
+            )}
 
-                <p className="blog-post-card__excerpt">{node.excerpt}</p>
+            {/* Posts List */}
+            {filteredPosts.length === 0 ? (
+              <p className="blog-page__empty">No posts match the current filter.</p>
+            ) : (
+              <div className="blog-post-list">
+                {filteredPosts.map(({ node }) => (
+                  <article key={node.id} className="blog-post-card">
+                    <header>
+                      <h2 className="blog-post-card__title">
+                        <Link to={`/blog/${node.frontmatter.slug}`}>
+                          {node.frontmatter.title}
+                        </Link>
+                      </h2>
+                      <p className="blog-post-card__meta">
+                        {node.frontmatter.date}
+                      </p>
+                    </header>
 
-                {/* Inline clickable tags */}
-                {node.frontmatter.tags && node.frontmatter.tags.length > 0 && (
-                  <ul className="blog-post-card__tags">
-                    {node.frontmatter.tags
-                      .filter(tag => !HIDDEN_TAGS.includes(tag))
-                      .map(tag => (
-                        <li key={tag}>
-                          <button
-                            className={`blog-post-card__tag ${activeTag === tag ? "blog-post-card__tag--active" : ""}`}
-                            onClick={() => handleTagClick(tag)}
-                          >
-                            {tag}
-                          </button>
-                        </li>
-                      ))}
-                  </ul>
-                )}
-              </article>
-            ))}
-          </div>
+                    <p className="blog-post-card__excerpt">{node.excerpt}</p>
+
+                    {/* Inline clickable tags */}
+                    {node.frontmatter.tags && node.frontmatter.tags.length > 0 && (
+                      <ul className="blog-post-card__tags">
+                        {node.frontmatter.tags
+                          .filter(tag => !HIDDEN_TAGS.includes(tag))
+                          .map(tag => (
+                            <li key={tag}>
+                              <button
+                                className={`blog-post-card__tag ${activeTag === tag ? "blog-post-card__tag--active" : ""}`}
+                                onClick={() => handleTagClick(tag)}
+                              >
+                                {tag}
+                              </button>
+                            </li>
+                          ))}
+                      </ul>
+                    )}
+                  </article>
+                ))}
+              </div>
+            )}
+          </>
         )}
       </div>
     </Layout>

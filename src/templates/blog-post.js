@@ -3,6 +3,8 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Tags from "../components/Tags"
+import RelatedArticles from "../components/RelatedArticles"
+import AudioPlayer from "../components/AudioPlayer"
 import "../styles/blog.css"
 
 const BlogPostTemplate = ({ data }) => {
@@ -18,10 +20,14 @@ const BlogPostTemplate = ({ data }) => {
           </p>
           <Tags tags={post.frontmatter.tags} />
         </header>
+        <AudioPlayer slug={post.frontmatter.slug} />
         <div
           className="blog-post-content"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
+
+        <RelatedArticles currentSlug={post.frontmatter.slug} maxArticles={5} />
+
         <hr style={{ margin: "3rem 0" }} />
         <Link to="/blog" style={{ textDecoration: "none" }}>
           ← Back to all posts
@@ -48,6 +54,7 @@ export const query = graphql`
       timeToRead
       frontmatter {
         title
+        slug
         date(formatString: "MMMM DD, YYYY")
         tags
       }

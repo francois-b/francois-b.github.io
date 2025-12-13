@@ -31,10 +31,29 @@ exports.onPreBootstrap = () => {
   }
 }
 
-exports.onCreateWebpackConfig = ({ actions }) => {
+exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
+  // Ignore native node modules that shouldn't be bundled
+  if (stage === "build-html" || stage === "develop-html") {
+    actions.setWebpackConfig({
+      externals: getConfig().externals.concat(function(context, request, callback) {
+        // Exclude onnxruntime-node and sharp native modules from SSR bundle
+        if (/onnxruntime-node|sharp/.test(request)) {
+          return callback(null, 'commonjs ' + request);
+        }
+        callback();
+      }),
+    });
+  }
+
   actions.setWebpackConfig({
     resolve: {
       alias: {},
+      fallback: {
+        // Polyfills for @xenova/transformers in browser
+        fs: false,
+        path: false,
+        crypto: false,
+      },
     },
   })
 }
@@ -102,4 +121,60 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     })
   })
+}
+
+/**
+ * Generate article embeddings after the build completes
+ * Uses dynamic import to avoid bundling onnxruntime with webpack
+ */
+exports.onPostBuild = async ({ graphql }) => {
+  console.log("\n🔍 Starting semantic embedding generation...")
+
+  // Query all blog posts with full content
+  const result = await graphql(`
+    query {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/blog/" } }
+      ) {
+        nodes {
+          frontmatter {
+            title
+            slug
+            tags
+          }
+          excerpt(pruneLength: 500)
+        }
+      }
+    }
+  `)
+
+  if (result.errors) {
+    console.error("Error querying posts for embeddings:", result.errors)
+    return
+  }
+
+  const posts = result.data.allMarkdownRemark.nodes
+    .filter(node => !node.frontmatter.tags?.includes("project"))
+    .map(node => ({
+      title: node.frontmatter.title,
+      slug: node.frontmatter.slug,
+      tags: node.frontmatter.tags,
+      excerpt: node.excerpt
+    }))
+
+  if (posts.length === 0) {
+    console.log("No posts found for embedding generation.")
+    return
+  }
+
+  try {
+    // Dynamic import to avoid webpack bundling issues with native modules
+    const { generateEmbeddings } = require("./scripts/generate-embeddings")
+    await generateEmbeddings(
+      posts,
+      path.join(__dirname, "public", "embeddings.json")
+    )
+  } catch (error) {
+    console.error("Error generating embeddings:", error)
+  }
 }
