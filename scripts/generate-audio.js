@@ -36,13 +36,24 @@ const targetSlug = slugIndex !== -1 ? args[slugIndex + 1] : null;
 
 /**
  * Strip markdown formatting to get plain text for TTS
+ * Removes code blocks, tables, and sections marked with <!-- no-narrate -->
  */
 function stripMarkdown(text) {
   return text
-    // Remove code blocks
+    // Remove explicitly marked no-narrate sections
+    .replace(/<!--\s*no-narrate\s*-->[\s\S]*?<!--\s*\/no-narrate\s*-->/gi, '')
+    // Remove <details> collapsible sections (often contain code/schemas)
+    .replace(/<details[\s\S]*?<\/details>/gi, '')
+    // Remove code blocks (fenced with ```)
     .replace(/```[\s\S]*?```/g, '')
+    // Remove code blocks (indented 4+ spaces)
+    .replace(/^( {4}|\t).+$/gm, '')
     // Remove inline code
     .replace(/`[^`]+`/g, '')
+    // Remove tables (lines starting with |)
+    .replace(/^\|.+\|$/gm, '')
+    // Remove table separator lines
+    .replace(/^\s*\|?[-:| ]+\|?\s*$/gm, '')
     // Convert links to just text
     .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
     // Remove images
@@ -61,10 +72,10 @@ function stripMarkdown(text) {
     // Remove list markers
     .replace(/^[\s]*[-*+]\s+/gm, '')
     .replace(/^[\s]*\d+\.\s+/gm, '')
+    // Remove any remaining HTML tags
+    .replace(/<[^>]+>/g, '')
     // Clean up multiple newlines
     .replace(/\n{3,}/g, '\n\n')
-    // Remove HTML tags if any
-    .replace(/<[^>]+>/g, '')
     .trim();
 }
 
