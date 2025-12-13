@@ -79,7 +79,7 @@ const CVPage: React.FC<PageProps<BlogPostsQuery>> = ({ data }) => {
                 <br />
                 and{" "}
                 <span className="highlight highlight--domain">
-                  domain-driven design
+                  product design
                 </span>
                 .
               </div>
