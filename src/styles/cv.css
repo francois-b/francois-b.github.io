@@ -111,39 +111,49 @@ body.theme-sun {
   --code-deleted: #dc2626;            /* Red 600 */
 }
 
-/* Night Theme */
+/* Night Theme
+   Palette: Cool slate base with indigo/violet accents
+   Based on analogous cool scheme (slate → indigo → violet)
+   with warm accent (amber) for contrast highlights */
 body.theme-night {
-  --color-primary: #8593e8;
-  --color-secondary: #a78bfa;
-  --color-text: #e2e8f0;
-  --color-text-light: #cbd5e1;
-  --color-text-lighter: #94a3b8;
-  --color-bg: #0f172a;
-  --color-bg-subtle: #1e293b;
-  --color-border: #334155;
+  /* Core palette - Tailwind Slate */
+  --color-primary: #818cf8;           /* Indigo 400 - vibrant for dark bg */
+  --color-secondary: #a78bfa;         /* Violet 400 */
+  --color-text: #e2e8f0;              /* Slate 200 */
+  --color-text-light: #cbd5e1;        /* Slate 300 */
+  --color-text-lighter: #94a3b8;      /* Slate 400 */
+  --color-bg: #0f172a;                /* Slate 900 */
+  --color-bg-subtle: #1e293b;         /* Slate 800 */
+  --color-border: #334155;            /* Slate 700 */
 
-  --highlight-engineering: rgba(129, 140, 248, 0.28);
-  --highlight-ai: rgba(147, 197, 253, 0.26);
-  --highlight-domain: rgba(251, 191, 36, 0.22);
+  /* Links - lighter for dark background, deeper on hover */
+  --color-link: #93c5fd;              /* Blue 300 - visible on dark */
+  --color-link-hover: #60a5fa;        /* Blue 400 - brighter on hover */
 
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+  /* Highlights - distinct and vivid for dark mode */
+  --highlight-engineering: rgba(129, 140, 248, 0.35);  /* Indigo */
+  --highlight-ai: rgba(45, 212, 191, 0.28);            /* Teal */
+  --highlight-domain: rgba(251, 191, 36, 0.25);        /* Amber */
 
-  /* Syntax highlighting (Coldark Dark) */
-  --code-bg: #111b27;
-  --code-text: #e3eaf2;
-  --code-selection: #3c526d;
-  --code-comment: #8da1b9;
-  --code-punctuation: #e3eaf2;
-  --code-tag: #66cccc;
-  --code-number: #e6d37a;
-  --code-property: #6cb8e6;
-  --code-string: #91d076;
-  --code-builtin: #f4adf4;
-  --code-function: #c699e3;
-  --code-keyword: #e9ae7e;
-  --code-deleted: #cd6660;
+  /* Shadows - deeper for dark mode */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.6);
+
+  /* Syntax highlighting - Coldark Dark adjusted */
+  --code-bg: #1e293b;                 /* Slate 800 - matches bg-subtle */
+  --code-text: #e2e8f0;               /* Slate 200 */
+  --code-selection: #475569;          /* Slate 600 */
+  --code-comment: #94a3b8;            /* Slate 400 */
+  --code-punctuation: #cbd5e1;        /* Slate 300 */
+  --code-tag: #5eead4;                /* Teal 300 */
+  --code-number: #fcd34d;             /* Amber 300 */
+  --code-property: #93c5fd;           /* Blue 300 */
+  --code-string: #86efac;             /* Green 300 */
+  --code-builtin: #f0abfc;            /* Fuchsia 300 */
+  --code-function: #c4b5fd;           /* Violet 300 */
+  --code-keyword: #fdba74;            /* Orange 300 */
+  --code-deleted: #fca5a5;            /* Red 300 */
 }
 
 /* Reset & Base Styles */
