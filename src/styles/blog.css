@@ -5,11 +5,12 @@
 
 .blog-page__title {
   font-family: var(--font-serif);
-  font-size: xx-large;
-  font-weight: bold;
+  font-size: var(--font-size-3xl);
+  font-weight: 600;
   color: var(--color-text);
   margin-bottom: 2rem;
-  letter-spacing: normal;
+  letter-spacing: -0.01em;
+  line-height: var(--line-height-tight);
   position: relative;
   display: block;
 }
@@ -44,11 +45,12 @@
 }
 
 .blog-post-card__title {
-  font-family: var(--font-header);
+  font-family: var(--font-sans);
   font-size: var(--font-size-lg);
-  font-weight: 700;
+  font-weight: 600;
   margin: 0 0 0.35rem;
   color: var(--color-text);
+  line-height: var(--line-height-snug);
 }
 
 .blog-post-card__title a {
@@ -74,9 +76,9 @@
 }
 
 .blog-post-card__excerpt {
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   font-size: var(--font-size-base);
-  line-height: 1.7;
+  line-height: var(--line-height-normal);
   color: var(--color-text-light);
   margin-bottom: var(--space-4);
 }
@@ -152,4 +154,8 @@
 
 .blog-post-title {
   font-family: var(--font-serif);
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.01em;
 }

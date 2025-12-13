@@ -24,11 +24,13 @@ exports.onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
       href: "https://fonts.gstatic.com",
       crossOrigin: "anonymous",
     }),
-    // Load fonts with display=block to prevent FOUT
+    // Load fonts with display=swap for better perceived performance
+    // Literata: variable serif optimized for digital reading (Google Play Books typeface)
+    // Inter: variable sans-serif for UI and short text
     React.createElement("link", {
       key: "google-fonts",
       rel: "stylesheet",
-      href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=block",
+      href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&display=swap",
     }),
     // Theme hydration script
     React.createElement("script", {

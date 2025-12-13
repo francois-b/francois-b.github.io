@@ -179,28 +179,17 @@ acronym {
 tt,
 code {
   background-color: var(--code-bg);
-  border-radius: var(--radius-sm);
+  border-radius: 3px;
   color: var(--code-text);
   font-family: var(--font-mono);
-  padding-bottom: 0.25em;
-  padding-top: 0.25em;
+  font-size: 0.9em;
+  padding: 0.15em 0.3em;
   word-break: normal;
 }
 pre code {
   background: none;
-}
-code:before,
-code:after,
-tt:before,
-tt:after {
-  content: "\00a0";
-  letter-spacing: -0.2em;
-}
-pre code:before,
-pre code:after,
-pre tt:before,
-pre tt:after {
-  content: none;
+  font-size: inherit;
+  padding: 0;
 }
 
 /* ===================================
@@ -275,24 +264,27 @@ pre tt:after {
 
 .blog-post-content {
   counter-reset: h2-counter;
-  font-size: var(--font-size-base);
-  line-height: 1.75;
+  font-family: var(--font-serif);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-relaxed);
+  max-width: 70ch; /* Optimal measure for reading */
 }
 
 /* ===================================
    Blog Post Typography
    =================================== */
 
-/* Headings */
+/* Headings - use sans-serif for contrast with serif body */
 .blog-post-content h2 {
   position: relative;
   counter-increment: h2-counter;
-  font-family: var(--font-header);
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
   color: var(--color-text);
   margin-top: 3rem;
   margin-bottom: 1rem;
+  line-height: var(--line-height-tight);
 }
 
 .blog-post-content h2:first-child {
@@ -317,21 +309,23 @@ pre tt:after {
 }
 
 .blog-post-content h3 {
-  font-family: var(--font-header);
-  font-size: 1.2rem;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-lg);
   font-weight: 600;
   color: var(--color-text);
   margin-top: 2.5rem;
   margin-bottom: 1rem;
+  line-height: var(--line-height-snug);
 }
 
 .blog-post-content h4 {
-  font-family: var(--font-header);
-  font-size: 1.05rem;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-md);
   font-weight: 600;
   color: var(--color-text-light);
   margin-top: 2rem;
   margin-bottom: 0.75rem;
+  line-height: var(--line-height-snug);
 }
 
 /* Paragraphs */
@@ -403,19 +397,21 @@ pre tt:after {
   border-collapse: collapse;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+  font-family: var(--font-sans);
   font-size: 0.9rem;
-  line-height: 1.5;
+  line-height: var(--line-height-snug);
 }
 
 .blog-post-content thead {
-  border-bottom: 2px solid var(--color-text-light);
+  border-bottom: 2px solid var(--color-text);
 }
 
 .blog-post-content th {
-  padding: 0.75rem 1rem 0.75rem 0;
+  padding: 0.6rem 1.5rem 0.6rem 0;
   text-align: left;
   font-weight: 600;
   color: var(--color-text);
+  letter-spacing: 0.01em;
 }
 
 .blog-post-content th:last-child {
@@ -423,9 +419,15 @@ pre tt:after {
 }
 
 .blog-post-content td {
-  padding: 0.75rem 1rem 0.75rem 0;
-  border-bottom: 1px solid var(--color-border);
+  padding: 0.75rem 1.5rem 0.75rem 0;
+  border-bottom: 1px solid var(--color-text-lighter);
   vertical-align: top;
+  color: var(--color-text-light);
+}
+
+.blog-post-content td:first-child {
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 .blog-post-content td:last-child {
@@ -462,14 +464,20 @@ pre tt:after {
   border: none;
 }
 
-/* Inline code */
+/* Inline code - sized to match Literata's x-height */
 .blog-post-content :not(pre) > code {
-  font-size: 0.875em;
-  padding: 0.2em 0.4em;
+  font-size: 0.9em;
+  padding: 0.15em 0.3em;
+  margin: 0 0.05em;
   background: var(--color-bg-subtle);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
+  border: none;
+  border-radius: 3px;
   color: var(--color-text);
+  /* Prevent code from disrupting line rhythm */
+  line-height: 1;
+  vertical-align: baseline;
+  position: relative;
+  top: -0.03em;
 }
 
 /* Blockquotes */
