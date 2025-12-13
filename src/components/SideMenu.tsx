@@ -99,6 +99,14 @@ const SideMenu: React.FC = () => {
         >
           Projects
         </Link>
+        <Link
+          className="floating-link"
+          to="/colophon"
+          aria-label="Colophon"
+          title="Colophon"
+        >
+          Colophon
+        </Link>
       </div>
 
       {/* Contact links group */}

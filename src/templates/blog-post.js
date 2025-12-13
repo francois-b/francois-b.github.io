@@ -7,8 +7,19 @@ import RelatedArticles from "../components/RelatedArticles"
 import AudioPlayer from "../components/AudioPlayer"
 import "../styles/blog.css"
 
+// Map persona names to their departments for display
+const PERSONA_DEPARTMENTS = {
+  "Nora": "content",
+  "Theo": "content",
+  "Eli": "content",
+  "Jake": "design",
+  "Mira": "design",
+}
+
 const BlogPostTemplate = ({ data }) => {
   const post = data.markdownRemark
+  const author = post.frontmatter.author
+  const isPersona = author && PERSONA_DEPARTMENTS[author]
 
   return (
     <Layout>
@@ -20,6 +31,17 @@ const BlogPostTemplate = ({ data }) => {
           <h1 className="blog-post-title" style={{ marginBottom: "0.5rem" }}>{post.frontmatter.title}</h1>
           <p className="blog-post-card__meta">
             {post.frontmatter.date}
+            {isPersona && (
+              <>
+                {" · "}
+                <span className="blog-post-author">
+                  Co-authored with{" "}
+                  <Link to="/colophon#personas" className="blog-post-author__link">
+                    {author} ({PERSONA_DEPARTMENTS[author]})
+                  </Link>
+                </span>
+              </>
+            )}
           </p>
           <Tags tags={post.frontmatter.tags} />
         </header>
@@ -60,6 +82,7 @@ export const query = graphql`
         slug
         date(formatString: "MMMM DD, YYYY")
         tags
+        author
       }
     }
   }

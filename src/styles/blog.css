@@ -204,6 +204,21 @@
   margin-bottom: var(--space-4);
 }
 
+.blog-post-author {
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.blog-post-author__link {
+  color: var(--color-text-light);
+  text-decoration: none;
+}
+
+.blog-post-author__link:hover {
+  color: var(--color-link);
+  text-decoration: underline;
+}
+
 .blog-post-card__excerpt {
   font-family: var(--font-serif);
   font-size: var(--font-size-base);
