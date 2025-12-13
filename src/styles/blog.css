@@ -514,6 +514,17 @@
 }
 
 /* ===================================
+   Video Embed
+   =================================== */
+
+.blog-post-video {
+  margin-bottom: 2rem;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+/* ===================================
    Related Articles
    =================================== */
 

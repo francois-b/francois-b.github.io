@@ -16,9 +16,38 @@ const PERSONA_DEPARTMENTS = {
   "Mira": "design",
 }
 
+// Vimeo embed component
+const VimeoEmbed = ({ vimeoId, title }) => {
+  React.useEffect(() => {
+    // Load Vimeo player API script if not already loaded
+    if (!document.querySelector('script[src="https://player.vimeo.com/api/player.js"]')) {
+      const script = document.createElement('script')
+      script.src = 'https://player.vimeo.com/api/player.js'
+      script.async = true
+      document.body.appendChild(script)
+    }
+  }, [])
+
+  return (
+    <div className="blog-post-video">
+      <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+        <iframe
+          src={`https://player.vimeo.com/video/${vimeoId}?badge=0&autopause=0&player_id=0&app_id=58479`}
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+          title={title || 'Video'}
+        />
+      </div>
+    </div>
+  )
+}
+
 const BlogPostTemplate = ({ data }) => {
   const post = data.markdownRemark
   const author = post.frontmatter.author
+  const vimeoId = post.frontmatter.vimeoId
   const isPersona = author && PERSONA_DEPARTMENTS[author]
 
   return (
@@ -45,6 +74,7 @@ const BlogPostTemplate = ({ data }) => {
           </p>
           <Tags tags={post.frontmatter.tags} />
         </header>
+        {vimeoId && <VimeoEmbed vimeoId={vimeoId} title={post.frontmatter.title} />}
         <AudioPlayer slug={post.frontmatter.slug} title={post.frontmatter.title} />
         <div
           className="blog-post-content"
@@ -83,6 +113,7 @@ export const query = graphql`
         date(formatString: "MMMM DD, YYYY")
         tags
         author
+        vimeoId
       }
     }
   }

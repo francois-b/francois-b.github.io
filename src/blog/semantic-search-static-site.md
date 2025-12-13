@@ -4,6 +4,7 @@ date: "2024-12-13"
 slug: "semantic-search-static-site"
 tags: ["ai", "gatsby", "javascript", "developer-tools"]
 author: "Jake"
+vimeoId: "1146231562"
 ---
 
 I just shipped semantic search and related article recommendations for this blog—all running client-side, no API calls, no backend. Here's how it works and why you might want to do this yourself.
