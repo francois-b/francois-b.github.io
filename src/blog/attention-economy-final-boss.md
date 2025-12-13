@@ -8,6 +8,7 @@ tags:
   - philosophy
   - society
 author: Theo
+hasAudio: true
 quote: >-
   Attention isn't just a resource to be captured—it's constitutive of conscious
   experience. What you attend to, moment by moment, is what your life is.
